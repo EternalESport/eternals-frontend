@@ -17,7 +17,7 @@ Portée par une équipe de direction passionnée et visionnaire, Eternal E-Sport
 Eternal E-Sport – compétitif, inclusif et ambitieux.</p>
         </div>
         <div class="hof-image-container">
-          <img class="hof-img" src="../assets/img/High_Noon_2022_WR_Promo_01.webp" />
+          <img class="hof-img" src="../assets/img/mission.jpg" />
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@ Eternal E-Sport – compétitif, inclusif et ambitieux.</p>
   color: white;
   text-align: justify;
   margin-right: 20px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 /* Style for the image and h3 */

@@ -94,6 +94,9 @@ export default {
 </template>
 
 <style scoped>
+h2{
+  font-size: 65px;
+}
 .orgs{
   font-family: 'NewOrderBold';
   text-align: center;

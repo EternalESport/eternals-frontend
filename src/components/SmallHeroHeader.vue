@@ -31,15 +31,16 @@ h1 {
 
 .greetings{
   padding-top: 100px;
-  background-image: url('./../assets/img/wallpaper.jpg');
+  background-image: url('./../assets/img/wallpaper.png');
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
   padding-bottom: 100px;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-position-y: -100px;
+  background-position-y: -300px;
   position: relative;
+  z-index: -1;
 }
 
 .title {
@@ -61,8 +62,8 @@ h1 {
 
 @media (max-width: 1800px){
   .greetings{
-    background-position-y: -130px;
-    background-size: 1500px;
+    background-position-y: -200px;
+    background-size: 1800px;
   }
 }
 

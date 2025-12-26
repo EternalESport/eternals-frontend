@@ -60,8 +60,8 @@ onMounted(async () => {
 
 <style scoped>
 .youtube-videos {
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   padding: 30px 0;
   text-align: center;
@@ -76,7 +76,7 @@ onMounted(async () => {
 }
 .youtube-videos h2 {
   color: white;
-  font-size: 2rem;
+  font-size: 65px;
   margin-bottom: 20px;
   font-family: "NewOrderBold";
 }
@@ -123,7 +123,7 @@ onMounted(async () => {
 }
   .btn{
     font-size:1.1em;
-    background-color: #F69201;
+    background-color: var(--main-color);
     color: white;
     padding: 15px;
     border-radius: 35px;
@@ -143,7 +143,7 @@ onMounted(async () => {
   }
   .video {
     width: 98%;
-    max-width: 100vw;
+    max-width: 100%;
   }
   .youtube-videos h2 {
     font-size: 1.3rem;

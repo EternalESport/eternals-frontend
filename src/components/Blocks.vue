@@ -6,31 +6,31 @@ import config from '@/config.json'
 <template>
   <div class="blocks-container">
     <a class="block large" :href="config.links.rules" target="_blank">
-      <img src="../assets/btns/Reglements.jpg" />
+      <img src="../assets/btns/Règle.png" />
       <h3 style="font-size: 41px;">RÈGLEMENTS</h3>
     </a> <!-- Large box -->
     <a class="block small" :href="config.links.register" target="_blank">
-      <img src="../assets/btns/Inscriptions_PETIT.jpg" />
+      <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>INSCRIPTIONS</h3>
     </a> <!-- Small box -->
     <a class="block large mobile" :href="config.links.teams" target="_blank">
-      <img src="../assets/btns/equipes.jpg" />
+      <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">LISTES DES ÉQUIPES</h3>
     </a> <!-- Large box -->
     <a class="block small" :href="config.links.schedule" target="_blank">
-      <img src="../assets/btns/Horaire.jpg" />
+      <img src="../assets/btns/Horairerectangle.png" />
       <h3>HORAIRE</h3>
     </a> <!-- Small box -->
     <a class="block large desktop" :href="config.links.teams" target="_blank">
-      <img src="../assets/btns/equipes.jpg" />
+      <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">LISTES DES ÉQUIPES</h3>
     </a> <!-- Large box -->
     <a class="block large" :href="config.links.ranking" target="_blank">
-      <img src="../assets/btns/Classemenmt.jpg" />
+      <img src="../assets/btns/Classement.png" />
       <h3>CLASSEMENT</h3>
     </a> <!-- Large box -->
-    <a class="block small" href="config.links.playoffs" target="_blank">
-      <img src="../assets/btns/Playoffs.jpg" />
+    <a class="block small" :href="config.links.playoffs" target="_blank">
+      <img src="../assets/btns/Playoffsrectangle.png" />
       <h3>PLAYOFFS</h3>
     </a> <!-- Small box -->
   </div>
@@ -63,7 +63,7 @@ import config from '@/config.json'
   transition: 0.5s;
 
   &:hover{
-      color: #f69201;
+      color: var(--main-color);
       transform: scale(1.05);
       img{
         transition: 0.5s;
@@ -98,6 +98,10 @@ import config from '@/config.json'
 .block.small {
   height: 200px;
   width: 400px;
+  img{
+    width: 100%;
+    top: 30px;
+  }
 }
 
 @media (max-width: 1500px) {

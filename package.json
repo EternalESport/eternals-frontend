@@ -24,6 +24,7 @@
     "vue-marquee-text-component": "^2.0.1",
     "vue-router": "^4.2.4",
     "vue-scrollto": "^2.20.0",
+    "vue-slick-carousel": "^1.0.6",
     "vue3-marquee": "^4.2.2",
     "vuejs-smart-table": "^0.0.8",
     "youtube-search-api": "^2.0.1"

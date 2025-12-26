@@ -1,6 +1,7 @@
 <script>
 import Navigation from './components/Navigation.vue'
 import Footer from './components/Footer.vue'
+import config from './config.json'
 import axios from 'axios'
 import { RouterLink, RouterView } from 'vue-router'
 import { store } from './store.js'
@@ -80,7 +81,7 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 
 </script>
 
-<template>
+<template >
   <Navigation/>
   <RouterView />
   <Footer />

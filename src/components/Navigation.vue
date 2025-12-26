@@ -1,6 +1,8 @@
 <script setup>
   import config from '@/config.json'
   import { store } from '../store.js'
+import Logo from './Logo.vue';
+import Dash from './Dash.vue';
 </script>
 
 <template>
@@ -8,7 +10,7 @@
     <nav>
       <div class="branding">
         <a class="logo" href="/" alt="Accueil">
-          <img src="../assets/img/eternal-nobg.png" alt="Logo" class="logo" />
+          <Logo />
         </a>
       </div>
       <ul v-show="!mobile" class="navigation">
@@ -17,7 +19,11 @@
         <li class="socials"><a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
         <li class="socials"><a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a></li>
         <li class="socials"><a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']"/></a></li>
-        <li><img src="../assets/img/dash.png" /></li>
+        <li>
+          <div class="dash">
+            <Dash />
+          </div>
+        </li>
         <li class="categories"><RouterLink to="/mission" class="link">Mission</RouterLink></li>
         <li class="categories"><RouterLink to="/equipe" class="link">L'équipe</RouterLink></li>
         <li class="categories"><RouterLink to="/halloffame" class="link">Hall of Fame</RouterLink></li>
@@ -71,7 +77,7 @@
 
             checkScreen() {
                 this.windowWidth = window.innerWidth;
-                if (this.windowWidth < 1140) {
+                if (this.windowWidth < 1300) {
                     this.mobile = true;
                     return
                 } else {
@@ -95,18 +101,33 @@
     line-height: 1.5;
     width: 100%;
     background-color: #111;
-    color: #F69201;
+    color: var(--main-color);
   }
-
+  .dash {
+    width: 43px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dash svg{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
   .branding {
     display: flex;
     align-items: center;
     padding-right: 40px;
     padding-left: 80px;
-    @media (max-width: 1000px) {
-      padding-left: 20px;
-    }
   }
+
+  @media screen and (max-width: 1000px) {
+      .branding {
+        padding-left: 20px;
+      }
+    }
 
   .login{
       display: flex;
@@ -133,6 +154,7 @@
   .branding .logo {
       transition: 0.5s ease all;
       padding: 0px;
+      width: 120px;
     }
 
     .branding .logo img{
@@ -145,6 +167,7 @@
     align-items: center;
     flex: 1;
     justify-content: flex-end;
+    padding-right: 20px;
   }
 
   nav 
@@ -152,9 +175,12 @@
     position: relative;
     display: flex;
     text-align: left;
-    flex-direction: row;
-    padding: 20px 0;
-    padding-right: 80px;
+    /* Media query for max-width: 1000px */
+    @media screen and (max-width: 1000px) {
+      nav {
+        padding-right: 20px;
+      }
+    }
     @media (max-width: 1000px) {
       padding-right: 20px;
     }
@@ -176,7 +202,7 @@
 
     a{
       &:hover {
-        color: #F69201;
+        color: var(--main-color);
         transform: scale(1.2);
         transition: 0.5s ease all;
       }
@@ -192,14 +218,14 @@
         color: white;
         transition: 0.5s ease all;
           &:hover {
-          color: #F69201;
+          color: var(--main-color);
           transform: scale(1.2);
           transition: 0.5s ease all;
         }
       }
     }
 
-    @media (min-width: 1140px) {
+    @media (min-width: 1300px) {
       width: 100%;
       
     }
@@ -241,7 +267,7 @@
         padding-top: 40px;
         text-align: left;
         .link {
-          color: #F69201;
+          color: var(--main-color);
         }
       }
 
@@ -264,7 +290,7 @@
       }
 
       .socials-container a:hover {
-        color: #F69201;
+        color: var(--main-color);
         transform: scale(1.2);
       }
   }
@@ -295,7 +321,7 @@
   }
 
   .fa-bars{
-    color: #F69201;
+    color: var(--main-color);
   }
 
 

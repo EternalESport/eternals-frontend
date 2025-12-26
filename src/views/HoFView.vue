@@ -13,6 +13,16 @@ import SmallHeroHeader from '../components/SmallHeroHeader.vue';
           <br><p>Nous sommes fiers de les honorer et de célébrer leurs réalisations au sein de notre communauté. Leurs noms resteront gravés dans les mémoires, et leur héritage perdurera au sein de l'Eternal E-Sport.</p>
         </div>
         <div class="hof-image-container hof-right">
+          <h3>Saison Automne 2025 - Division Prestige</h3>
+          <img class="hof-img" src="../assets/hof/aut2025champ.png" />
+          <p>DME Exodia • Vertios • MrJc Fanclub Semi-Luxueux • DME Forgotten • DME Dawn • LoV Me • Team Du Nord</p>
+        </div>
+        <div class="hof-image-container hof-left">
+          <h3>Saison Automne 2025 - Division Académie</h3>
+          <img class="hof-img" src="../assets/hof/aut2025acad.png" />
+          <p>Chiefs • Team Nordian • LoV U • Team Xtreme • DH Blossom • Los Loserinos • Twinkies</p>
+        </div>
+        <div class="hof-image-container hof-right">
           <h3>Saison Été 2025 - Division Prestige</h3>
           <img class="hof-img" src="../assets/hof/WINNERS_PRESTIGE.png" />
           <p>MrJC Fanclub de Luxe • DME Exodia • Apex Bombardino • R'tiens Moi • LoV That • Fist and Frost • Chill Guys Gaming</p>

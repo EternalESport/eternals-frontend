@@ -29,6 +29,7 @@ import config from '@/config.json'
   height: 300px;
   margin-top: -300px;
   width: 100%;
+  z-index: 1;
 }
 
 body {
@@ -39,8 +40,8 @@ body {
 h2{
   font-family: "NewOrderBold";
   font-weight: bolder;
-  font-size: 5em;
-  margin-bottom: 30px;
+  font-size: 65px;
+  margin-bottom: 20px;
   color: white;
   text-align: center;
   padding-top: 40px;

@@ -1,5 +1,6 @@
 {
-  "seasonName": "Automne 2025",
+  "color": "#d2147c",
+  "seasonName": "Hiver 2026",
   "discord": "https://discord.gg/hRSvPaRFDd",
   "twitch": "https://www.twitch.tv/eternalesportleague",
   "twitter": "https://x.com/eternales22",
@@ -8,11 +9,11 @@
   "youtubeKey": "AIzaSyAyRedqyPPW6F4w23jF8SlpFEscMQOOhpo",
   "facebook": "https://www.facebook.com/eternalesport2/",
   "links": {
-    "rules": "https://docs.google.com/document/d/1tW6fCRdOSZXL9JdpWVKDN6tvFp-idKu3h3nul2BwwWQ/edit?usp=sharing",
-    "register": "https://forms.gle/X6kipPM1niZqsgDcA",
-    "teams": "https://docs.google.com/spreadsheets/d/1HPpBrBeW3W_TIWmjYKNHvywnP0KgkyMRjSYsZ9-9nsQ/edit?usp=sharing",
+    "rules": "https://docs.google.com/document/d/1CP7qiK4jJnNeIIhZrbgbwk5pxbu3Cbu1-9xKgqKXi2w/edit?usp=sharing",
+    "register": "https://forms.gle/SnrPPRTnCm6Z74Rw6",
+    "teams": "https://docs.google.com/spreadsheets/d/1YK59C7luOjBBf6_4EGhsT3CFN_dDgYd7J75UZvdiHe0/edit?usp=sharing",
     "schedule": "https://docs.google.com/spreadsheets/d/10lgclULVqlAjn4xLivq_YNc6mtPoOTgRlxJFReKgRfE/edit?usp=sharing",
     "ranking": "https://event-builder.apexesport.ca/events-stats?tab=all&search=Eternal+E-Sport",
-    "playoffs": "https://docs.google.com/spreadsheets/d/1_JlfkM0yepi3R9YdaVxDgZOqGXBfElk0hA9k8WTbFdA/edit?usp=sharing"
+    "playoffs": "https://docs.google.com/spreadsheets/d/1dp4bWQfP28tHQbhI5JZrUN2p-Y4SsjLPfU9Dh2i7O7Y/edit?usp=sharing"
   }
 }

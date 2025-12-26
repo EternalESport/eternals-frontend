@@ -1,14 +1,60 @@
 <script setup>
+import Logo from './Logo.vue';
 </script>
 
 <template>
   <div class="greetings">
-    <img class="title" src="./../assets/img/eternal-nobg.png" />
+    <video
+      class="bg-video"
+      src="../assets/mylivewallpapers.com-Dark-Star-ChoGath-LOL.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+    <div class="title">
+      <Logo />
+    </div>
     <h1>Eternal E-Sport</h1>
   </div>
 </template>
 
 <style scoped>
+.greetings {
+  width: 100%;
+  position: relative;
+  padding-top: 250px;
+  padding-bottom: 400px;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  /* Optional: add a dark overlay for readability */
+  filter: brightness(0.6);
+}
+
+.title {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 0;
+  width: 95vw;
+  max-width: 30vw;
+}
+
 h1 {
   color: white;
   font-size: 14vw;
@@ -25,32 +71,11 @@ h1 {
 
 @media (min-width: 500px) {
   h1 {
-     font-size: 8rem;
-    }
+    font-size: 8rem;
+  }
 }
 
-.greetings{
-  width:100%;
-  padding-top: 250px;
-  background-image: url('./../assets/img/wallpaper.jpg');
-  padding-bottom: 400px;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position:center;
-  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
-}
-
-.title {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  top: 0;
-  width: 95vw;
-  max-width: 30vw;
-}
-
-h3{
+h3 {
   color: white;
   font-family: "GeneralSansSemiBold";
   position: relative;
@@ -60,9 +85,9 @@ h3{
   font-size: 1.2rem;
 }
 
-a { 
-  color: white; 
-  text-decoration: none; 
+a {
+  color: white;
+  text-decoration: none;
 }
 
 /* Make everything smaller when width is under 1200px */
@@ -72,6 +97,12 @@ a {
     padding-bottom: 200px;
     background-position-y: -100px;
     background-size: 1500px;
+    background-image: url('./../assets/img/wallpaper.png');
+    background-attachment: fixed;
+    background-position: top;
+  }
+  .bg-video {
+    display: none;
   }
   .title {
     max-width: 30vw;

@@ -8,6 +8,7 @@ import PrimeVue from 'primevue/config'
 import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/mdc-dark-indigo/theme.css'
 import Tooltip from 'primevue/tooltip';
+import config from '@/config.json'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -32,3 +33,5 @@ app.use(PrimeVue)
 app.use(VueScrollTo)
 
 app.mount('#app')
+
+document.body.style.setProperty('--main-color', config.color)

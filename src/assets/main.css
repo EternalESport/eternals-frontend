@@ -15,7 +15,7 @@
 a,
 .green {
   text-decoration: none;
-  color: #F69201;
+  color: var(--main-color);
   transition: 0.4s;
 }
 

@@ -108,7 +108,7 @@ import config from '@/config.json'
 
   .footer .row a svg{
   font-size:1.1em;
-  background-color: #F69201;
+  background-color: var(--main-color);
   color: white;
   padding: 15px;
   border-radius: 35px;
