@@ -1,6 +1,7 @@
 <script>
 import Navigation from './components/Navigation.vue'
 import Footer from './components/Footer.vue'
+import CookieBanner from './components/CookieBanner.vue'
 import config from './config.json'
 import axios from 'axios'
 import { RouterLink, RouterView } from 'vue-router'
@@ -16,6 +17,7 @@ export default {
   components: {
     Navigation,
     Footer,
+    CookieBanner,
     RouterLink,
     RouterView
   }
@@ -82,6 +84,7 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </script>
 
 <template >
+  <CookieBanner />
   <Navigation/>
   <RouterView />
   <Footer />
@@ -95,3 +98,4 @@ overflow-x:hidden;
 }
 
 </style>
+

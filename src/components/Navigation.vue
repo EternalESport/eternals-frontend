@@ -1,6 +1,7 @@
 <script setup>
   import config from '@/config.json'
-  import { store } from '../store.js'
+  import { store, setLanguage } from '../store.js'
+  import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
 </script>
@@ -19,14 +20,22 @@ import Dash from './Dash.vue';
         <li class="socials"><a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
         <li class="socials"><a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a></li>
         <li class="socials"><a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']"/></a></li>
+        <li class="language-toggle">
+          <button
+            @click="setLanguage(store.language === 'fr' ? 'en' : 'fr')"
+            class="lang-btn"
+          >
+            {{ store.language === 'fr' ? 'EN' : 'FR' }}
+          </button>
+        </li>
         <li>
           <div class="dash">
             <Dash />
           </div>
         </li>
-        <li class="categories"><RouterLink to="/mission" class="link">Mission</RouterLink></li>
-        <li class="categories"><RouterLink to="/equipe" class="link">L'équipe</RouterLink></li>
-        <li class="categories"><RouterLink to="/halloffame" class="link">Hall of Fame</RouterLink></li>
+        <li class="categories"><RouterLink :to="'/mission'" class="link">{{ translations[store.language].navigation.mission }}</RouterLink></li>
+        <li class="categories"><RouterLink :to="'/equipe'" class="link">{{ translations[store.language].navigation.team }}</RouterLink></li>
+        <li class="categories"><RouterLink :to="'/halloffame'" class="link">{{ translations[store.language].navigation.hallOfFame }}</RouterLink></li>
       </ul>
       <!--
       <a v-if="store.token === ''" class="login" href="https://discord.com/oauth2/authorize?client_id=1239760825443684444&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fauth%2Fdiscord&scope=identify+connections+guilds+email+openid" >Connexion<font-awesome-icon :icon="['fab', 'discord']" /></a>
@@ -38,9 +47,17 @@ import Dash from './Dash.vue';
       </div>
       <transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
-        <li><RouterLink @click="toggleMobileNav" to="/mission" class="link">Mission</RouterLink></li>
-        <li><RouterLink @click="toggleMobileNav" to="/equipe" class="link">L'équipe</RouterLink></li>
-        <li><RouterLink @click="toggleMobileNav" to="/halloffame" class="link">Hall of Fame</RouterLink></li>
+        <li class="language-toggle-mobile">
+          <button
+            @click="setLanguage(store.language === 'fr' ? 'en' : 'fr')"
+            class="lang-btn"
+          >
+            {{ store.language === 'fr' ? 'EN' : 'FR' }}
+          </button>
+        </li>
+        <li><RouterLink @click="toggleMobileNav" :to="'/mission'" class="link">{{ translations[store.language].navigation.mission }}</RouterLink></li>
+        <li><RouterLink @click="toggleMobileNav" :to="'/equipe'" class="link">{{ translations[store.language].navigation.team }}</RouterLink></li>
+        <li><RouterLink @click="toggleMobileNav" :to="'/halloffame'" class="link">{{ translations[store.language].navigation.hallOfFame }}</RouterLink></li>
         <div class="socials-container">
           <a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a>
           <a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
@@ -170,7 +187,7 @@ import Dash from './Dash.vue';
     padding-right: 20px;
   }
 
-  nav 
+  nav
   {
     position: relative;
     display: flex;
@@ -225,11 +242,35 @@ import Dash from './Dash.vue';
       }
     }
 
+    .language-toggle {
+      padding-left: 2rem;
+      display: flex;
+      gap: 0;
+    }
+
+    .lang-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.3s ease all;
+
+      &:hover {
+        background-color: var(--main-color);
+        color: white;
+        border-color: var(--main-color);
+      }
+    }
+
     @media (min-width: 1300px) {
       width: 100%;
-      
+
     }
-    
+
 
     .icon {
       display: flex;
@@ -271,9 +312,35 @@ import Dash from './Dash.vue';
         }
       }
 
+      .language-toggle-mobile {
+        padding-top: 30px !important;
+        display: flex;
+        gap: 0;
+        justify-content: center;
+        flex-direction: row;
+
+        .lang-btn {
+          background: transparent;
+          color: white;
+          border: 1px solid white;
+          padding: 5px 12px;
+          border-radius: 3px;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 14px;
+          transition: 0.3s ease all;
+
+          &:hover {
+            background-color: var(--main-color);
+            color: white;
+            border-color: var(--main-color);
+          }
+        }
+      }
+
       .socials-container {
         position: absolute;
-        top: 250px;
+        top: 280px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between; /* Add spacing between logos */

@@ -41,8 +41,8 @@ export default {
       <a href="https://cjela.qc.ca/" target="_blank">
         <img src="../assets/orgs/cje-logo-web.png" alt="Partner Logo" />
       </a>
-      <a href="https://manumedia.ca/" target="_blank">
-        <img src="../assets/orgs/image.png" alt="Partner Logo" />
+      <a href="https://www.equipedupuy.ca/fr" target="_blank">
+        <img src="../assets/orgs/menu_bar_logo.png" alt="Partner Logo" />
       </a>
       </div>
 <!-- <div ref="slider" class="keen-slider logos-container">

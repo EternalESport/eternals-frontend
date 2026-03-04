@@ -5,6 +5,7 @@ import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeader.vue'
 import OurPartners from '../components/OurPartners.vue';
 import config from '@/config.json'
+import { store } from '@/store.js'
 
 </script>
 
@@ -15,7 +16,7 @@ import config from '@/config.json'
       <OurPartners />
     </div>
     <div class="content" style="background-color: #111;">
-      <h2>Saison {{ config.seasonName }}</h2>
+      <h2>{{ store.language === 'fr' ? config.season.fr : config.season.en }}</h2>
       <Blocks />
       <Orgs />
       <Youtube />

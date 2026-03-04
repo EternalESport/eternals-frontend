@@ -1,6 +1,8 @@
 <script setup>
 import config from '@/config.json'
 import { ref, onMounted } from 'vue'
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 
 const videos = ref([])
 
@@ -36,7 +38,7 @@ onMounted(async () => {
 
 <template>
   <div class="youtube-videos">
-    <h2>Dernières vidéos</h2>
+    <h2>{{ translations[store.language].components.youtube.title }}</h2>
     <div class="videos-list">
       <a
         v-for="video in videos"
@@ -52,7 +54,7 @@ onMounted(async () => {
     </div>
     <div class="yt-link">
       <a :href="config.youtubeChannel" target="_blank" rel="noopener" class="btn">
-        Voir la chaîne YouTube
+        {{ translations[store.language].components.youtube.viewChannel }}
       </a>
     </div>
   </div>

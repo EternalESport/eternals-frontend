@@ -1,10 +1,12 @@
 <script setup>
 import SmallHeroHeader from '../components/SmallHeroHeader.vue'
+import { store } from '../store.js'
+import { translations } from '../i18n/translations'
 </script>
 
 <template>
   <main>
-    <SmallHeroHeader msg="Notre Équipe" />
+    <SmallHeroHeader :msg="translations[store.language].headers.team" />
     <div class="content">
       <div class="team">
         <div class="block">
@@ -12,7 +14,7 @@ import SmallHeroHeader from '../components/SmallHeroHeader.vue'
         </div>
       </div>
     </div>
-    
+
   </main>
 </template>
 

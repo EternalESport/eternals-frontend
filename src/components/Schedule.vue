@@ -1,9 +1,11 @@
 <script setup>
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 </script>
 
 <template>
   <div class="schedule">
-    <h2>Matchs diffusés - Saison régulière</h2>
+    <h2>{{ translations[store.language].components.scheduleTitle }}</h2>
     <div class="match">
       <div class="matchup">
         <div class="team team1">

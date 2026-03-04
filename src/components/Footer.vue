@@ -1,5 +1,7 @@
 <script setup>
 import config from '@/config.json'
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 </script>
 
 <template>
@@ -15,14 +17,14 @@ import config from '@/config.json'
 
       <div class="row footerrow">
           <ul>
-            <li><a href="/">Accueil</a></li>
-            <li><a href="/mission">Mission</a></li>
-            <li><a href="/equipe">L'équipe</a></li>
-            <li><a href="/halloffame">Hall of Fame</a></li>
+            <li><a href="/">{{ translations[store.language].footer.home }}</a></li>
+            <li><a href="/mission">{{ translations[store.language].footer.mission }}</a></li>
+            <li><a href="/equipe">{{ translations[store.language].footer.team }}</a></li>
+            <li><a href="/halloffame">{{ translations[store.language].footer.hallOfFame }}</a></li>
           </ul>
       </div>
       <div class="row copyright">
-        Eternal E-Sport Copyright © 2025 Eternal E-Sport - Tout droits réservés || Conçu par Anthony Dumulong
+        {{ translations[store.language].footer.copyright }}
       </div>
     </div>
   </footer>
@@ -119,12 +121,11 @@ import config from '@/config.json'
     background-color: white;
     color: black;
   }
-  
+
   @media (max-width: 1000px){
     .footerrow{
       display: none;
     }
   }
 
-  
 </style>

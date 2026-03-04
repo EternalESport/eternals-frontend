@@ -1,5 +1,7 @@
 <script setup>
 import config from '@/config.json'
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 </script>
 
 
@@ -7,31 +9,31 @@ import config from '@/config.json'
   <div class="blocks-container">
     <a class="block large" :href="config.links.rules" target="_blank">
       <img src="../assets/btns/Règle.png" />
-      <h3 style="font-size: 41px;">RÈGLEMENTS</h3>
+      <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
     </a> <!-- Large box -->
     <a class="block small" :href="config.links.register" target="_blank">
       <img src="../assets/btns/Inscriptionrectangle.png" />
-      <h3>INSCRIPTIONS</h3>
+      <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
     </a> <!-- Small box -->
     <a class="block large mobile" :href="config.links.teams" target="_blank">
       <img src="../assets/btns/Listedeséquipes.png" />
-      <h3 style="font-size: 35px;">LISTES DES ÉQUIPES</h3>
+      <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
     </a> <!-- Large box -->
     <a class="block small" :href="config.links.schedule" target="_blank">
       <img src="../assets/btns/Horairerectangle.png" />
-      <h3>HORAIRE</h3>
+      <h3>{{ translations[store.language].components.blocks.schedule }}</h3>
     </a> <!-- Small box -->
     <a class="block large desktop" :href="config.links.teams" target="_blank">
       <img src="../assets/btns/Listedeséquipes.png" />
-      <h3 style="font-size: 35px;">LISTES DES ÉQUIPES</h3>
+      <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
     </a> <!-- Large box -->
     <a class="block large" :href="config.links.ranking" target="_blank">
       <img src="../assets/btns/Classement.png" />
-      <h3>CLASSEMENT</h3>
+      <h3>{{ translations[store.language].components.blocks.standings }}</h3>
     </a> <!-- Large box -->
     <a class="block small" :href="config.links.playoffs" target="_blank">
       <img src="../assets/btns/Playoffsrectangle.png" />
-      <h3>PLAYOFFS</h3>
+      <h3>{{ translations[store.language].components.blocks.playoffs }}</h3>
     </a> <!-- Small box -->
   </div>
 </template>

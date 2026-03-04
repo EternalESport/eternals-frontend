@@ -1,5 +1,11 @@
 {
   "color": "#d2147c",
+  "season": {
+    "name": "Hiver",
+    "year": 2026,
+    "fr": "Hiver 2026",
+    "en": "Winter 2026"
+  },
   "seasonName": "Hiver 2026",
   "discord": "https://discord.gg/hRSvPaRFDd",
   "twitch": "https://www.twitch.tv/eternalesportleague",

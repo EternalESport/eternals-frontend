@@ -9,6 +9,7 @@ import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/mdc-dark-indigo/theme.css'
 import Tooltip from 'primevue/tooltip';
 import config from '@/config.json'
+import { initializeLanguage } from './store.js'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -23,6 +24,9 @@ import { faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook } from "@fortawe
 
 /* add icons to the library */
 library.add(faChalkboardUser, faUserTie, faBars, faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook)
+
+// Initialiser la langue avant de créer l'app
+initializeLanguage()
 
 const app = createApp(App)
 

@@ -1,39 +1,40 @@
 <script setup>
 import SmallHeroHeader from '../components/SmallHeroHeader.vue';
+import { store } from '../store.js'
+import { translations } from '../i18n/translations'
 </script>
 
 <template>
   <stream>
-    <SmallHeroHeader msg="Hall of Fame" />
+    <SmallHeroHeader :msg="translations[store.language].headers.hallOfFame" />
     <div class="content">
       <div class="hof-content">
-        <h2 class="hof-title">Les joueurs qui ont marqué l'histoire de l'Eternal E-Sport</h2>
+        <h2 class="hof-title">{{ translations[store.language].hallOfFameContent.title }}</h2>
         <div class="hof-text">
-          <p>Le Hall of Fame de l'Eternal E-Sport est un hommage aux joueurs qui ont laissé une empreinte indélébile dans l'histoire de notre organisation. Ces joueurs ont fait preuve d'un talent exceptionnel, d'une détermination sans faille et d'un esprit d'équipe remarquable. Leur contribution à l'Eternal E-Sport a été inestimable, et ils continueront à inspirer les générations futures de joueurs.</p>
-          <br><p>Nous sommes fiers de les honorer et de célébrer leurs réalisations au sein de notre communauté. Leurs noms resteront gravés dans les mémoires, et leur héritage perdurera au sein de l'Eternal E-Sport.</p>
+          <p>{{ translations[store.language].hallOfFameContent.description }}</p>
         </div>
         <div class="hof-image-container hof-right">
-          <h3>Saison Automne 2025 - Division Prestige</h3>
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.fall2025prestige }}</h3>
           <img class="hof-img" src="../assets/hof/aut2025champ.png" />
           <p>DME Exodia • Vertios • MrJc Fanclub Semi-Luxueux • DME Forgotten • DME Dawn • LoV Me • Team Du Nord</p>
         </div>
         <div class="hof-image-container hof-left">
-          <h3>Saison Automne 2025 - Division Académie</h3>
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.fall2025academy }}</h3>
           <img class="hof-img" src="../assets/hof/aut2025acad.png" />
           <p>Chiefs • Team Nordian • LoV U • Team Xtreme • DH Blossom • Los Loserinos • Twinkies</p>
         </div>
         <div class="hof-image-container hof-right">
-          <h3>Saison Été 2025 - Division Prestige</h3>
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.summer2025prestige }}</h3>
           <img class="hof-img" src="../assets/hof/WINNERS_PRESTIGE.png" />
           <p>MrJC Fanclub de Luxe • DME Exodia • Apex Bombardino • R'tiens Moi • LoV That • Fist and Frost • Chill Guys Gaming</p>
         </div>
         <div class="hof-image-container hof-left">
-          <h3>Saison Été 2025 - Division Académie</h3>
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.summer2025academy }}</h3>
           <img class="hof-img" src="../assets/hof/winners_academy.png" />
           <p>DH Blossom • Wii Windows • Team Nordian • Los Loserinos • 4 BOTS 1 SUP • Delirious Hellhounds • Rewolf Esport</p>
         </div>
         <div class="hof-image-container hof-right">
-          <h3>Saison Hiver 2025</h3>
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.winter2025 }}</h3>
           <img class="hof-img" src="../assets/hof/MB_NOOB.jpg" />
           <p>LoV U • N9TF Void • DH Dark • MrJC Fanclub • DHydro-Québec • DME Reborn • Chaos Theory</p>
         </div>

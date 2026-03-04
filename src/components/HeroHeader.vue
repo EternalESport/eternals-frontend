@@ -1,5 +1,7 @@
 <script setup>
-import Logo from './Logo.vue';
+import Logo from './Logo.vue'
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 </script>
 
 <template>
@@ -15,7 +17,7 @@ import Logo from './Logo.vue';
     <div class="title">
       <Logo />
     </div>
-    <h1>Eternal E-Sport</h1>
+    <h1>{{ translations[store.language].components.heroHeader }}</h1>
   </div>
 </template>
 

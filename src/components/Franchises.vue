@@ -1,4 +1,6 @@
 <script setup>
+import { store } from '@/store.js'
+import { translations } from '@/i18n/translations'
 /*defineProps({
   msg: {
     type: String,
@@ -9,7 +11,7 @@
 
 <template>
   <div class="title">
-    <h1 class="green">Franchises</h1>
+    <h1 class="green">{{ translations[store.language].components.franchises }}</h1>
     <div>
       <img>
       <p></p>

@@ -1,20 +1,16 @@
 <script setup>
 import SmallHeroHeader from '../components/SmallHeroHeader.vue';
+import { store } from '../store.js'
+import { translations } from '../i18n/translations'
 </script>
 
 <template>
   <stream>
-    <SmallHeroHeader msg="Mission" />
+    <SmallHeroHeader :msg="translations[store.language].headers.mission" />
     <div class="content">
       <div class="hof-content">
         <div class="hof-text">
-          <p>Eternal E-Sport est la nouvelle ligue e-sportive au Québec depuis 2025, dédiée à rassembler les meilleurs talents de la province dans un cadre compétitif exceptionnel.
-<br><br>
-Notre mission est claire : bâtir une scène e-sportive québécoise solide, équitable et professionnelle. Nous plaçons la transparence, le professionnalisme et l’égalité des chances au cœur de chaque compétition, afin de créer un environnement stimulant, aussi bien pour les joueurs que pour la communauté qui les soutient.
-<br><br>
-Portée par une équipe de direction passionnée et visionnaire, Eternal E-Sport est bien plus qu’un simple projet : c’est une opportunité unique de faire rayonner l’e-sport local et de hisser notre communauté vers de nouveaux sommets.
-<br><br>
-Eternal E-Sport – compétitif, inclusif et ambitieux.</p>
+          <p>{{ translations[store.language].missionContent.text }}</p>
         </div>
         <div class="hof-image-container">
           <img class="hof-img" src="../assets/img/mission.jpg" />
