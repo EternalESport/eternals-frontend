@@ -9,32 +9,24 @@ import Dash from './Dash.vue';
 <template>
   <header>
     <nav>
+      <div class="branding">
+        <a class="logo" href="/" alt="Accueil">
+          <Logo />
+        </a>
+      </div>
       <ul v-show="!mobile" class="navigation-part1">
+        <li>
+          <div class="dash">
+            <Dash />
+          </div>
+        </li>
         <li class="socials"><a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a></li>
         <li class="socials"><a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a></li>
         <li class="socials"><a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
         <li class="socials"><a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a></li>
         <li class="socials"><a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']" /></a></li>
-        <li>
-          <div class="dash">
-            <Dash />
-          </div>
-        </li>
       </ul>
-      <div class="branding">
-        <a class="logo" href="/" alt="Accueil">
-          <Logo />
-        </a>
-        <!-- <a class="logo" href="/circuit" alt="Circuit">
-          <Logo />
-        </a> -->
-      </div>
       <ul v-show="!mobile" class="navigation">
-        <li>
-          <div class="dash">
-            <Dash />
-          </div>
-        </li>
         <li class="categories">
           <RouterLink :to="'/mission'" class="link">{{ translations[store.language].navigation.mission }}</RouterLink>
         </li>
@@ -43,6 +35,11 @@ import Dash from './Dash.vue';
         </li>
         <li class="categories">
           <RouterLink :to="'/halloffame'" class="link">{{ translations[store.language].navigation.hallOfFame }}</RouterLink>
+        </li>
+        <li>
+          <div class="dash">
+            <Dash />
+          </div>
         </li>
         <li class="language-toggle">
           <button @click="setLanguage(store.language === 'fr' ? 'en' : 'fr')" class="lang-btn">
@@ -163,7 +160,7 @@ header {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding-left: 70px;
+  padding-left: 40px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -209,7 +206,7 @@ header {
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding-right: 0px;
 }
 
@@ -217,7 +214,7 @@ header {
   display: flex;
   align-items: center;
   flex: 1;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding-right: 20px;
 }
 
@@ -235,6 +232,21 @@ nav {
 
   @media (max-width: 1000px) {
     padding-right: 20px;
+
+    header {
+      width: 10vw;
+    }
+
+    .branding .logo {
+      transition: 0.5s ease all;
+      padding: 0px;
+      width: 80px;
+    }
+
+    .branding .logo img {
+      height: 50px;
+      margin-top: 5px;
+    }
   }
 
   font-size: 18px;
