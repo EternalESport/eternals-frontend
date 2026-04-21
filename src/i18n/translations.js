@@ -216,12 +216,12 @@ export const translations = {
     // Components
     components: {
       blocks: {
-        regulations: 'Regulations',
-        registrations: 'Registrations',
-        teams: 'Teams List',
-        schedule: 'Schedule',
-        standings: 'Standings',
-        playoffs: 'Playoffs'
+        regulations: 'REGULATIONS',
+        registrations: 'REGISTRATIONS',
+        teams: 'TEAMS LIST',
+        schedule: 'SCHEDULE',
+        standings: 'STANDINGS',
+        playoffs: 'PLAYOFFS'
       },
       franchises: 'Franchises',
       scheduleTitle: 'Broadcasted Matches - Regular Season',

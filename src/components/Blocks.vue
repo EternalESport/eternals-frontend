@@ -87,6 +87,7 @@ import { translations } from '@/i18n/translations'
 
   img{
     height: 100%;
+    width: 100%;
     border-radius: 8px;
     object-fit: cover; /* Ensure the image covers the block */
   }
@@ -123,6 +124,10 @@ import { translations } from '@/i18n/translations'
   }
   .mobile{
     display: block;
+
+    img{
+    max-width: 400px;
+  }
   }
   }
 </style>
