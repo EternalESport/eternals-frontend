@@ -181,10 +181,12 @@ h2 {
   display: flex;
   align-items: center;
 }
+
 .time p {
   text-align: right;
   width: 100%;
 }
+
 .separator{
   /* Rectangle 10 */
   width: 70px;

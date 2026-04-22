@@ -7,69 +7,92 @@ import { store } from '../store.js'
   <main>
     <SmallHeroHeader msg="Classement de la saison courante" />
     <div class="content">
-      <div v-if="store.standingsChampions.length === 0" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <div v-if="store.standingsChampions.length === 0" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div class="allstandings">
         <div class="standings">
-        <h3>Champions</h3>
-        <div class="menufranchise" v-for="team in store.standingsChampions">
-          <div class="number">
-            {{ team.position }}
-          </div>
-          <div class="name">
-            <img :src="team.teamLogo" />
-            <p class="team">{{ team.teamName }}</p>
-            <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
-            <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
-            <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
-            <div class="pts">{{ team.points }} <div class="pts2">pts</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="standings">
-        <h3>Académie</h3>
-        <div class="menufranchise" v-for="team in store.standingsAcademy">
-          <div class="number">
-            {{ team.position }}
-          </div>
-          <div class="name">
-            <img :src="team.teamLogo" />
-            <p class="team">{{ team.teamName }}</p>
-            <div class="results"><div class="title">Résultats</div><br/>{{ team.resultsWins }}-{{ team.resultsLoses }}</div>
-            <div class="games"><div class="title">V/D</div><br/>{{ team.victories }}/{{ team.defeats }}</div>
-            <div class="points"><div class="title">Points</div><br/>{{ team.points }}</div>
-            <div class="pts">{{ team.points }} <div class="pts2">pts</div></div>
+          <h3>Champions</h3>
+          <div class="menufranchise" v-for="team in store.standingsChampions">
+            <div class="number">
+              {{ team.position }}
+            </div>
+            <div class="name">
+              <img :src="team.teamLogo" />
+              <p class="team">{{ team.teamName }}</p>
+              <div class="results">
+                <div class="title">Résultats</div><br />{{ team.resultsWins }}-{{ team.resultsLoses }}
+              </div>
+              <div class="games">
+                <div class="title">V/D</div><br />{{ team.victories }}/{{ team.defeats }}
+              </div>
+              <div class="points">
+                <div class="title">Points</div><br />{{ team.points }}
+              </div>
+              <div class="pts">{{ team.points }} <div class="pts2">pts</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="standings">
+          <h3>Académie</h3>
+          <div class="menufranchise" v-for="team in store.standingsAcademy">
+            <div class="number">
+              {{ team.position }}
+            </div>
+            <div class="name">
+              <img :src="team.teamLogo" />
+              <p class="team">{{ team.teamName }}</p>
+              <div class="results">
+                <div class="title">Résultats</div><br />{{ team.resultsWins }}-{{ team.resultsLoses }}
+              </div>
+              <div class="games">
+                <div class="title">V/D</div><br />{{ team.victories }}/{{ team.defeats }}
+              </div>
+              <div class="points">
+                <div class="title">Points</div><br />{{ team.points }}
+              </div>
+              <div class="pts">{{ team.points }} <div class="pts2">pts</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-.brackets{
+.brackets {
   padding: 0 50px;
   display: flex;
   flex-wrap: wrap;
 }
-.br{
+
+.br {
   padding: 50px;
   max-width: 50%;
 }
-.bracket{
+
+.bracket {
   width: 100%;
 }
-.pts{
+
+.pts {
   min-width: 60px;
   font-size: 25px;
 }
-.pts2{
+
+.pts2 {
   font-size: 15px;
   opacity: 0.5;
   margin-top: 5px;
 }
 
-h3{
+h3 {
   font-size: 40px;
   font-family: "GeneralSansMedium";
   text-align: center;
@@ -81,7 +104,7 @@ h3{
   margin-bottom: 20px;
 }
 
-.allstandings{
+.allstandings {
   font-family: "GeneralSansMedium";
   color: white;
   width: 90vw;
@@ -93,7 +116,7 @@ h3{
   padding-bottom: 100px;
 }
 
-.name{
+.name {
   width: 100%;
   display: flex;
   align-items: center;
@@ -103,42 +126,46 @@ h3{
   line-height: 15px;
 }
 
-.title{
+.title {
   font-size: 15px;
   opacity: 0.5;
 }
 
-.results, .games, .points{
+.results,
+.games,
+.points {
   display: none;
   text-align: center;
   padding: 0 10px;
   font-size: 25px;
 }
 
-.points{
+.points {
   margin-right: 15px;
 }
 
-.name:hover .results, .name:hover .games, .name:hover .points{
+.name:hover .results,
+.name:hover .games,
+.name:hover .points {
   display: block;
   animation: fadeIn 0.5s;
 }
 
-.name:hover .pts{
+.name:hover .pts {
   display: none;
 }
 
-.name:hover{
+.name:hover {
   transition: 0.5s;
   background-color: white;
   color: black;
 }
 
-p{
+p {
   width: 90%;
 }
 
-.number{
+.number {
   color: black;
   background-color: white;
   font-size: 35px;
@@ -151,32 +178,35 @@ p{
   text-align: center;
 }
 
-.menufranchise{
+.menufranchise {
   display: flex;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   flex-direction: row;
   margin-bottom: 20px;
 }
 
-.menufranchise img{
+.menufranchise img {
   max-height: 70px;
   max-width: 70px;
   margin: 10px 20px;
 }
-.stadings h3{
+
+.stadings h3 {
   font-size: 30px;
   font-family: GeneralSansMedium;
 }
 
 @media (max-width: 1160px) {
-  h3{
+  h3 {
     font-size: 25px;
   }
-  .brackets{
+
+  .brackets {
     padding: 0 10px;
   }
-  .br{
+
+  .br {
     max-width: 100%;
     padding: 0;
   }
@@ -184,8 +214,12 @@ p{
 
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+  0% {
+    opacity: 0;
+  }
 
+  100% {
+    opacity: 1;
+  }
+}
 </style>

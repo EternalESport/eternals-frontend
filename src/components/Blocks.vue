@@ -39,12 +39,14 @@ import { translations } from '@/i18n/translations'
 </template>
 
 <style scoped>
-.desktop{
+.desktop {
   display: block;
 }
-.mobile{
+
+.mobile {
   display: none;
 }
+
 .blocks-container {
   font-family: 'NewOrderBold';
   width: 1300px;
@@ -64,33 +66,36 @@ import { translations } from '@/i18n/translations'
   cursor: pointer;
   transition: 0.5s;
 
-  &:hover{
-      color: var(--main-color);
-      transform: scale(1.05);
-      img{
-        transition: 0.5s;
-        filter: brightness(0.5); /* Darken the image on hover */
-      }
-    }
+}
 
-  h3{
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3em;
-    text-align: center;
-    font-weight: 900;
-    width: 100%;
-  }
+.block:hover {
+  color: var(--main-color);
+  transform: scale(1.05);
 
-  img{
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
-    object-fit: cover; /* Ensure the image covers the block */
-  }
+}
+
+.block:hover img {
+  transition: 0.5s;
+  filter: brightness(0.5); /* Darken the image on hover */
+}
+
+.block h3 {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  text-align: center;
+  font-weight: 900;
+  width: 100%;
+}
+
+.block img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover; /* Ensure the image covers the block */
 }
 
 .block.large {
@@ -101,10 +106,12 @@ import { translations } from '@/i18n/translations'
 .block.small {
   height: 200px;
   width: 400px;
-  img{
-    width: 100%;
-    top: 30px;
-  }
+
+}
+
+.block.small img {
+  width: 100%;
+  top: 30px;
 }
 
 @media (max-width: 1500px) {
@@ -114,20 +121,24 @@ import { translations } from '@/i18n/translations'
     width: 100%;
     height: auto;
   }
+
   .block {
     width: 90vw !important;
     max-width: 400px;
     margin: 0 auto;
   }
-  .desktop{
+
+  .desktop {
     display: none;
   }
-  .mobile{
+
+  .mobile {
     display: block;
 
-    img{
+  }
+
+  .mobile img {
     max-width: 400px;
   }
-  }
-  }
+}
 </style>

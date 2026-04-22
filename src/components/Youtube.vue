@@ -12,11 +12,11 @@ function cleanTitle(title) {
   let decoded = decodeURIComponent(title)
   // Replace common HTML entities (including &#39;)
   decoded = decoded.replace(/&#39;/g, "'")
-                   .replace(/&quot;/g, '"')
-                   .replace(/&amp;/g, '&')
-                   .replace(/&lt;/g, '<')
-                   .replace(/&gt;/g, '>')
-                   .replace(/&nbsp;/g, ' ')
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
   return decoded
 }
 
@@ -40,14 +40,7 @@ onMounted(async () => {
   <div class="youtube-videos">
     <h2>{{ translations[store.language].components.youtube.title }}</h2>
     <div class="videos-list">
-      <a
-        v-for="video in videos"
-        :key="video.id.videoId"
-        :href="`https://www.youtube.com/watch?v=${video.id.videoId}`"
-        class="video"
-        target="_blank"
-        rel="noopener"
-      >
+      <a v-for="video in videos" :key="video.id.videoId" :href="`https://www.youtube.com/watch?v=${video.id.videoId}`" class="video" target="_blank" rel="noopener">
         <img :src="video.snippet.thumbnails.high.url" :alt="cleanTitle(video.snippet.title)" />
         <div class="title">{{ cleanTitle(video.snippet.title) }}</div>
       </a>
@@ -68,20 +61,20 @@ onMounted(async () => {
   padding: 30px 0;
   text-align: center;
   /* Gradient background: top 80% grey to black */
-  background: linear-gradient(
-    to bottom,
-    rgba(106, 109, 122, 1) 0%,
-    rgba(106, 109, 122, 0.5) 40%,
-    rgb(17, 17, 17) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(106, 109, 122, 1) 0%,
+      rgba(106, 109, 122, 0.5) 40%,
+      rgb(17, 17, 17) 100%);
   box-sizing: border-box;
 }
+
 .youtube-videos h2 {
   color: white;
   font-size: 65px;
   margin-bottom: 20px;
   font-family: "NewOrderBold";
 }
+
 .videos-list {
   max-width: 1200px;
   margin: auto;
@@ -90,6 +83,7 @@ onMounted(async () => {
   gap: 20px;
   justify-content: center;
 }
+
 .video {
   background: #181818;
   border-radius: 10px;
@@ -98,21 +92,24 @@ onMounted(async () => {
   max-width: 90vw;
   text-decoration: none;
   color: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
+
 .video:hover {
   transform: scale(1.03);
 }
+
 .video img {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
 }
+
 .title {
   padding: 10px;
   font-size: 1rem;
@@ -120,33 +117,39 @@ onMounted(async () => {
   font-family: "GeneralSansSemiBold";
   min-height: 48px;
 }
+
 .yt-link {
   margin-top: 30px;
 }
-  .btn{
-    font-size:1.1em;
-    background-color: var(--main-color);
-    color: white;
-    padding: 15px;
-    border-radius: 35px;
-    margin:0% 1%;
-    font-weight: bold;
-  }
-  .btn:hover{
-    transition: 0.5s;
-    background-color: white;
-    color: black;
-  }
+
+.btn {
+  font-size: 1.1em;
+  background-color: var(--main-color);
+  color: white;
+  padding: 15px;
+  border-radius: 35px;
+  margin: 0% 1%;
+  font-weight: bold;
+}
+
+.btn:hover {
+  transition: 0.5s;
+  background-color: white;
+  color: black;
+}
+
 @media (max-width: 700px) {
   .videos-list {
     flex-direction: column;
     gap: 16px;
     margin: 20px;
   }
+
   .video {
     width: 98%;
     max-width: 100%;
   }
+
   .youtube-videos h2 {
     font-size: 1.3rem;
   }

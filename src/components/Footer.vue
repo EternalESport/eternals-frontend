@@ -116,6 +116,7 @@ import { translations } from '@/i18n/translations'
   border-radius: 35px;
   margin:0% 1%;
   }
+  
   .footer .row a svg:hover{
     transition: 0.5s;
     background-color: white;

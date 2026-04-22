@@ -19,29 +19,29 @@ import { translations } from '../i18n/translations'
 </template>
 
 <style scoped>
-.team{
+.team {
   display: flex;
   flex-wrap: wrap;
-  gap:50px;
+  gap: 50px;
   color: white;
   padding: 50PX 10vw;
   justify-content: space-evenly;
 }
 
-.block{
+.block {
   width: 800px;
   padding-bottom: 60px;
   max-width: 80vw;
 }
 
-.block img{
+.block img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 20px;
 }
 
-h3{
+h3 {
   font-family: "GeneralSansBold";
   line-height: 1.2;
   font-size: 2rem;

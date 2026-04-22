@@ -222,223 +222,214 @@ nav {
   position: relative;
   display: flex;
   text-align: left;
-
-  /* Media query for max-width: 1000px */
-  @media screen and (max-width: 1000px) {
-    nav {
-      padding-right: 20px;
-    }
-  }
-
-  @media (max-width: 1000px) {
-    padding-right: 20px;
-
-    header {
-      width: 10vw;
-    }
-
-    .branding .logo {
-      transition: 0.5s ease all;
-      padding: 0px;
-      width: 80px;
-    }
-
-    .branding .logo img {
-      height: 50px;
-      margin-top: 5px;
-    }
-  }
-
   font-size: 18px;
   transition: 0.5s ease all;
-  color:white;
+  color: white;
   width: 90%;
   height: 80px;
 
-  .categories a {
-    font-weight: bolder;
-    font-size: 1.8em;
+}
 
-    &:hover {
-      color: white;
-      transform: scale(1.2);
-      transition: 0.5s ease all;
-    }
-  }
+nav .categories a {
+  font-weight: bolder;
+  font-size: 1.8em;
+  white-space: nowrap; /*So the text stays in one line when there's less space*/
+}
 
-  a {
-    &:hover {
-      color: var(--main-color);
-      transform: scale(1.2);
-      transition: 0.5s ease all;
-    }
-  }
+nav .categories a:hover {
+  color: white;
+  transform: scale(1.2);
+  transition: 0.5s ease all;
+}
 
-  .socials {
-    padding-left: 2rem;
+nav a:hover {
+  color: var(--main-color);
+  transform: scale(1.2);
+  transition: 0.5s ease all;
+}
 
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      color: white;
-      transition: 0.5s ease all;
+nav .socials {
+  padding-left: 2rem;
+}
 
-      &:hover {
-        color: var(--main-color);
-        transform: scale(1.2);
-        transition: 0.5s ease all;
-      }
-    }
-  }
+nav .socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  transition: 0.5s ease all;
+}
 
-  .language-toggle {
-    padding-left: 2rem;
-    display: flex;
-    gap: 0;
-  }
+nav .socials a:hover {
+  color: var(--main-color);
+  transform: scale(1.2);
+  transition: 0.5s ease all;
+}
 
-  .lang-btn {
-    background: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.3s ease all;
+nav .language-toggle {
+  padding-left: 2rem;
+  display: flex;
+  gap: 0;
+}
 
-    &:hover {
-      background-color: var(--main-color);
-      color: white;
-      border-color: var(--main-color);
-    }
-  }
+nav .lang-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease all;
+}
 
-  @media (min-width: 1300px) {
+nav .lang-btn:hover {
+  background-color: var(--main-color);
+  color: white;
+  border-color: var(--main-color);
+}
+
+@media (min-width: 1300px) {
+  nav {
     width: 100%;
+  }
+}
 
+
+nav .icon {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  height: 75%;
+  color: white;
+}
+
+nav .icon svg {
+  cursor: pointer;
+  height: 50%;
+  transition: 0.8s ease all;
+}
+
+nav .icon-active {
+  transform: rotate(180deg);
+}
+
+nav .dropdown-nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  max-width: 250px;
+  height: 100%;
+  background-color: #111;
+  top: 0;
+  left: 0;
+}
+nav .dropdown-nav li {
+  margin-left: 0;
+  padding-top: 40px;
+  text-align: left;
+}
+
+nav .dropdown-nav li .link {
+  color: var(--main-color);
+}
+
+nav .dropdown-nav li .language-toggle-mobile {
+  padding-top: 30px !important;
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  flex-direction: row;
+}
+
+nav .dropdown-nav li .language-toggle-mobile .lang-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 5px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: 0.3s ease all;
+}
+
+nav .dropdown-nav li .language-toggle-mobile .lang-btn:hover {
+  background-color: var(--main-color);
+  color: white;
+  border-color: var(--main-color);
+}
+
+nav .dropdown-nav .socials-container {
+  position: absolute;
+  top: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Add spacing between logos */
+  text-align: center;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+nav .dropdown-nav .socials-container a {
+  flex: 1 1 calc(50% - 10px);
+  font-size: 35px;
+  color: white;
+  transition: 0.5s ease all;
+}
+
+nav .dropdown-nav .socials-container a:hover {
+  color: var(--main-color);
+  transform: scale(1.2);
+}
+
+nav .mobile-nav-enter-active,
+nav .mobile-nav-leave-active {
+  transition: 0.8s ease all;
+}
+
+nav .mobile-nav-enter-from,
+nav .mobile-nav-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+nav .mobile-nav-enter-to {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Media query for max-width: 1000px */
+@media screen and (max-width: 1000px) {
+  nav {
+    padding-right: 20px;
   }
 
-
-  .icon {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 10px;
-    right: 0;
-    height: 75%;
-    color: white;
-
-    svg {
-      cursor: pointer;
-      height: 50%;
-      transition: 0.8s ease all;
-    }
+  .branding .logo {
+    transition: 0.5s ease all;
+    padding: 0px;
+    width: 80px;
   }
 
-  .icon-active {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-nav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    width: 100%;
-    max-width: 250px;
-    height: 100%;
-    background-color: #111;
-    top: 0;
-    left: 0;
-
-    li {
-      margin-left: 0;
-      padding-top: 40px;
-      text-align: left;
-
-      .link {
-        color: var(--main-color);
-      }
-    }
-
-    .language-toggle-mobile {
-      padding-top: 30px !important;
-      display: flex;
-      gap: 0;
-      justify-content: center;
-      flex-direction: row;
-
-      .lang-btn {
-        background: transparent;
-        color: white;
-        border: 1px solid white;
-        padding: 5px 12px;
-        border-radius: 3px;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 14px;
-        transition: 0.3s ease all;
-
-        &:hover {
-          background-color: var(--main-color);
-          color: white;
-          border-color: var(--main-color);
-        }
-      }
-    }
-
-    .socials-container {
-      position: absolute;
-      top: 280px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      /* Add spacing between logos */
-      text-align: center;
-      padding: 10px 0;
-      gap: 10px;
-    }
-
-    .socials-container a {
-      flex: 1 1 calc(50% - 10px);
-      font-size: 35px;
-      color: white;
-      transition: 0.5s ease all;
-    }
-
-    .socials-container a:hover {
-      color: var(--main-color);
-      transform: scale(1.2);
-    }
-  }
-
-  .mobile-nav-enter-active,
-  .mobile-nav-leave-active {
-    transition: 0.8s ease all;
-  }
-
-  .mobile-nav-enter-from,
-  .mobile-nav-leave-to {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  .mobile-nav-enter-to {
-    opacity: 1;
-    transform: translateX(0);
+  .branding .logo img {
+    height: 50px;
+    margin-top: 5px;
   }
 }
 
 nav ul li {
   list-style: none;
 
-  img {
-    height: 90px;
-    width: 25px;
-  }
+}
+
+nav ul li img {
+  height: 90px;
+  width: 25px;
 }
 
 .fa-bars {

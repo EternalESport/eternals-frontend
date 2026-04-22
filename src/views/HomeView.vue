@@ -24,8 +24,8 @@ import { store } from '@/store.js'
   </main>
 </template>
 
-<style scoped>  
-.fade{
+<style scoped>
+.fade {
   background: linear-gradient(to bottom, rgba(56, 56, 56, 0), #6A6D7A);
   height: 300px;
   margin-top: -300px;
@@ -34,11 +34,11 @@ import { store } from '@/store.js'
 }
 
 body {
-  width:100vw;
-  overflow-x:hidden;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
-h2{
+h2 {
   font-family: "NewOrderBold";
   font-weight: bolder;
   font-size: 65px;
