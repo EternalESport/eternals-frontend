@@ -7,10 +7,10 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
-    <a class="block large" :href="config.links.rules" target="_blank">
+    <RouterLink :to="'/regulations'" class="block large">
       <img src="../assets/btns/Règle.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
-    </a> <!-- Large box -->
+    </RouterLink><!-- Large box -->
     <a class="block small" :href="config.links.register" target="_blank">
       <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
@@ -76,7 +76,8 @@ import { translations } from '@/i18n/translations'
 
 .block:hover img {
   transition: 0.5s;
-  filter: brightness(0.5); /* Darken the image on hover */
+  filter: brightness(0.5);
+  /* Darken the image on hover */
 }
 
 .block h3 {
@@ -95,7 +96,8 @@ import { translations } from '@/i18n/translations'
   height: 100%;
   width: 100%;
   border-radius: 8px;
-  object-fit: cover; /* Ensure the image covers the block */
+  object-fit: cover;
+  /* Ensure the image covers the block */
 }
 
 .block.large {

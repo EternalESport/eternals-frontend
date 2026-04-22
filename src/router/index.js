@@ -44,6 +44,12 @@ const router = createRouter({
       component: () => import('../views/StatsView.vue')
     },
     { 
+      path: '/regulations', 
+      name: 'regulations',
+      meta: { title: 'Eternal - Regulations' },
+      component: () => import('../views/RegulationsView.vue')
+    },
+    { 
       meta: { title: 'Eternal - 404' },
       path: '/:pathMatch(.*)*', 
       component: () => import('../views/NotFoundView.vue')
