@@ -21,7 +21,7 @@ import { translations } from '../i18n/translations'
 </template>
 
 <style scoped>
-.hof-content{
+.hof-content {
   padding: 25px 0;
   width: 70%;
   margin: auto;
@@ -86,10 +86,12 @@ import { translations } from '../i18n/translations'
     margin: auto;
     padding: 10px 20px;
   }
+
   .hof-title {
     font-size: 2rem;
     margin-bottom: 10px;
   }
+
   .hof-text,
   .hof-image-container {
     float: none;
@@ -98,16 +100,19 @@ import { translations } from '../i18n/translations'
     text-align: center;
     font-size: 1rem;
   }
+
   .hof-text {
     margin-top: 30px;
     margin-right: 0;
     text-align: left;
   }
+
   .hof-image-container h3 {
     font-size: 1.3rem;
     margin-bottom: 8px;
     max-width: 1000px;
   }
+
   .hof-img {
     max-width: 1000px;
     width: 100%;

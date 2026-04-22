@@ -83,19 +83,16 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 
 </script>
 
-<template >
+<template>
   <CookieBanner />
-  <Navigation/>
+  <Navigation />
   <RouterView />
   <Footer />
 </template>
 
 <style scoped>
-
-body{
-margin:0;
-overflow-x:hidden;
+body {
+  margin: 0;
+  overflow-x: hidden;
 }
-
 </style>
-

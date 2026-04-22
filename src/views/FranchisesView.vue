@@ -8,10 +8,15 @@ import { store } from '../store.js'
   <main>
     <SmallHeroHeader msg="Les Franchises" />
     <div class="content">
-      <div v-if="store.franchises.length === 0" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <div v-if="store.franchises.length === 0" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
       <div class="allfranchises">
         <div class="menufranchise" v-for="franchise in store.franchises">
-          <a class="btn" v-scroll-to="{ element: '#franchise-' + franchise.id, offset: -80}">
+          <a class="btn" v-scroll-to="{ element: '#franchise-' + franchise.id, offset: -80 }">
             <img :src="franchise.logo" />
           </a>
         </div>
@@ -19,8 +24,8 @@ import { store } from '../store.js'
       <div class="title">
         <div v-for="franchise in store.franchises" :id="'franchise-' + franchise.id" class="franchise">
           <div class="franchises-details">
-              <img :src="franchise.logo">
-              <h3>{{ franchise.name }}</h3>
+            <img :src="franchise.logo">
+            <h3>{{ franchise.name }}</h3>
           </div>
           <div class="staff">
             <div class="st">
@@ -39,7 +44,7 @@ import { store } from '../store.js'
             <div class="players">
               <div v-for="player in team.players" class="player">
                 <img class="playericon" :src="'/icons/' + player.role + '.svg'" />
-                <a class="playername" target="_blank" :href=" player.opgg.includes(',') ? 'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(player.opgg) : 'https://www.op.gg/summoners/na/' + player.opgg.replace('#','-')">{{ player.ign }}</a>
+                <a class="playername" target="_blank" :href="player.opgg.includes(',') ? 'https://www.op.gg/multisearch/na?summoners=' + encodeURIComponent(player.opgg) : 'https://www.op.gg/summoners/na/' + player.opgg.replace('#', '-')">{{ player.ign }}</a>
               </div>
             </div>
           </div>
@@ -50,11 +55,11 @@ import { store } from '../store.js'
 </template>
 
 <style scoped>
-
-.btn{
+.btn {
   cursor: pointer;
 }
-.staff{
+
+.staff {
   font-size: 20px;
   font-family: "GeneralSans";
   color: white;
@@ -68,75 +73,80 @@ import { store } from '../store.js'
 }
 
 
-.staff svg{
+.staff svg {
   margin-right: 10px;
   font-size: 35px;
 }
 
-.title{
+.title {
   padding-top: 60px;
 }
-.content{
+
+.content {
   padding-top: 100px;
   width: 100%;
   font-family: "GeneralSans";
 }
 
-.allfranchises{
+.allfranchises {
   display: flex;
   flex-wrap: wrap;
   width: 80vw;
   margin: auto;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50px;
   padding: 10px;
   justify-content: space-evenly;
 }
 
-.menufranchise > a {
-  display:flex;
+.menufranchise>a {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100px;
 }
-.menufranchise img{
+
+.menufranchise img {
   max-height: 100%;
-  padding:10px;
+  padding: 10px;
 }
 
-.players{
+.players {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
   gap: 10px;
 }
-.player{
+
+.player {
   display: flex;
   width: 200px;
 
 }
 
-.menufranchise{
+.menufranchise {
   border-radius: 30px;
   display: flex;
 }
-.menufranchise:hover{
+
+.menufranchise:hover {
   background-color: rgb(1, 14, 48);
   transition: 0.5s;
 }
-.playername{
+
+.playername {
   line-height: 50px;
-  padding-left:15px;
+  padding-left: 15px;
   white-space: nowrap;
 }
 
-.playername:hover{
+.playername:hover {
   transition: 0.5s;
   color: rgba(0, 57, 210, 1);
 }
 
-.tname{
+.tname {
   background-color: rgba(0, 57, 210, 1);
   padding: 10px 10px;
   line-height: 30px;
@@ -146,16 +156,16 @@ import { store } from '../store.js'
   border-radius: 20px;
 }
 
-.tname:hover{
+.tname:hover {
   transition: 0.5s;
   background-color: white;
   color: black;
 }
 
-.team{
+.team {
   font-size: 18px;
   display: flex;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   padding: 20px;
   border-radius: 40px;
@@ -163,16 +173,17 @@ import { store } from '../store.js'
   gap: 20px;
 }
 
-.team > a {
+.team>a {
   display: flex;
   align-items: center;
 }
-.team > a > p {
+
+.team>a>p {
   margin: auto;
   font-weight: bold;
 }
 
-.franchise{
+.franchise {
   padding: 50px 0;
   width: 90vw;
   margin: auto;
@@ -181,35 +192,35 @@ import { store } from '../store.js'
 
 @media (max-width: 450px) {
 
-.franchise{
-  width: 90vw;
+  .franchise {
+    width: 90vw;
+  }
+
+  .team>a {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: GeneralSansBold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    height: 25%;
+    width: 100%;
+    margin: auto;
+  }
+
+  .staff {
+    justify-content: space-around;
+  }
+
 }
 
-.team > a {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  font-family: GeneralSansBold;
-  text-transform: uppercase;
-  line-height: 1.5;
-  height: 25%;
-  width: 100%;
-  margin: auto;
-}
-
-.staff {
-  justify-content: space-around;
-}
-
-}
-
-.franchises-details{
+.franchises-details {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   width: 100%;
 }
 
-.franchises-details > * {
+.franchises-details>* {
   margin: auto;
 }
 
@@ -218,11 +229,12 @@ import { store } from '../store.js'
   text-align: center;
 }
 
-.franchises-details img{
+.franchises-details img {
   width: 100px;
 }
+
 .franchises-details h3 {
-  flex-grow:1;
+  flex-grow: 1;
   text-align: center;
   color: white;
   margin-left: 20px;

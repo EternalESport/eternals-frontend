@@ -44,7 +44,7 @@ import { translations } from '../i18n/translations'
 </template>
 
 <style scoped>
-.hof-content{
+.hof-content {
   padding: 50px 0;
   width: 70%;
   margin: auto;
@@ -61,11 +61,12 @@ import { translations } from '../i18n/translations'
 }
 
 .hof-right {
-  margin-right: 40px; 
+  margin-right: 40px;
   float: right; /* Align the right image to the right */
 }
+
 .hof-left {
-  margin-left: 40px; 
+  margin-left: 40px;
   float: left; /* Align the left image to the left */
 }
 
@@ -116,10 +117,12 @@ import { translations } from '../i18n/translations'
     width: 98%;
     padding: 20px 0;
   }
+
   .hof-title {
     font-size: 2rem;
     margin-bottom: 10px;
   }
+
   .hof-text,
   .hof-image-container {
     max-width: 800px;
@@ -130,15 +133,18 @@ import { translations } from '../i18n/translations'
     font-size: 1rem;
     padding: 20px;
   }
+
   .hof-text {
     margin: auto;
     margin-top: 30px;
     text-align: left;
   }
+
   .hof-image-container h3 {
     font-size: 1.3rem;
     margin-bottom: 8px;
   }
+
   .hof-img {
     width: 100%;
     max-width: 800px;
