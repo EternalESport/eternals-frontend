@@ -1,1 +1,0 @@
-import{_ as a,o as t,c as o,d as s,f as _,p as c,b as r}from"./index-17512246.js";const d=e=>(c("data-v-f6915470"),e=e(),r(),e),p={class:"greetings"},l=d(()=>s("div",{class:"fade"},null,-1)),n={__name:"SmallHeroHeader",props:{msg:{type:String,required:!0}},setup(e){return(i,m)=>(t(),o("div",p,[s("h1",null,_(e.msg),1),l]))}},S=a(n,[["__scopeId","data-v-f6915470"]]);export{S};
