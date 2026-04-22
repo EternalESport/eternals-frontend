@@ -227,7 +227,6 @@ nav {
   color: white;
   width: 90%;
   height: 80px;
-
 }
 
 nav .categories a {
