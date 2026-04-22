@@ -115,7 +115,7 @@ export default {
 
     checkScreen() {
       this.windowWidth = window.innerWidth;
-      if (this.windowWidth < 1300) {
+      if (this.windowWidth < 1400) {
         this.mobile = true;
         return
       } else {
@@ -291,7 +291,7 @@ nav .lang-btn:hover {
   border-color: var(--main-color);
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1400px) {
   nav {
     width: 100%;
   }
