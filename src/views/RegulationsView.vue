@@ -119,11 +119,11 @@ main {
 }
 
 .fade {
-  background: linear-gradient(to bottom, rgba(56, 56, 56, 0), #6A6D7A);
-  height: 300px;
-  margin-top: -300px;
-  width: 100%;
-  z-index: 1;
+    background: linear-gradient(to bottom, rgba(56, 56, 56, 0), #6A6D7A);
+    height: 300px;
+    margin-top: -300px;
+    width: 100%;
+    z-index: 1;
 }
 
 h2 {
@@ -137,6 +137,7 @@ h2 {
 h3 {
     font-weight: bold;
     text-align: justify;
+    margin: 20px 300px;
     font-size: 22px;
     padding: 20px 50px;
     color: white;
@@ -144,19 +145,39 @@ h3 {
 
 .table-of-content {
     text-align: center;
-    /* border: 1px black solid; */
 }
 
 .table-of-content a {
     display: block;
     width: fit-content;
     margin: 0 auto 8px auto;
+    font-size: 20px;
 }
 
 
 .regulations p {
-    padding: 20px 50px;
+    margin: 20px 400px;
     text-align: justify;
+}
+
+@media (max-width: 1400px) {
+    .regulations p {
+        margin: 20px 200px;
+    }
+
+    h3 {
+        margin: 20px 120px;
+    }
+}
+
+@media (max-width: 800px) {
+    .regulations p {
+        margin: 20px 70px;
+    }
+
+    h3 {
+        margin: 20px 0px;
+    }
 }
 
 .regulations a {
