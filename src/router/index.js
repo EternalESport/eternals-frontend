@@ -50,6 +50,18 @@ const router = createRouter({
       component: () => import('../views/RegulationsView.vue')
     },
     { 
+      path: '/circuit', 
+      name: 'circuit',
+      meta: { title: 'Eternal - Circuit' },
+      component: () => import('../views/CircuitView.vue')
+    },
+    { 
+      path: '/riftbound', 
+      name: 'riftbound',
+      meta: { title: 'Eternal - Riftbound' },
+      component: () => import('../views/RiftboundView.vue')
+    },
+    { 
       meta: { title: 'Eternal - 404' },
       path: '/:pathMatch(.*)*', 
       component: () => import('../views/NotFoundView.vue')
