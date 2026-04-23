@@ -16,7 +16,7 @@ import Dash from './Dash.vue';
           </button>
           <transition name="logo-dropdown">
             <div v-show="logoMenuOpen" class="logo-dropdown">
-              <RouterLink @click="closeLogoMenu" to="/">Accueil</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink>
             </div>

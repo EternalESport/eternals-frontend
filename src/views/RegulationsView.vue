@@ -1,13 +1,17 @@
 <script setup>
-import SmallHeroHeader from '../components/SmallHeroHeader.vue';
 import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
+import HeroHeader from '../components/HeroHeader.vue'
+import OurPartners from '../components/OurPartners.vue';
 
 </script>
 
 <template>
+    <HeroHeader />
+    <div class="fade">
+        <OurPartners />
+    </div>
     <main>
-        <SmallHeroHeader :msg="translations[store.language].regulations.h1Title" />
         <div>
             <div class="table-of-content">
                 <h2 id="#table">{{ translations[store.language].regulations.h2Titles.title12 }}</h2>
@@ -111,6 +115,15 @@ import { translations } from '@/i18n/translations'
 <style scoped>
 main {
     white-space: pre-line;
+    background-color: rgb(24, 24, 24);
+}
+
+.fade {
+  background: linear-gradient(to bottom, rgba(56, 56, 56, 0), #6A6D7A);
+  height: 300px;
+  margin-top: -300px;
+  width: 100%;
+  z-index: 1;
 }
 
 h2 {
@@ -123,10 +136,10 @@ h2 {
 
 h3 {
     font-weight: bold;
-    font-style: italic;
-    text-align: center;
+    text-align: justify;
     font-size: 22px;
-    margin-top: 30px;
+    padding: 20px 50px;
+    color: white;
 }
 
 .table-of-content {
@@ -143,7 +156,7 @@ h3 {
 
 .regulations p {
     padding: 20px 50px;
-    text-align: center;
+    text-align: justify;
 }
 
 .regulations a {
