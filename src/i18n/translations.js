@@ -308,6 +308,7 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Esport Organizations",
     },
+    //Regulations Page
     regulations: {
       h1Title: "RULES\n SUMMONER’S RIFT LEAGUE\n 2026 Winter Season",
       h2Titles: {
