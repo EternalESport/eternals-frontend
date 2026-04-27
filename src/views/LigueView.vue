@@ -5,7 +5,6 @@ import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeader.vue'
 import OurPartners from '../components/OurPartners.vue';
 import config from '@/config.json'
-import { translations } from '@/i18n/translations'
 import { store } from '@/store.js'
 
 </script>
@@ -17,7 +16,10 @@ import { store } from '@/store.js'
       <OurPartners />
     </div>
     <div class="content" style="background-color: #111;">
-      <h2>{{ translations[store.language].navigation.home }}</h2>
+      <h2>{{ store.language === 'fr' ? config.season.fr : config.season.en }}</h2>
+      <Blocks />
+      <Orgs />
+      <Youtube />
     </div>
   </main>
 </template>

@@ -1,27 +1,36 @@
-<script>
+<script setup>
 import Navigation from './components/Navigation.vue'
 import Footer from './components/Footer.vue'
 import CookieBanner from './components/CookieBanner.vue'
 import config from './config.json'
 import axios from 'axios'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 import { store } from './store.js'
+import { computed } from 'vue'
 
 //import standingsacad from '../src/data/standingsacad.json'
 //import standingschampions from '../src/data/standingschampions.json'
 //import tournamentchampions from '../src/data/tournamentchampions.json'
 //import tournamentacad from '../src/data/tournamentacad.json'
 
-export default {
-  name: 'App',
-  components: {
-    Navigation,
-    Footer,
-    CookieBanner,
-    RouterLink,
-    RouterView
-  }
-};
+const route = useRoute()
+
+const navColor = computed(() => {
+  if (route.path === '/') return '#faa200'
+  if (route.path === '/riftbound') return '#3f66db'
+  return 'var(--main-color)'
+})
+
+// export default {
+//   name: 'App',
+//   components: {
+//     Navigation,
+//     Footer,
+//     CookieBanner,
+//     RouterLink,
+//     RouterView
+//   }
+// };
 
 /*var tournamentChampions = tournamentchampions
 var tournamentAcademy = tournamentacad
@@ -81,13 +90,16 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
   })
 })*/
 
+
 </script>
 
 <template>
-  <CookieBanner />
-  <Navigation />
-  <RouterView />
-  <Footer />
+  <div :style="{ '--nav-color': navColor }">
+    <CookieBanner />
+    <Navigation :nav-color="navColor" />
+    <RouterView />
+    <Footer />
+  </div>
 </template>
 
 <style scoped>

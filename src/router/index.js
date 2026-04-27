@@ -14,6 +14,12 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/ligue',
+      name: 'ligue',
+      meta: { title: 'Eternal - Ligue' },
+      component: () => import('../views/LigueView.vue')
+    },
+    {
       path: '/equipe',
       name: 'equipe',
       meta: { title: 'Eternal - Équipe' },

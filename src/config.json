@@ -1,5 +1,7 @@
 {
   "color": "#d2147c",
+  "colorhome": "#faa200",
+  "colorriftbound": "#3f66db",
   "season": {
     "name": "Hiver",
     "year": 2026,

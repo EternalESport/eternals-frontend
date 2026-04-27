@@ -4,6 +4,13 @@ import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
+
+defineProps({
+  navColor: {
+    type: String,
+    default: 'var(--main-color)'
+  }
+})
 </script>
 
 <template>
@@ -16,7 +23,8 @@ import Dash from './Dash.vue';
           </button>
           <transition name="logo-dropdown">
             <div v-show="logoMenuOpen" class="logo-dropdown">
-              <RouterLink @click="closeLogoMenu" to="/">Ligue</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink>
             </div>
@@ -136,6 +144,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style scoped>
@@ -148,7 +157,7 @@ header {
   line-height: 1.5;
   width: 100%;
   background-color: #111;
-  color: var(--main-color);
+  color: var(--nav-color);
 }
 
 .dash {
@@ -235,7 +244,7 @@ header {
   left: 0;
   min-width: 180px;
   background-color: #111;
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--nav-color);
   border-radius: 8px;
   padding: 10px 0;
   z-index: 100;
@@ -252,7 +261,7 @@ header {
 }
 
 .logo-dropdown a:hover {
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
 }
 
@@ -315,8 +324,12 @@ nav .categories a:hover {
   transition: 0.5s ease all;
 }
 
+nav .categories .link {
+  color: var(--nav-color);
+}
+
 nav a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
   transition: 0.5s ease all;
 }
@@ -335,7 +348,7 @@ nav .socials a {
 }
 
 nav .socials a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
   transition: 0.5s ease all;
 }
@@ -359,9 +372,9 @@ nav .lang-btn {
 }
 
 nav .lang-btn:hover {
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
-  border-color: var(--main-color);
+  border-color: var(--nav-color);
 }
 
 @media (min-width: 1400px) {
@@ -410,7 +423,7 @@ nav .dropdown-nav li {
 }
 
 nav .dropdown-nav li .link {
-  color: var(--main-color);
+  color: var(--nav-color);
 }
 
 nav .dropdown-nav li .language-toggle-mobile {
@@ -434,9 +447,9 @@ nav .dropdown-nav li .language-toggle-mobile .lang-btn {
 }
 
 nav .dropdown-nav li .language-toggle-mobile .lang-btn:hover {
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
-  border-color: var(--main-color);
+  border-color: var(--nav-color);
 }
 
 nav .dropdown-nav .socials-container {
@@ -459,7 +472,7 @@ nav .dropdown-nav .socials-container a {
 }
 
 nav .dropdown-nav .socials-container a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
 }
 
@@ -508,7 +521,7 @@ nav ul li img {
 }
 
 .fa-bars {
-  color: var(--main-color);
+  color: var(--nav-color);
 }
 
 
