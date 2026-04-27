@@ -1,13 +1,14 @@
 <script setup>
 import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
-import HeroHeader from '../components/HeroHeader.vue'
+import HeroHeaderCircuit from '../components/HeroHeaderCircuit.vue'
 import OurPartners from '../components/OurPartners.vue';
+import BlocksCircuit from '../components/BlocksCircuit.vue';
 
 </script>
 
 <template>
-    <HeroHeader />
+    <HeroHeaderCircuit />
     <div class="fade">
         <OurPartners />
     </div>
@@ -15,6 +16,7 @@ import OurPartners from '../components/OurPartners.vue';
         <div>
             <p class="titre-page">Circuit Eternal 2026</p>
         </div>
+        <BlocksCircuit></BlocksCircuit>
     </main>
 </template>
 

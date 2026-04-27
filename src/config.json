@@ -20,6 +20,11 @@
     "teams": "https://docs.google.com/spreadsheets/d/1YK59C7luOjBBf6_4EGhsT3CFN_dDgYd7J75UZvdiHe0/edit?usp=sharing",
     "schedule": "https://docs.google.com/spreadsheets/d/10lgclULVqlAjn4xLivq_YNc6mtPoOTgRlxJFReKgRfE/edit?usp=sharing",
     "ranking": "https://event-builder.apexesport.ca/events-stats?tab=all&search=Eternal+E-Sport",
-    "playoffs": "https://docs.google.com/spreadsheets/d/1dp4bWQfP28tHQbhI5JZrUN2p-Y4SsjLPfU9Dh2i7O7Y/edit?usp=sharing"
+    "playoffs": "https://docs.google.com/spreadsheets/d/1dp4bWQfP28tHQbhI5JZrUN2p-Y4SsjLPfU9Dh2i7O7Y/edit?usp=sharing",
+
+    "rulescircuit": "",
+    "teamscircuit": "",
+    "registercircuit": "",
+    "rankingcircuit": ""
   }
 }
