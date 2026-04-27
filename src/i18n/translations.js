@@ -127,12 +127,10 @@ export const translations = {
         title3: "3. Inscription",
         title4: "4. Déroulement d’une partie",
         title5: "5. Remplaçant",
-        title6: "6. Déroulement du tournoi pré-saison",
-        title7: "7. Déroulement de la saison régulière",
-        title8: "8. Déroulement du tournoi de fin de saison",
-        title9: "9. Modalité de réinscription",
-        title10: "10. Diffusion en ligne",
-        title11: "11. Pénalités",
+        title7: "6. Déroulement de la saison régulière",
+        title8: "7. Déroulement du tournoi de fin de saison",
+        title10: "8. Diffusion en ligne",
+        title11: "9. Pénalités",
         title12: "Table des matières",
       },
       h3Titles: {
@@ -146,34 +144,23 @@ export const translations = {
         title8: "4.3. Après la partie",
         title9: "5.1. Remplaçant officiel",
         title10: "5.2. Remplaçant d’urgence",
-        title11: "6.1. Fonctionnement général",
-        title12: "6.2. Pointage et classement",
-        title13: "6.3. Prix aux gagnants et de présence",
-        title14: "7.1. Fonctionnement général",
-        title15: "7.2. Pointage et classement",
-        title16: "7.3. Prix aux gagnants et de présence",
-        title17: "8.1. Fonctionnement général",
-        title18: "8.2. Prix aux gagnants et de présence",
-        title19: "9.1. Réinscription du Top 4",
-        title20: "9.2. Réinscription des autres équipes",
-        title21: "10.1. Diffusion interne",
-        title22: "10.2. Diffusion externe associée",
+        title14: "6.1. Fonctionnement général",
+        title15: "6.2. Pointage et classement",
+        title16: "6.3. Prix de présence",
+        title17: "7.1. Fonctionnement général",
+        title18: "7.2. Prix aux gagnants et de présence",
+        title21: "8.1. Diffusion interne",
+        title22: "8.2. Diffusion externe associée",
       },
       h4Titles: {
         title1:
-          "3.1.5.1. Niveau de compte 400 et 80 parties jouées lors de l’année 2025 ou 20 games parties jouées lors de l’année 2026. Niveau de compte 300 et 100 parties jouées lors de l’année 2025 ou 25 games parties jouées lors de l’année 2026.\n\n3.1.5.2. Niveau de compte 200 et 150 parties jouées lors de l’année 2025 ou 30 games parties jouées lors de l’année 2026.\n\n3.1.5.3.Niveau de compte 100 et 200 parties jouées lors de l’année 2025 ou 40 games parties jouées lors de l’année 2026.",
+          "3.1.5.1. Niveau de compte 400 et 80 parties jouées lors de l’année 2025 ou 30 games parties jouées lors de l’année 2026.Niveau de compte 300 et 100 parties jouées lors de l’année 2025 ou 40 games parties jouées lors de l’année 2026.\n\n3.1.5.2. Niveau de compte 200 et 150 parties jouées lors de l’année 2025 ou 50 games parties jouées lors de l’année 2026.\n\n3.1.5.3. Niveau de compte 100 et 200 parties jouées lors de l’année 2025 ou 75 games parties jouées lors de l’année 2026.",
         title2:
-          "3.3.2.1. 5 joueurs dans l’équipe-mère.\n\n3.3.2.2. 3 joueurs remplaçants seront obligatoires.",
+          "3.3.2.1. 5 joueurs dans l’équipe-mère.\n\n3.3.2.2. 3 joueurs remplaçants optionnels.",
         title3:
           "3.3.4.1. Cette personne n’a pas le droit d’avoir accès au channel d’équipe lors des parties officielles, sinon elle sera considérée comme un entraîneur.",
-        title4: "3.3.5.1. Émergence",
-        title5: "3.3.5.2. Académie",
-        title6: "3.3.5.3. Prestige",
-        title7: "3.3.5.4. Uncapped: Aucune restriction",
         title8:
-          "3.5.1.1. Les frais d’inscription pour le tournoi de pré-saison sont de 25$.",
-        title9:
-          "3.5.2.1. Les frais d’inscription sont de 125$ par équipe et devront être payés maximum 1 semaine avant le début de la saison.",
+          "3.5.1.1. Les frais d’inscription sont de 125$ par équipe et devront être payés maximum 1 semaine avant le début de la saison.",
         title10:
           "4.1.1.1. Si le compte principal est banni, l’équipe doit trouver un remplaçant (voir section sur les remplaçants).",
         title11:
@@ -195,66 +182,46 @@ export const translations = {
         title19:
           "4.2.8.1. Si une équipe atteint le 15 minutes, elle devra soit abandonner la partie ou bien continuer la partie avec un joueur en moins.",
         title20:
-          "4.3.1.1. Image des drafts de fearlessdraft.\n\n4.3.1.2. Image des parties jouées sur le client de LoL.",
+          "4.3.1.1. Image des drafts de fearless draft.\n\n4.3.1.2. Image des parties jouées sur le client de LoL.",
         title21:
           "5.1.1.1. Tous les remplaçants doivent avoir été enregistrés avant la fin des inscriptions.",
         title22:
           "5.1.2.1. Si un remplaçant est utilisé, l’équipe adverse a le droit d’avoir 10 minutes de plus pour vérifier le compte pour la draft.",
-        title23:
-          "5.1.3.1. Si une équipe utilise plus de remplaçants que de joueurs sur l’alignement principal, ce sera une victoire par forfait.",
         title24:
           "5.2.3.1. Tournoi de pré-saison : 1 E-Sub\n\n5.2.3.2. Saison régulière : 2 E-Sub\n\n5.2.3.3. Tournoi de fin de saison : 1 E-Sub",
         title25:
-          "5.2.4.1. Tournoi de pré-saison : 5 bans\n\n5.2.4.2. Saison régulière : 3 bans\n\n5.2.4.3. Tournoi de fin de saison : 5 bans",
-        title26:
-          "6.2.1.1. Gagnant 1-0 : 1 points\n\n6.2.1.2. Gagnant par forfait : 1 points\n\n6.2.1.3. Perdant 0-1 : 1 points\n\n6.2.1.4. Perdant par forfait : 0 points",
-        title27:
-          "6.2.2.1. Le nombre de points total des équipes.\n\n6.2.2.2. Le pourcentage de partie gagné des adversaires",
+          "5.2.4.1. Saison régulière : 3 bans\n\n5.2.4.2. Tournoi de fin de saison : 5 bans",
         title28:
-          "7.1.2.1. Si les deux équipes ne sont pas capables de s’entendre sur une journée, ils devront jouer leur partie le dimanche soir à 19h.\n\n7.1.2.2. Si une équipe ne donne aucune nouvelle avant jeudi soir 23h59, ils devront jouer leur partie le dimanche soir à 19h.",
+          "6.1.2.1. Si les deux équipes ne sont pas capables de s’entendre sur une journée, ils devront jouer leur partie le dimanche soir à 19h.\n\n6.1.2.2. Si une équipe ne donne aucune nouvelle avant jeudi soir 23h59, ils devront jouer leur partie le dimanche soir à 19h.",
         title29:
-          "7.2.1.1. Gagnant 2-0 : 4 points\n\n7.2.1.2. Gagnant 2-1 : 3 points\n\n7.2.1.3. Gagnant par forfait : 4 points\n\n7.2.1.4. Perdant 1-2 : 2 points\n\n7.2.1.5. Perdant 0-2 : 1 points\n\n7.2.1.6. Perdant par forfait : 0 points",
+          "6.2.1.1. Gagnant 2-0 : 4 points\n\n6.2.1.2. Gagnant 2-1 : 3 points\n\n6.2.1.3. Gagnant par forfait : 4 points\n\n6.2.1.4. Perdant 1-2 : 2 points\n\n6.2.1.5. Perdant 0-2 : 1 points\n\n6.2.1.6. Perdant par forfait : 0 points",
         title30:
-          "7.2.3.1. Le nombre de points total des équipes.\n\n7.2.3.2. Le taux de victoire en termes de BO3.\n\n7.2.3.3. Le taux de victoire en termes de partie.\n\n7.2.3.4. Le nombre de parties gagnées 2-0.\n\n7.2.3.5. Le nombre de parties perdues 0-2.\n\n7.2.3.6. Le gagnant de la partie jouée entre les deux équipes.",
+          "6.2.3.1. Le nombre de points total des équipes.\n\n6.2.3.2. Le taux de victoire en termes de BO3.\n\n6.2.3.3. Le taux de victoire en termes de partie.\n\n6.2.3.4. Le nombre de parties gagnées 2-0.\n\n6.2.3.5. Le nombre de parties perdues 0-2.\n\n6.2.3.6. Le gagnant de la partie jouée entre les deux équipes.",
         title31:
-          "7.3.1.1. Si les joueurs ne jouent plus ensemble à la prochaine saison, l’inscription ira automatiquement à l’organisation. \n\n7.3.1.2. Ce prix n’est pas monnayable ou échangeable.",
+          "6.3.1.1. Si les joueurs ne jouent plus ensemble à la prochaine saison, l’inscription ira automatiquement à l’organisation. \n\n6.3.1.2. Ce prix n’est pas monnayable ou échangeable.",
         title32:
-          "8.1.2.1. Le choix du côté doit être communiqué en même temps que l’alignement.",
+          "7.1.2.1. Le choix du côté doit être communiqué en même temps que l’alignement.",
         title33:
-          "8.2.1.1. 1er place du tournoi de fin de saison : 500 $\n8.2.1.2. 2ième place au tournoi de fin de saison : 250 $",
+          "7.2.1.1. 1er place du tournoi de fin de saison : 500 $\n7.2.1.2. 2ième place au tournoi de fin de saison : 250 $",
         title34:
-          "8.2.2.1. Il n’est pas de la responsabilité de la ligue de la distribution aux autres joueurs.",
-        title35:
-          "9.1.2.1. Un changement de capitaine peut être fait en autant qu’il soit communiqué à l’équipe administrative.\n9.1.2.2. Un changement de joueurs peut être fait en autant que le capitaine soit un joueur de l’ancienne équipe.\n9.1.2.3. Un minimum de 3 joueurs de l’ancienne équipe doit faire partie de la nouvelle équipe.",
-        title36:
-          "9.1.2.4. Le capitaine à tous les droits de changer l’équipe comme il lui semble.\n9.1.2.5. L’équipe doit respecter les règles en termes de point comme toutes les autres équipes.\n9.1.2.6. Si des conflits surviennent au moment de l’inscription, l’équipe administrative peut se permettre un droit de veto sur les décisions prises.",
-        title37:
-          "9.1.4.1. Ce qui inclut l’inscription et le paiement pour la prochaine saison.",
+          "7.2.2.1. Il n’est pas de la responsabilité de la ligue de la distribution aux autres joueurs.",
         title38:
-          "10.2.1.1. Le Twitch doit avoir une bannière avec un lien vers le site internet fourni par la Eternal E-Sport.\n10.2.1.2. Le nom de la ligue doit se retrouver dans le titre de la diffusion.\n10.2.1.3. Le logo de la ligue doit être dans la diffusion.\n10.2.1.4. Toute partie diffusée doit avoir un délai de 3 minutes (POV ou stream).\n10.2.1.5. Les commentateurs doivent avoir un langage modéré, non-violent, non-dangereux et non-discriminatoire.\n10.2.1.6. La chaîne ne peut pas avoir de contenu NSFW.\n10.2.1.7. La chaîne doit fournir les statistiques des diffusions en lien avec la ligue.",
+          "8.2.1.1. Le Twitch doit avoir une bannière avec un lien vers le site internet fourni par la Eternal E-Sport.\n8.2.1.2. Le nom de la ligue doit se retrouver dans le titre de la diffusion.\n8.2.1.3. Le logo de la ligue doit être dans la diffusion.\n8.2.1.4. Toute partie diffusée doit avoir un délai de 3 minutes (POV ou stream).\n8.2.1.5. Les commentateurs doivent avoir un langage modéré, non-violent, non-dangereux et non-discriminatoire.\n8.2.1.6. La chaîne ne peut pas avoir de contenu NSFW.\n8.2.1.7. La chaîne doit fournir les statistiques des diffusions en lien avec la ligue.",
         title39:
-          "10.2.2.1. Une annonce sera faite avec une mention (@everyone) dans notre Discord.\n10.2.2.2. Votre lien Twitch se retrouvera sur le site internet de la ligue.\n10.2.2.3. Votre lien Twitch se retrouvera sur la page Twitch de la Eternal E-Sport.\n10.2.2.4. Autres avantages selon les commandites, le nombre de vues et le nombre de parties diffusées.",
+          "8.2.2.1. Une annonce sera faite avec une mention (@everyone) dans notre Discord.\n8.2.2.2. Votre lien Twitch se retrouvera sur le site internet de la ligue.\n8.2.2.3. Votre lien Twitch se retrouvera sur la page Twitch de la Eternal E-Sport.\n8.2.2.4. Autres avantages selon les commandites, le nombre de vues et le nombre de parties diffusées.",
       },
       h5Titles: {
         title1:
-          "3.3.5.1.1. Un joueur ne peut pas dépasser Diamant 4 99 LP afin de participer dans Émergence durant les années 2024-2025.\n\n3.3.5.1.2. Tous joueurs ayant atteint Diamant 1 99 LP au courant de leur carrière (selon le graphique de League of Graph) ne pourront pas faire partie de cette division.",
-        title2:
-          "3.3.5.2.1. Un joueur ne peut pas dépasser Master 100 LP afin de participer dans Académie durant les années 2024-2025.\n\n3.3.5.2.2. Tous joueurs ayant atteint Master 400 LP au courant de leur carrière (selon le graphique de League of Graph) ne pourront pas faire partie de cette division.",
-        title3:
-          "3.3.5.3.1. Un joueur ne peut pas dépasser 600 LP dans Prestige durant les années 2024-2025.\n\n3.3.5.3.2. Tous joueurs ayant atteint Master 900 LP au courant de leur carrière (selon le graphique de League of Graph) ne pourront pas faire partie de cette division.",
+          "3.3.5.1.1. Un joueur ne peut pas dépasser Master 100 LP afin de participer dans Académie durant les années 2024-2025.\n\n3.3.5.1.2. Tous joueurs ayant atteint Master 400 LP au courant de leur carrière (selon le graphique de League of Graph) ne pourront pas faire partie de cette division.",
         title4:
-          "3.5.1.1.1. Les frais d’inscription doivent être envoyé au courriel suivant par virement Interac : contact@eternalesport.com\n\n3.5.1.1.2. Vous devez mettre votre nom d’équipe dans la description du paiement.",
-        title5:
-          "3.5.2.1.1. Les frais d’inscription doivent être envoyé au courriel suivant par virement Interac : contact@eternalesport.com\n\n3.5.2.1.2. Vous devez mettre votre nom d’équipe dans la description du paiement.\n\n3.5.2.1.3. Si une équipe n’a pas payé son inscription à temps, l’administrateur peut demander à une équipe en attente de prendre leur place.",
+          "3.5.1.1.1. Les frais d’inscription doivent être envoyé au courriel suivant par virement Interac : contact@eternalesport.com\n\n3.5.1.1.2. Vous devez mettre votre nom d’équipe dans la description du paiement.\n\n3.5.1.1.3. Si une équipe n’a pas payé son inscription à temps, l’administrateur peut demander à une équipe en attente de prendre leur place.",
         title6:
           "4.2.7.1.1. Si une partie est refaite, tous les joueurs doivent avoir exactement les mêmes runes et les mêmes “Summoner spell”.",
-        title7:
-          "9.1.2.3.1. Les remplaçants ne comptent pas dans le nombre de joueurs restants.",
       },
       texts: {
         text1:
-          "Tous les règlements ont été établis par l’équipe d’administration de Eternal. En vous inscrivant, vous acceptez que leur application soit sous la responsabilité exclusive des administrateurs et des modérateurs. L'organisation se réserve également le droit de prendre des décisions concernant les situations non couvertes par les règlements, afin de garantir le maintien de l'esprit sportif et l'équité de la compétition.",
-        text2: "METTRE LES NOUVELLES INFOS DU CALENDRIER",
+          "Tous les règlements ont été établis par l’équipe d’administration de Eternal. En vous inscrivant, vous acceptez que leur application soit sous la responsabilité exclusive des administrateurs et des modérateurs. \n\nL'organisation se réserve également le droit de prendre des décisions concernant les situations non couvertes par les règlements, afin de garantir le maintien de l'esprit sportif et l'équité de la compétition.",
+        text2: "2.1. Semaine 1 : 1 au 7 juin 2026\n2.2 Semaine 2 : 8 au 14 juin 2026\n2.3. Semaine 3 : 15 au 21 juin 2026\n2.4. Semaine 4 : 22 au 28 juin 2026\n2.5. Semaine 5 : 29 juin au 5 juillet 2026\n2.6. Semaine 6 : 6 au 12 juillet 2026\n2.7. Semaine 7 : 13 au 19 juillet 2026\n\n2.8. Quart de finale : 20 au 26 juillet 2026\n2.9. Demi-finale : 27 juillet au 2 août 2026\n2.10. Grande finale : 3 au 9 août 2026",
         text3:
           "3.1.1. Le joueur doit avoir un âge minimum de 13 ans.\n\n3.1.2. Le joueur doit avoir un compte Riot sur le serveur NA.\n\n3.1.3. Tous les joueurs doivent être sur le serveur approprié pour la ligue.\n\n3.1.4. Un compte du joueur doit avoir l’un des critères suivants pour être éligible lors de l’inscription : \n3.1.5.",
         text3_1:
@@ -265,15 +232,11 @@ export const translations = {
           "3.3.1. Chaque équipe doit avoir un capitaine.\n\n3.3.2. Chaque équipe devra compter 8 joueurs.",
         text5_1:
           "3.3.3. Un joueur ou un entraîneur ne peut faire partie de deux équipes différentes d’une même division.\n\n3.3.4. Une équipe a le droit d’avoir un responsable d’équipe au courant de la saison.",
-        text5_2: "3.3.5. Il y a 4 divisions à la saison.",
-        text5_3:
-          "3.3.6. Tous les joueurs pourront jouer au courant de la saison.",
+        text5_2: "3.3.5. Ligue Académie",
         text6:
-          "3.4.1. Chaque équipe doit remplir le formulaire afin de s’inscrire. \n\n3.4.2. Tout changement de roster peut être fait en parlant avec un administrateur avant le début du tournoi de pré-saison.\n\n3.4.3. Les points des joueurs d’une équipe seront verrouillés peu de temps après l’inscription lorsqu’un administrateur aura approuvé leur inscription.\n\n3.4.4. Les administrateurs se réservent le droit d’accepter ou de refuser une équipe, même si les critères d’admission ci-dessus sont respectés.\n\n3.4.5. Les frais d’inscription pour le tournoi de pré-saison doivent être acquittés au moment de l’inscription.",
-        text7: "3.5.1. Tournoi de pré-saison",
-        text7_1: "3.5.2. Saison régulière et tournoi de fin de saison",
-        text7_2:
-          "3.5.3. Aucun remboursement de frais d’inscription ne sera effectué.",
+          "3.4.1. Tout changement de roster peut être fait en parlant avec un administrateur avant le 27 juin 2026 à 23h59.\n\n3.4.2. Les administrateurs se réservent le droit d’accepter ou de refuser une équipe, même si les critères d’admission ci-dessus sont respectés.",
+        text7: "3.5.1. Saison régulière et tournoi de fin de saison",
+        text7_1: "3.5.2. Aucun remboursement de frais d’inscription ne sera effectué.",
         text8:
           "4.1.1. Tous les joueurs doivent jouer sur leur compte principal.",
         text8_1:
@@ -298,63 +261,45 @@ export const translations = {
         text10:
           "4.3.1. À la fin de la partie, l’équipe gagnante doit mettre les informations ci-dessous dans le canal approprié : ",
         text11:
-          "5.1.1. L’équipe doit avoir 3 joueurs de plus que son alignement normal.",
+          "5.1.1. L’équipe doit avoir maximum 3 joueurs de plus que son alignement normal.",
         text11_1:
           "5.1.2. Tout remplaçant peut entrer dans l’équipe entre les parties (avant que la draft soit commencé).",
-        text11_2:
-          "5.1.3. Un minimum de 3 joueurs de l’alignement principal doit être dans la partie.",
         text12:
           "5.2.1. Chaque demande de E-Sub doit être vérifiée et approuvée par l’équipe d’administration avant que le joueur puisse jouer.\n\n5.2.2. Les remplaçants E-Sub doivent respecter les mêmes règles que les joueurs de la ligue en termes de points, nombre de parties jouées et le niveau de leur compte.\n\n5.2.3. Les équipes ont le droit d’avoir un maximum de E-Sub dans une partie.",
         text12_1:
           "5.2.4. Lorsque l’équipe utilise un E-Sub, l’équipe perd les premiers bans de la draft.",
-        text13:
-          "Le but du tournoi de pré-saison d’Eternal E-Sport est de déterminer les dernières équipes participant à la prochaine saison. Si le nombre d'équipes inscrites est égal ou plus bas que le nombre requis pour partir la ligue, aucun tournoi ne sera nécessaire.",
-        text14:
-          "6.1.1. Le tournoi commence à 12h00 EST et finit lorsque toutes les équipes ont terminé leur partie. \n\n6.1.2. Chaque partie a un temps approximatif d’une heure (1h15).\n\n6.1.3. Les parties se déroulent en termes de Bo1. \n\n6.1.4. Le choix de côté sera déterminé par les administrateurs pour le BO1. ",
-        text15: "6.2.1. Le pointage des parties se feront ainsi : ",
-        text15_1: "6.2.2. Le classement suit l’ordre suivant : ",
-        text15_2:
-          "6.2.3. Si deux équipes ont le même score, une partie sera jouée pour déterminer le gagnant.",
-        text16:
-          "6.3.1. L’équipe ayant le meilleur résultat lors du tournoi de pré-saison auront l’inscription à la saison gratuitement.\n\n6.3.2. Si plus d’équipes sont inscrites que le nombre prévu, des prix de présence seront tirés parmi les joueurs.",
         text17:
-          "7.1.1. Chaque semaine de ligue commence le lundi et finit le dimanche suivant. \n\n7.1.2. Au courant de la saison régulière, les capitaines doivent prévoir leur partie avec l’équipe adverse selon l’horaire prévu.",
+          "6.1.1. Chaque semaine de ligue commence le lundi et finit le dimanche suivant. \n\n6.1.2. Au courant de la saison régulière, les capitaines doivent prévoir leur partie avec l’équipe adverse selon l’horaire prévu.",
         text17_1:
-          "7.1.3. Les parties de saison se déroulent en terme de BO3 (“Best of 3”).\n\n7.1.4. Le choix de côté sera déterminé par les administrateurs pour la première partie du BO3. Pour les parties suivantes, ce seront les perdants de la partie précédente qui décideront de quel côté ils vont jouer. \n\n7.1.5. À moins d’un accord mutuel entre les capitaines, une pause de 10 minutes est alloué aux équipes entre les parties.",
-        text18: "7.2.1. Le pointage des parties se feront ainsi : ",
+          "6.1.3. Les parties de saison se déroulent en terme de BO3 (“Best of 3”).\n\n6.1.4. Le choix de côté sera déterminé par les administrateurs pour la première partie du BO3. Pour les parties suivantes, ce seront les perdants de la partie précédente qui décideront de quel côté ils vont jouer. \n\n6.1.5. À moins d’un accord mutuel entre les capitaines, une pause de 10 minutes est alloué aux équipes entre les parties.",
+        text18: "6.2.1. Le pointage des parties se feront ainsi : ",
         text18_1:
-          "7.2.2. Si les deux équipes n’ont pas trouvé de terrain d’entente et qu’aucune des deux équipes se présentent au jour par défaut, les deux équipes auront un résultat de forfait.\n\n7.2.3. Le classement de la saison régulière suivra l’ordre suivant : ",
+          "6.2.2. Si les deux équipes n’ont pas trouvé de terrain d’entente et qu’aucune des deux équipes se présentent au jour par défaut, les deux équipes auront un résultat de forfait.\n\n6.2.3. Le classement de la saison régulière suivra l’ordre suivant : ",
         text18_2:
-          "7.2.4. Le classement sera mis à jour 1 fois par semaine le lundi maximum. Si un administrateur est disponible, le classement pourrait être mis à jour plus tôt.",
+          "6.2.4. Le classement sera mis à jour 1 fois par semaine le lundi maximum. Si un administrateur est disponible, le classement pourrait être mis à jour plus tôt.",
         text19:
-          "7.3.1. L’équipe ayant fini 1er au courant de la saison régulière sera récompensée par une gratuité d’inscription lors de la prochaine saison.",
+          "6.3.1. L’équipe ayant fini 1er au courant de la saison régulière sera récompensée par une gratuité d’inscription lors de la prochaine saison.",
         text20:
-          "8.1.1. Les 6 meilleures équipes de la saison régulière auront accès à la ronde éliminatoire. \n\n8.1.2. Le choix du côté sera déterminé par l’équipe ayant un meilleur classement durant la saison régulière.",
+          "7.1.1. Les 6 meilleures équipes de la saison régulière auront accès à la ronde éliminatoire. \n\n7.1.2. Le choix du côté sera déterminé par l’équipe ayant un meilleur classement durant la saison régulière.",
         text20_1:
-          "8.1.3. Les rondes éliminatoires se déroulent en termes de BO5 (Best of 5) en mode double élimination.",
+          "7.1.3. Les rondes éliminatoires se déroulent en termes de BO5 (Best of 5) en mode double élimination.",
         text21:
-          "8.2.1. Voici la répartition d’argent pour les gagnants (sujet à changement) :",
+          "7.2.1. Voici la répartition d’argent pour les gagnants (sujet à changement) :",
         text21_1:
-          "8.2.2. Le prix des équipes gagnantes sera remis au capitaine.",
+          "7.2.2. Le prix des équipes gagnantes sera remis au capitaine.",
         text21_2:
-          "8.2.3. Si le nombre d'équipes est plus bas que le nombre requis pour le tournoi ou la ligue, les prix aux gagnants pourraient changer sans préavis. Un minimum de 70 % des inscriptions sera donné en prix.",
-        text22:
-          "9.1.1. Les équipes ayant terminé dans les 4 meilleures équipes de la saison ont une chance de se réinscrire à la prochaine saison.\n\n9.1.2. Voici les conditions pour qu’une équipe peut se réinscrire : ",
-        text22_1:
-          "9.1.3. Les équipes qualifiées ont 3 semaines après la fin du split pour faire les changements de joueurs et s'inscrire.\n\n9.1.4. Les équipes qui ne s’inscrivent pas à temps devront repasser par l’étape du tournoi de pré-saison.",
-        text23:
-          "9.2.1. Toutes les autres équipes devront se réinscrire selon la méthode habituelle et devront participer au tournoi de pré-saison.",
+          "7.2.3. Si le nombre d'équipes est plus bas que le nombre requis pour le tournoi ou la ligue, les prix aux gagnants pourraient changer sans préavis. Un minimum de 70 % des inscriptions sera donné en prix.",
         text24:
-          "10.1.1. L’horaire de diffusion d’Eternal E-Sport sort peu de temps après l’horaire officiel de la ligue.\n\n10.1.2. Vous devez utiliser le système de draft de la ligue par défaut.\n\n10.1.3. Vous devez inviter et attendre l’équipe de diffusion pour chacune de vos parties.\n\n10.1.4. Vous devez ajouter le production Twitch dans votre liste d'amis sur League of Legends.",
+          "8.1.1. L’horaire de diffusion d’Eternal E-Sport sort peu de temps après l’horaire officiel de la ligue.\n\n8.1.2. Vous devez utiliser le système de draft de la ligue par défaut.\n\n8.1.3. Vous devez inviter et attendre l’équipe de diffusion pour chacune de vos parties.\n\n8.1.4. Vous devez ajouter le production Twitch dans votre liste d'amis sur League of Legends.",
         text25:
           "Toute diffusion externe est autorisée. Si vous voulez être une diffuseur associé à la Eternal E-Sport, vous devez respecter les conditions suivantes pour avoir accès aux avantages ci-dessous.",
-        text26: "10.2.1. Conditions à respecter : ",
-        text26_1: "10.2.2. Avantages pour les diffusions : ",
+        text26: "8.2.1. Conditions à respecter : ",
+        text26_1: "8.2.2. Avantages pour les diffusions : ",
 
         text27:
           "Voici la liste des pénalités possible si un joueur/équipe ne respecte pas les règlements du tournoi : ",
         text28:
-          "\n11.1. Avertissement officiel\n11.2. Perte de ban\n11.3. Disqualification du tournoi actuel\n11.4. Suspension de futurs tournois temporairement\n11.5. Suspension des événements de Eternal temporairement\n11.6. Bannissement temporaire de Eternal\n11.7. Bannissement à vie de Eternal",
+          "\n9.1. Avertissement officiel\n9.2. Perte de ban\n9.3. Disqualification du tournoi actuel\n9.4. Suspension de futurs tournois temporairement\n9.5. Suspension des événements de Eternal temporairement\n9.6. Bannissement temporaire de Eternal\n9.7. Bannissement à vie de Eternal",
         text29:
           "\nUne pénalité donnée à un joueur peut aller en appel. Un comité d'administrateurs sera alors formé pour se pencher sur la situation. La décision du comité sera alors finale.",
       },

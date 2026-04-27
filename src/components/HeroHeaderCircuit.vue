@@ -99,7 +99,7 @@ a {
     padding-bottom: 200px;
     background-position-y: -100px;
     background-size: 1500px;
-    background-image: url('./../assets/img/wallpaper.png');
+    background-image: url('./../assets/img/fondheader.png');
     background-attachment: fixed;
     background-position: top;
   }

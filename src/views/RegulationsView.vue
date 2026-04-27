@@ -14,16 +14,14 @@ import OurPartners from '../components/OurPartners.vue';
     <main>
         <div>
             <div class="table-of-content">
-                <h2 id="#table">{{ translations[store.language].regulations.h2Titles.title12 }}</h2>
+                <h2  id="table">{{ translations[store.language].regulations.h2Titles.title12 }}</h2>
                 <a href="#admin">{{ translations[store.language].regulations.h2Titles.title1 }}</a>
                 <a href="#schedule">{{ translations[store.language].regulations.h2Titles.title2 }}</a>
                 <a href="#registration">{{ translations[store.language].regulations.h2Titles.title3 }}</a>
                 <a href="#match">{{ translations[store.language].regulations.h2Titles.title4 }}</a>
                 <a href="#substitue">{{ translations[store.language].regulations.h2Titles.title5 }}</a>
-                <a href="#preseason">{{ translations[store.language].regulations.h2Titles.title6 }}</a>
                 <a href="#regseason">{{ translations[store.language].regulations.h2Titles.title7 }}</a>
                 <a href="#endseason">{{ translations[store.language].regulations.h2Titles.title8 }}</a>
-                <a href="#reregistration">{{ translations[store.language].regulations.h2Titles.title9 }}</a>
                 <a href="#broadcast">{{ translations[store.language].regulations.h2Titles.title10 }}</a>
                 <a href="#penalties">{{ translations[store.language].regulations.h2Titles.title11 }}</a>
             </div>
@@ -119,21 +117,6 @@ import OurPartners from '../components/OurPartners.vue';
                 <p>{{ translations[store.language].regulations.texts.text12_1 }}</p>
                 <h4>{{ translations[store.language].regulations.h4Titles.title25 }}</h4>
                 
-                <h2 id="preseason">{{ translations[store.language].regulations.h2Titles.title6 }}</h2>
-                <p class="plain-text">{{ translations[store.language].regulations.texts.text13 }}</p>
-                <h3>{{ translations[store.language].regulations.h3Titles.title11 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text14 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title12 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text15 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title26 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text15_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title27 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text15_2 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title13 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text16 }}</p>
-                
                 <h2 id="regseason">{{ translations[store.language].regulations.h2Titles.title7 }}</h2>
                 <h3>{{ translations[store.language].regulations.h3Titles.title14 }}</h3>
                 <p>{{ translations[store.language].regulations.texts.text17 }}</p>
@@ -163,18 +146,6 @@ import OurPartners from '../components/OurPartners.vue';
                 <p>{{ translations[store.language].regulations.texts.text21_1 }}</p>
                 <h4>{{ translations[store.language].regulations.h4Titles.title34 }}</h4>
                 <p>{{ translations[store.language].regulations.texts.text21_2 }}</p>
-                
-                <h2 id="reregistration">{{ translations[store.language].regulations.h2Titles.title9 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title19 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text22 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title35 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title7 }}</h5>
-                <h4>{{ translations[store.language].regulations.h4Titles.title36 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text22_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title37 }}</h4>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title20 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text23 }}</p>
                 
                 <h2 id="broadcast">{{ translations[store.language].regulations.h2Titles.title10 }}</h2>
                 <h3>{{ translations[store.language].regulations.h3Titles.title21 }}</h3>
