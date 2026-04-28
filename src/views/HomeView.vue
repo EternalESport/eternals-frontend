@@ -1,9 +1,10 @@
 <script setup>
-import Blocks from '../components/Blocks.vue';
+import Blocks from '../components/BlocksLigue.vue';
 import Orgs from '../components/Orgs.vue';
 import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeader.vue'
 import OurPartners from '../components/OurPartners.vue';
+import BlocksHome from '../components/BlocksHome.vue';
 import config from '@/config.json'
 import { translations } from '@/i18n/translations'
 import { store } from '@/store.js'
@@ -11,13 +12,14 @@ import { store } from '@/store.js'
 </script>
 
 <template>
+  <HeroHeader />
   <main>
-    <HeroHeader />
     <div class="fade">
       <OurPartners />
     </div>
     <div class="content" style="background-color: #111;">
       <h2>{{ translations[store.language].navigation.home }}</h2>
+      <BlocksHome />
     </div>
   </main>
 </template>
@@ -44,6 +46,10 @@ h2 {
   color: white;
   text-align: center;
   padding-top: 40px;
+}
+
+.content {
+  padding-bottom: 50px;
 }
 
 @media (max-width: 1200px) {

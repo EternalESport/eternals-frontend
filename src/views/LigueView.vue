@@ -1,5 +1,5 @@
 <script setup>
-import Blocks from '../components/Blocks.vue';
+import Blocks from '../components/BlocksLigue.vue';
 import Orgs from '../components/Orgs.vue';
 import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeader.vue'
@@ -17,7 +17,9 @@ import { store } from '@/store.js'
     </div>
     <div class="content" style="background-color: #111;">
       <h2>{{ store.language === 'fr' ? config.season.fr : config.season.en }}</h2>
-      <Blocks />
+      <div class="blocks">
+        <Blocks />
+      </div>
       <Orgs />
       <Youtube />
     </div>
@@ -46,6 +48,10 @@ h2 {
   color: white;
   text-align: center;
   padding-top: 40px;
+}
+
+.blocks {
+  padding-bottom: 50px;
 }
 
 @media (max-width: 1200px) {

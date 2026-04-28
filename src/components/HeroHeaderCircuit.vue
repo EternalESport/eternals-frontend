@@ -8,7 +8,7 @@ import { translations } from '@/i18n/translations'
   <div class="greetings">
     <video
       class="bg-video"
-      src="../assets/mylivewallpapers.com-Dark-Star-ChoGath-LOL.mp4"
+      src="../assets/AnimatedBackgroundCircuit.mp4"
       autoplay
       muted
       loop

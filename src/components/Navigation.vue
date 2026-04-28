@@ -282,8 +282,6 @@ header {
   transform: translateY(0);
 }
 
-/* ******************** */
-
 .navigation-part1 {
   display: flex;
   align-items: center;
@@ -424,6 +422,12 @@ nav .dropdown-nav li {
 
 nav .dropdown-nav li .link {
   color: var(--nav-color);
+}
+
+nav .dropdown-nav li .link:hover {
+  color: white;
+  transform: scale(1.2);
+  transition: 0.5s ease all;
 }
 
 nav .dropdown-nav li .language-toggle-mobile {

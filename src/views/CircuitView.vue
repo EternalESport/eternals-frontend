@@ -23,6 +23,7 @@ import BlocksCircuit from '../components/BlocksCircuit.vue';
 <style scoped>
 main {
     background-color: rgb(24, 24, 24);
+    padding-bottom: 50px;
 }
 
 .fade {

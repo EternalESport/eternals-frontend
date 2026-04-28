@@ -2,6 +2,7 @@
 import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import HeroHeader from '../components/HeroHeader.vue'
+import BlocksRiftbound from '../components/BlocksRiftbound.vue'
 
 </script>
 
@@ -13,6 +14,7 @@ import HeroHeader from '../components/HeroHeader.vue'
     <main>
         <div>
             <p class="titre-page">Riftbound Eternal 2026</p>
+            <BlocksRiftbound/>
         </div>
     </main>
 </template>
@@ -20,6 +22,7 @@ import HeroHeader from '../components/HeroHeader.vue'
 <style scoped>
 main {
     background-color: rgb(24, 24, 24);
+    padding-bottom: 50px;
 }
 
 .fade {
