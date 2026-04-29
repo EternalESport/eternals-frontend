@@ -7,7 +7,7 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
-    <RouterLink :to="'/regulations'" class="block large">
+    <RouterLink :to="'/regulationsligue'" class="block large">
       <img src="../assets/btns/Règle.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
     </RouterLink><!-- Large box -->
@@ -15,18 +15,18 @@ import { translations } from '@/i18n/translations'
       <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
     </a> <!-- Small box -->
-    <a class="block large mobile" :href="config.links.teams" target="_blank">
+    <RouterLink :to="'/teamsligue'" class="block large mobile">
       <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
-    <a class="block small" :href="config.links.schedule" target="_blank">
+    </RouterLink> <!-- Large box -->
+    <RouterLink :to="'/scheduleligue'" class="block small">
       <img src="../assets/btns/Horairerectangle.png" />
       <h3>{{ translations[store.language].components.blocks.schedule }}</h3>
-    </a> <!-- Small box -->
-    <a class="block large desktop" :href="config.links.teams" target="_blank">
+    </RouterLink> <!-- Small box -->
+    <RouterLink :to="'/teamsligue'" class="block large desktop">
       <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
+    </RouterLink> <!-- Large box -->
     <a class="block large" :href="config.links.ranking" target="_blank">
       <img src="../assets/btns/Classement.png" />
       <h3>{{ translations[store.language].components.blocks.standings }}</h3>

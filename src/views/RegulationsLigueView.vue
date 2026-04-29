@@ -13,6 +13,7 @@ import OurPartners from '../components/OurPartners.vue';
     </div>
     <main>
         <div>
+            <h2>{{ translations[store.language].components.blocks.regulations }}</h2>
             <div class="table-of-content">
                 <h2  id="table">{{ translations[store.language].regulations.h2Titles.title12 }}</h2>
                 <a href="#admin">{{ translations[store.language].regulations.h2Titles.title1 }}</a>

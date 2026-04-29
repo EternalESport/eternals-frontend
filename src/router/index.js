@@ -50,10 +50,22 @@ const router = createRouter({
       component: () => import('../views/StatsView.vue')
     },
     { 
-      path: '/regulations', 
-      name: 'regulations',
+      path: '/regulationsligue', 
+      name: 'regulationsligue',
       meta: { title: 'Eternal - Regulations' },
-      component: () => import('../views/RegulationsView.vue')
+      component: () => import('../views/RegulationsLigueView.vue')
+    },
+    { 
+      path: '/scheduleligue', 
+      name: 'scheduleligue',
+      meta: { title: 'Eternal - Schedule' },
+      component: () => import('../views/ScheduleLigueView.vue')
+    },
+    { 
+      path: '/teamsligue', 
+      name: 'teamsligue',
+      meta: { title: 'Eternal - Teams' },
+      component: () => import('../views/TeamsLigueView.vue')
     },
     { 
       path: '/circuit', 

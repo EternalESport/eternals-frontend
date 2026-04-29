@@ -304,6 +304,28 @@ export const translations = {
           "\nUne pénalité donnée à un joueur peut aller en appel. Un comité d'administrateurs sera alors formé pour se pencher sur la situation. La décision du comité sera alors finale.",
       },
     },
+    schedule: {
+      week: "Semaine",
+      sideblue: "Côté Bleu",
+      sidered: "Côté Rouge",
+      quarterfinal: "Quart de finale",
+      semifinal: "Demi-finale",
+      grandfinal: "Grande finale"
+    },
+    months: {
+      january: "Janvier",
+      february: "Février",
+      march: "Mars",
+      april: "Avril",
+      may: "Mai",
+      june: "Juin",
+      july: "Juillet",
+      august: "Août",
+      september: "Septembre",
+      october: "Octobre",
+      november: "Novembre",
+      december: "Décembre"
+    }
   },
   en: {
     // Navigation
@@ -658,5 +680,27 @@ export const translations = {
           "\nA penalty given to a player may be appealed. A committee of administrators will then be formed to review the situation. The committee’s decision will be final.",
       },
     },
+    schedule: {
+      week: "Week",
+      sideblue: "Blue Side",
+      sidered: "Red Side",
+      quarterfinal: "Quarterfinal",
+      semifinal: "Semifinal",
+      grandfinal: "Grand Final"
+    },
+    months: {
+      january: "January",
+      february: "February",
+      march: "March",
+      april: "April",
+      may: "May",
+      june: "June",
+      july: "July",
+      august: "August",
+      september: "September",
+      october: "October",
+      november: "November",
+      december: "December"
+    }
   },
 };
