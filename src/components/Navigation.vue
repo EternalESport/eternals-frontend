@@ -17,12 +17,12 @@ defineProps({
   <header>
     <nav>
       <div class="branding">
-        <div class="logo-menu" @mouseenter="logoMenuOpen = true" @mouseleave="logoMenuOpen = false">
-          <button class="logo-button" type="button" aria-label="Ouvrir le menu des sections">
+        <div class="logo-menu">
+          <button class="logo-button" type="button" aria-label="Ouvrir le menu des sections" @click.stop="logoMenuOpen = !logoMenuOpen">
             <Logo />
           </button>
           <transition name="logo-dropdown">
-            <div v-show="logoMenuOpen" class="logo-dropdown">
+            <div v-show="logoMenuOpen" class="logo-dropdown" @click.stop>
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
@@ -32,7 +32,7 @@ defineProps({
           </transition>
         </div>
       </div>
-      <ul v-show="!mobile" class="navigation-part1">
+      <ul v-show="!mobile" class="navigation-socials">
         <li>
           <div class="dash">
             <Dash />
@@ -103,28 +103,27 @@ defineProps({
 </template>
 
 <script>
-
 export default {
-  name: "navigation",
+  name: "Navigation",
+
   data() {
     return {
       mobile: null,
-      mobileNav: null,
+      mobileNav: false,
       windowWidth: null,
       logoMenuOpen: false,
     }
   },
-  name: "navigation-part1",
-  data() {
-    return {
-      mobile: null,
-      mobileNav: null,
-      windowWidth: null,
-    }
-  },
-  created() {
+
+  mounted() {
     window.addEventListener('resize', this.checkScreen);
+    document.addEventListener('click', this.closeLogoMenu);
     this.checkScreen();
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkScreen);
+    document.removeEventListener('click', this.closeLogoMenu);
   },
 
   methods: {
@@ -132,25 +131,27 @@ export default {
       this.mobileNav = !this.mobileNav;
     },
 
+    closeLogoMenu() {
+      this.logoMenuOpen = false;
+    },
+
     checkScreen() {
       this.windowWidth = window.innerWidth;
+
       if (this.windowWidth < 1400) {
         this.mobile = true;
-        return
       } else {
         this.mobile = false;
         this.mobileNav = false;
-        return;
       }
     }
   },
 }
-
 </script>
 
 <style scoped>
 header {
-  z-index: 10;
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
@@ -225,6 +226,7 @@ header {
   cursor: pointer;
   display: flex;
   align-items: center;
+  z-index: 10000;
 }
 
 .logo-button:hover {
@@ -241,17 +243,19 @@ header {
 
 .logo-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 0;
   min-width: 180px;
   background-color: #111;
   border: 1px solid var(--nav-color);
   border-radius: 8px;
+  /* Pour que les coins des liens ne dépassent pas de la boîte du dropdown */
   padding: 10px 0;
   z-index: 100;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 10001;
 }
 
 .logo-dropdown a {
@@ -283,7 +287,7 @@ header {
   transform: translateY(0);
 }
 
-.navigation-part1 {
+.navigation-socials {
   display: flex;
   align-items: center;
   flex: 1;
@@ -329,7 +333,6 @@ nav .categories .link {
 
 nav a:hover {
   color: var(--nav-color);
-  transform: scale(1.2);
   transition: 0.5s ease all;
 }
 
@@ -413,6 +416,7 @@ nav .dropdown-nav {
   background-color: #111;
   top: 0;
   left: 0;
+  z-index: 10002;
 }
 
 nav .dropdown-nav li {
