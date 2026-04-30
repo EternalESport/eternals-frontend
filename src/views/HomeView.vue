@@ -21,6 +21,7 @@ import { store } from '@/store.js'
       <h2>{{ translations[store.language].navigation.home }}</h2>
       <!-- <BlocksHome /> -->
     </div>
+    <Youtube/>
   </main>
 </template>
 
@@ -48,9 +49,9 @@ h2 {
   padding-top: 40px;
 }
 
-/* .content {
+.content {
   padding-bottom: 50px;
-} */
+}
 
 @media (max-width: 1200px) {
   h2 {

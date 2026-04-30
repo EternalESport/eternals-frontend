@@ -32,7 +32,7 @@ defineProps({
           </transition>
         </div>
       </div>
-      <ul v-show="!mobile" class="navigation-part1">
+      <ul v-show="!mobile" class="navigation-socials">
         <li>
           <div class="dash">
             <Dash />
@@ -249,6 +249,7 @@ header {
   background-color: #111;
   border: 1px solid var(--nav-color);
   border-radius: 8px;
+  /* Pour que les coins des liens ne dépassent pas de la boîte du dropdown */
   padding: 10px 0;
   z-index: 100;
   display: flex;
@@ -286,7 +287,7 @@ header {
   transform: translateY(0);
 }
 
-.navigation-part1 {
+.navigation-socials {
   display: flex;
   align-items: center;
   flex: 1;
@@ -332,7 +333,6 @@ nav .categories .link {
 
 nav a:hover {
   color: var(--nav-color);
-  transform: scale(1.2);
   transition: 0.5s ease all;
 }
 

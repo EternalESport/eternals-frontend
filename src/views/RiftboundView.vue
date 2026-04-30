@@ -1,6 +1,7 @@
 <script setup>
 import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
+import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeader.vue'
 import BlocksRiftbound from '../components/BlocksRiftbound.vue'
 
@@ -17,6 +18,7 @@ import BlocksRiftbound from '../components/BlocksRiftbound.vue'
             <BlocksRiftbound/>
         </div>
     </main>
+    <Youtube/>
 </template>
 
 <style scoped>

@@ -2,6 +2,7 @@
 import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import HeroHeaderCircuit from '../components/HeroHeaderCircuit.vue'
+import Youtube from '../components/Youtube.vue';
 import OurPartners from '../components/OurPartners.vue';
 import BlocksCircuit from '../components/BlocksCircuit.vue';
 
@@ -18,6 +19,7 @@ import BlocksCircuit from '../components/BlocksCircuit.vue';
         </div>
         <BlocksCircuit></BlocksCircuit>
     </main>
+    <Youtube/>
 </template>
 
 <style scoped>
