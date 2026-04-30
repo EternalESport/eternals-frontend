@@ -7,18 +7,19 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
-    <RouterLink :to="'/ligue'" class="block large">
+    <!-- Les boutons de la page home vers les autres pages -->
+    <!-- <RouterLink :to="'/ligue'" class="block large">
       <img src="../assets/btns/Règle.png" />
       <h3 style="font-size: 41px;">LIGUE</h3>
-    </RouterLink><!-- Large box -->
+    </RouterLink>
     <RouterLink :to="'/circuit'" class="block large">
       <img src="../assets/btns/Reglements1.png" />
       <h3 style="font-size: 41px;">CIRCUIT</h3>
-    </RouterLink><!-- Large box -->
+    </RouterLink>
     <RouterLink :to="'/riftbound'" class="block large">
       <img src="../assets/btns/Reglements2.png" />
       <h3 style="font-size: 41px;">RIFTBOUND</h3>
-    </RouterLink><!-- Large box -->
+    </RouterLink> -->
   </div>
 </template>
 

@@ -131,10 +131,6 @@ import OurPartners from '../components/OurPartners.vue';
                 <h4>{{ translations[store.language].regulations.h4Titles.title30 }}</h4>
                 <p>{{ translations[store.language].regulations.texts.text18_2 }}</p>
                 
-                <h3>{{ translations[store.language].regulations.h3Titles.title16 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text19 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title31 }}</h4>
-                
                 <h2 id="endseason">{{ translations[store.language].regulations.h2Titles.title8 }}</h2>
                 <h3>{{ translations[store.language].regulations.h3Titles.title17 }}</h3>
                 <p>{{ translations[store.language].regulations.texts.text20 }}</p>
@@ -146,7 +142,6 @@ import OurPartners from '../components/OurPartners.vue';
                 <h4>{{ translations[store.language].regulations.h4Titles.title33 }}</h4>
                 <p>{{ translations[store.language].regulations.texts.text21_1 }}</p>
                 <h4>{{ translations[store.language].regulations.h4Titles.title34 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text21_2 }}</p>
                 
                 <h2 id="broadcast">{{ translations[store.language].regulations.h2Titles.title10 }}</h2>
                 <h3>{{ translations[store.language].regulations.h3Titles.title21 }}</h3>

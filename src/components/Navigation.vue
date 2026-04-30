@@ -26,7 +26,8 @@ defineProps({
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
-              <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink>
+              <!-- Le bouton vers la page Riftbound dans le dropdown du logo -->
+              <!-- <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink> -->
             </div>
           </transition>
         </div>
