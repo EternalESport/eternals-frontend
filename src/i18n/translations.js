@@ -14,7 +14,7 @@ export const translations = {
       team: "L'équipe",
       hallOfFame: "Hall of Fame",
       copyright:
-        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - Tous droits réservés || Conçu par Anthony Dumulong",
+        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - Tous droits réservés",
       allRightsReserved: "Tous droits réservés",
     },
     // Cookies Banner
@@ -335,7 +335,7 @@ export const translations = {
       team: "Team",
       hallOfFame: "Hall of Fame",
       copyright:
-        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - All rights reserved || Designed by Anthony Dumulong",
+        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - All rights reserved",
       allRightsReserved: "All rights reserved",
     },
     // Cookies Banner

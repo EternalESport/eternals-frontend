@@ -16,7 +16,7 @@ import { computed } from 'vue'
 const route = useRoute()
 
 const navColor = computed(() => {
-  if (route.path === '/') return '#faa200'
+  if (route.path === '/' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
   return 'var(--main-color)'
 })
