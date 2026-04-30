@@ -4,15 +4,33 @@ import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
+
+defineProps({
+  navColor: {
+    type: String,
+    default: 'var(--main-color)'
+  }
+})
 </script>
 
 <template>
   <header>
     <nav>
       <div class="branding">
-        <a class="logo" href="/" alt="Accueil">
-          <Logo />
-        </a>
+        <div class="logo-menu" @mouseenter="logoMenuOpen = true" @mouseleave="logoMenuOpen = false">
+          <button class="logo-button" type="button" aria-label="Ouvrir le menu des sections">
+            <Logo />
+          </button>
+          <transition name="logo-dropdown">
+            <div v-show="logoMenuOpen" class="logo-dropdown">
+              <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
+              <!-- Le bouton vers la page Riftbound dans le dropdown du logo -->
+              <!-- <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink> -->
+            </div>
+          </transition>
+        </div>
       </div>
       <ul v-show="!mobile" class="navigation-part1">
         <li>
@@ -93,6 +111,7 @@ export default {
       mobile: null,
       mobileNav: null,
       windowWidth: null,
+      logoMenuOpen: false,
     }
   },
   name: "navigation-part1",
@@ -115,7 +134,7 @@ export default {
 
     checkScreen() {
       this.windowWidth = window.innerWidth;
-      if (this.windowWidth < 1300) {
+      if (this.windowWidth < 1400) {
         this.mobile = true;
         return
       } else {
@@ -126,6 +145,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style scoped>
@@ -138,7 +158,7 @@ header {
   line-height: 1.5;
   width: 100%;
   background-color: #111;
-  color: var(--main-color);
+  color: var(--nav-color);
 }
 
 .dash {
@@ -191,15 +211,76 @@ header {
   background-color: white;
 }
 
-.branding .logo {
-  transition: 0.5s ease all;
-  padding: 0px;
-  width: 120px;
+.logo-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.branding .logo img {
-  height: 50px;
-  margin-top: 5px;
+.logo-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.logo-button:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
+.logo-button :deep(svg),
+.logo-button :deep(img) {
+  width: 120px;
+  height: auto;
+  display: block;
+}
+
+.logo-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 180px;
+  background-color: #111;
+  border: 1px solid var(--nav-color);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.logo-dropdown a {
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.logo-dropdown a:hover {
+  background-color: var(--nav-color);
+  color: white;
+}
+
+.logo-dropdown-enter-active,
+.logo-dropdown-leave-active {
+  transition: 0.25s ease;
+}
+
+.logo-dropdown-enter-from,
+.logo-dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.logo-dropdown-enter-to,
+.logo-dropdown-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .navigation-part1 {
@@ -227,13 +308,13 @@ nav {
   color: white;
   width: 90%;
   height: 80px;
-
 }
 
 nav .categories a {
   font-weight: bolder;
   font-size: 1.8em;
-  white-space: nowrap; /*So the text stays in one line when there's less space*/
+  white-space: nowrap;
+  /*So the text stays in one line when there's less space*/
 }
 
 nav .categories a:hover {
@@ -242,8 +323,12 @@ nav .categories a:hover {
   transition: 0.5s ease all;
 }
 
+nav .categories .link {
+  color: var(--nav-color);
+}
+
 nav a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
   transition: 0.5s ease all;
 }
@@ -262,7 +347,7 @@ nav .socials a {
 }
 
 nav .socials a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
   transition: 0.5s ease all;
 }
@@ -286,12 +371,12 @@ nav .lang-btn {
 }
 
 nav .lang-btn:hover {
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
-  border-color: var(--main-color);
+  border-color: var(--nav-color);
 }
 
-@media (min-width: 1300px) {
+@media (min-width: 1400px) {
   nav {
     width: 100%;
   }
@@ -329,6 +414,7 @@ nav .dropdown-nav {
   top: 0;
   left: 0;
 }
+
 nav .dropdown-nav li {
   margin-left: 0;
   padding-top: 40px;
@@ -336,7 +422,13 @@ nav .dropdown-nav li {
 }
 
 nav .dropdown-nav li .link {
-  color: var(--main-color);
+  color: var(--nav-color);
+}
+
+nav .dropdown-nav li .link:hover {
+  color: white;
+  transform: scale(1.2);
+  transition: 0.5s ease all;
 }
 
 nav .dropdown-nav li .language-toggle-mobile {
@@ -360,9 +452,9 @@ nav .dropdown-nav li .language-toggle-mobile .lang-btn {
 }
 
 nav .dropdown-nav li .language-toggle-mobile .lang-btn:hover {
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
-  border-color: var(--main-color);
+  border-color: var(--nav-color);
 }
 
 nav .dropdown-nav .socials-container {
@@ -370,7 +462,8 @@ nav .dropdown-nav .socials-container {
   top: 280px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Add spacing between logos */
+  justify-content: space-between;
+  /* Add spacing between logos */
   text-align: center;
   padding: 10px 0;
   gap: 10px;
@@ -384,7 +477,7 @@ nav .dropdown-nav .socials-container a {
 }
 
 nav .dropdown-nav .socials-container a:hover {
-  color: var(--main-color);
+  color: var(--nav-color);
   transform: scale(1.2);
 }
 
@@ -433,7 +526,7 @@ nav ul li img {
 }
 
 .fa-bars {
-  color: var(--main-color);
+  color: var(--nav-color);
 }
 
 

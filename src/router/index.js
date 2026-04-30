@@ -14,6 +14,12 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/ligue',
+      name: 'ligue',
+      meta: { title: 'Eternal - Ligue' },
+      component: () => import('../views/LigueView.vue')
+    },
+    {
       path: '/equipe',
       name: 'equipe',
       meta: { title: 'Eternal - Équipe' },
@@ -42,6 +48,36 @@ const router = createRouter({
       name: 'stats',
       meta: { title: 'Eternal - Stats' },
       component: () => import('../views/StatsView.vue')
+    },
+    { 
+      path: '/regulationsligue', 
+      name: 'regulationsligue',
+      meta: { title: 'Eternal - Regulations' },
+      component: () => import('../views/RegulationsLigueView.vue')
+    },
+    { 
+      path: '/scheduleligue', 
+      name: 'scheduleligue',
+      meta: { title: 'Eternal - Schedule' },
+      component: () => import('../views/ScheduleLigueView.vue')
+    },
+    { 
+      path: '/teamsligue', 
+      name: 'teamsligue',
+      meta: { title: 'Eternal - Teams' },
+      component: () => import('../views/TeamsLigueView.vue')
+    },
+    { 
+      path: '/circuit', 
+      name: 'circuit',
+      meta: { title: 'Eternal - Circuit' },
+      component: () => import('../views/CircuitView.vue')
+    },
+    { 
+      path: '/riftbound', 
+      name: 'riftbound',
+      meta: { title: 'Eternal - Riftbound' },
+      component: () => import('../views/RiftboundView.vue')
     },
     { 
       meta: { title: 'Eternal - 404' },
