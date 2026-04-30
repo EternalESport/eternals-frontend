@@ -103,28 +103,25 @@ defineProps({
 </template>
 
 <script>
-
 export default {
-  name: "navigation",
+  name: "Navigation",
+
   data() {
     return {
       mobile: null,
-      mobileNav: null,
+      mobileNav: false,
       windowWidth: null,
       logoMenuOpen: false,
     }
   },
-  name: "navigation-part1",
-  data() {
-    return {
-      mobile: null,
-      mobileNav: null,
-      windowWidth: null,
-    }
-  },
+
   created() {
     window.addEventListener('resize', this.checkScreen);
     this.checkScreen();
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkScreen);
   },
 
   methods: {
@@ -132,20 +129,22 @@ export default {
       this.mobileNav = !this.mobileNav;
     },
 
+    closeLogoMenu() {
+      this.logoMenuOpen = false;
+    },
+
     checkScreen() {
       this.windowWidth = window.innerWidth;
+
       if (this.windowWidth < 1400) {
         this.mobile = true;
-        return
       } else {
         this.mobile = false;
         this.mobileNav = false;
-        return;
       }
     }
   },
 }
-
 </script>
 
 <style scoped>
@@ -241,7 +240,7 @@ header {
 
 .logo-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 0;
   min-width: 180px;
   background-color: #111;
