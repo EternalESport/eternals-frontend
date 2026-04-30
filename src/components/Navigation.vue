@@ -115,7 +115,7 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
     window.addEventListener('resize', this.checkScreen);
     this.checkScreen();
   },
