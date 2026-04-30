@@ -17,12 +17,12 @@ defineProps({
   <header>
     <nav>
       <div class="branding">
-        <div class="logo-menu" @mouseenter="logoMenuOpen = true" @mouseleave="logoMenuOpen = false">
-          <button class="logo-button" type="button" aria-label="Ouvrir le menu des sections">
+        <div class="logo-menu">
+          <button class="logo-button" type="button" aria-label="Ouvrir le menu des sections" @click.stop="logoMenuOpen = !logoMenuOpen">
             <Logo />
           </button>
           <transition name="logo-dropdown">
-            <div v-show="logoMenuOpen" class="logo-dropdown">
+            <div v-show="logoMenuOpen" class="logo-dropdown" @click.stop>
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
@@ -117,11 +117,13 @@ export default {
 
   mounted() {
     window.addEventListener('resize', this.checkScreen);
+    document.addEventListener('click', this.closeLogoMenu);
     this.checkScreen();
   },
 
   beforeUnmount() {
     window.removeEventListener('resize', this.checkScreen);
+    document.removeEventListener('click', this.closeLogoMenu);
   },
 
   methods: {
@@ -149,7 +151,7 @@ export default {
 
 <style scoped>
 header {
-  z-index: 10;
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
@@ -224,6 +226,7 @@ header {
   cursor: pointer;
   display: flex;
   align-items: center;
+  z-index: 10000;
 }
 
 .logo-button:hover {
@@ -251,6 +254,7 @@ header {
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 10001;
 }
 
 .logo-dropdown a {
@@ -412,6 +416,7 @@ nav .dropdown-nav {
   background-color: #111;
   top: 0;
   left: 0;
+  z-index: 10002;
 }
 
 nav .dropdown-nav li {
