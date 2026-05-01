@@ -5,12 +5,7 @@ import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
 
-defineProps({
-  navColor: {
-    type: String,
-    default: 'var(--main-color)'
-  }
-})
+
 </script>
 
 <template>
@@ -22,7 +17,9 @@ defineProps({
             <Logo />
           </button>
           <transition name="logo-dropdown">
+            <!-- Empêche les clics dans le menu de le fermer -->
             <div v-show="logoMenuOpen" class="logo-dropdown" @click.stop>
+               <!-- Chaque lien ferme le menu après navigation -->
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
@@ -117,6 +114,7 @@ export default {
 
   mounted() {
     window.addEventListener('resize', this.checkScreen);
+    // Pour fermer le dropdown si on clique ailleurs
     document.addEventListener('click', this.closeLogoMenu);
     this.checkScreen();
   },

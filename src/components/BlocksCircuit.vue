@@ -15,14 +15,14 @@ import { translations } from '@/i18n/translations'
       <img src="../assets/btns/Inscription1.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
     </a> <!-- Small box -->
-    <a class="block small mobile" :href="config.links.teamscircuit" target="_blank">
+    <RouterLink :to="'/teamscircuit'" class="block small mobile">
       <img src="../assets/btns/ListeDesEquipes1.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
-    <a class="block small desktop" :href="config.links.teamscircuit" target="_blank">
+    </RouterLink> <!-- Large box -->
+    <RouterLink :to="'/teamscircuit'" class="block small desktop">
       <img src="../assets/btns/ListeDesEquipes1.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
+    </RouterLink> <!-- Large box -->
     <a class="block large" :href="config.links.rankingcircuit" target="_blank">
       <img src="../assets/btns/Classement1.png" />
       <h3>{{ translations[store.language].components.blocks.standings }}</h3>
@@ -100,12 +100,14 @@ import { translations } from '@/i18n/translations'
 .block.small {
   height: 200px;
   width: 400px;
-
+  
 }
 
 .block.small img {
   width: 100%;
   top: 30px;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 @media (max-width: 1500px) {

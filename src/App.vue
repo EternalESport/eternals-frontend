@@ -13,8 +13,9 @@ import { computed } from 'vue'
 //import tournamentchampions from '../src/data/tournamentchampions.json'
 //import tournamentacad from '../src/data/tournamentacad.json'
 
-const route = useRoute()
+const route = useRoute() //Pour pouvoir vérifier la route actuelle
 
+//Pour le changement de couleur entre les sections du site
 const navColor = computed(() => {
   if (route.path === '/' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
@@ -94,9 +95,9 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </script>
 
 <template>
-  <div :style="{ '--nav-color': navColor }">
+  <div :style="{ '--nav-color': navColor }"> //Pour avoir accès à cette variable au travers tout le site
     <CookieBanner />
-    <Navigation :nav-color="navColor" />
+    <Navigation />
     <RouterView />
     <Footer />
   </div>

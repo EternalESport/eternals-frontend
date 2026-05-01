@@ -38,6 +38,16 @@ import { translations } from '../i18n/translations'
           <img class="hof-img" src="../assets/hof/MB_NOOB.jpg" />
           <p>LoV U • N9TF Void • DH Dark • MrJC Fanclub • DHydro-Québec • DME Reborn • Chaos Theory</p>
         </div>
+        <div class="hof-image-container hof-right">
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.winter2026prestige }}</h3>
+          <img class="hof-img" src="../assets/hof/Hiver2026Prestige.jpg" />
+          <p>Team du Nord • CSUF Blue • LoV Me</p>
+        </div>
+        <div class="hof-image-container hof-right">
+          <h3>{{ translations[store.language].hallOfFameContent.seasons.winter2026academy }}</h3>
+          <img class="hof-img" src="../assets/hof/Hiver2026Academy.jpg" />
+          <p>High 7 • Team Nordian • QUP Storm • Chiefs • Los Loserinos</p>
+        </div>
       </div>
     </div>
   </stream>
