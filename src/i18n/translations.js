@@ -14,7 +14,7 @@ export const translations = {
       team: "L'équipe",
       hallOfFame: "Hall of Fame",
       copyright:
-        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - Tous droits réservés || Conçu par Anthony Dumulong",
+        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - Tous droits réservés",
       allRightsReserved: "Tous droits réservés",
     },
     // Cookies Banner
@@ -89,6 +89,8 @@ export const translations = {
         summer2025prestige: "Saison Été 2025 - Division Prestige",
         summer2025academy: "Saison Été 2025 - Division Académie",
         winter2025: "Saison Hiver 2025",
+        winter2026prestige: "Saison Hiver 2026 - Division Prestige",
+        winter2026academy: "Saison Hiver 2026 - Division Académie",
       },
     },
     // Mission Page
@@ -296,6 +298,9 @@ export const translations = {
         text29:
           "\nUne pénalité donnée à un joueur peut aller en appel. Un comité d'administrateurs sera alors formé pour se pencher sur la situation. La décision du comité sera alors finale.",
       },
+      other: {
+        form: "Formulaire"
+      }
     },
     schedule: {
       week: "Semaine",
@@ -335,7 +340,7 @@ export const translations = {
       team: "Team",
       hallOfFame: "Hall of Fame",
       copyright:
-        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - All rights reserved || Designed by Anthony Dumulong",
+        "Eternal E-Sport Copyright © 2025 Eternal E-Sport - All rights reserved",
       allRightsReserved: "All rights reserved",
     },
     // Cookies Banner
@@ -410,6 +415,8 @@ export const translations = {
         summer2025prestige: "Summer 2025 Season - Prestige Division",
         summer2025academy: "Summer 2025 Season - Academy Division",
         winter2025: "Winter 2025 Season",
+        winter2026prestige: "Winter 2026 Season - Prestige Division",
+        winter2026academy: "Winter 2026 Season - Academy Division",
       },
     },
     // Mission Page
@@ -614,6 +621,9 @@ export const translations = {
         text29:
           "\nA penalty given to a player may be appealed. A committee of administrators will then be formed to review the situation. The committee’s decision will be final.",
       },
+      other: {
+        form: "Form"
+      }
     },
     schedule: {
       week: "Week",

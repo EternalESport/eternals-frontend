@@ -31,6 +31,17 @@ import OurPartners from '../components/OurPartners.vue';
                             <p>SupportSub #3</p>
                         </div>
                         <div class="members-section">
+                            <p class="first-column">Rank</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                        </div>
+                        <div class="members-section">
                             <p class="first-column">Cap</p>
                             <p>X</p>
                             <p>X</p>
@@ -90,6 +101,17 @@ import OurPartners from '../components/OurPartners.vue';
                             <p>SupportSub #1</p>
                             <p>SupportSub #2</p>
                             <p>SupportSub #3</p>
+                        </div>
+                        <div class="members-section">
+                            <p class="first-column">Rank</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
+                            <p>...</p>
                         </div>
                         <div class="members-section">
                             <p class="first-column">Cap</p>
@@ -197,7 +219,7 @@ h4 {
 
 .members {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     border-top: 5px solid black;
 }
 
@@ -218,6 +240,12 @@ a {
 }
 
 
+@media (max-width: 1200px) {
+    p, a {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 1024px) {
     .schedule {
         grid-template-columns: 1fr;
@@ -225,6 +253,12 @@ a {
 
     p, a {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    p, a {
+        font-size: 8px;
     }
 }
 </style>

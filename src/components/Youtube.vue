@@ -124,7 +124,7 @@ onMounted(async () => {
 
 .btn {
   font-size: 1.1em;
-  background-color: var(--main-color);
+  background-color: var(--nav-color);
   color: white;
   padding: 15px;
   border-radius: 35px;

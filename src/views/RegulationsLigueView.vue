@@ -59,7 +59,7 @@ import OurPartners from '../components/OurPartners.vue';
                 <p>{{ translations[store.language].regulations.texts.text5_3 }}</p>
                 
                 <h3>{{ translations[store.language].regulations.h3Titles.title4 }}</h3>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScGvBhvQKA1V45-POGZZZMkGkIOEQ0aAzeUGFyHT-cZAjqwgw/viewform" target="_blank">Form</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScGvBhvQKA1V45-POGZZZMkGkIOEQ0aAzeUGFyHT-cZAjqwgw/viewform" target="_blank">{{ translations[store.language].regulations.other.form }}</a>
                 <p>{{ translations[store.language].regulations.texts.text6 }}</p>
                 
                 <h3>{{ translations[store.language].regulations.h3Titles.title5 }}</h3>
