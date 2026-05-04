@@ -7,10 +7,10 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
-    <a :to="'/regulations'" class="block large" :href="config.links.rulescircuit" target="_blank">
+    <RouterLink :to="'/regulationscircuit'" class="block large">
       <img src="../assets/btns/Reglements1.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
-    </a><!-- Large box -->
+    </RouterLink><!-- Large box -->
     <a class="block small" :href="config.links.registercircuit" target="_blank">
       <img src="../assets/btns/Inscription1.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>

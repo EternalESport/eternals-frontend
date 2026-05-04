@@ -12,6 +12,13 @@ import OurPartners from '../components/OurPartners.vue';
         <OurPartners />
     </div>
     <main>
+        <div class="return">
+            <RouterLink :to="'/ligue'">
+                <button>
+                    {{ translations[store.language].regulationsligue.other.return }}
+                </button>
+            </RouterLink>
+        </div>
         <div>
             <h2>{{ translations[store.language].components.blocks.teams }}</h2>
             <div class="schedule">
@@ -217,6 +224,30 @@ a {
     text-decoration: underline;
 }
 
+.return {
+    position: sticky;
+    top: 80px;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+}
+
+.return button {
+    cursor: pointer;
+    color: var(--nav-color);
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    margin-top: 10px;
+    /* Pour ajuster le décalage */
+}
+
+.return button:hover {
+    background-color: var(--nav-color);
+    color: white;
+    border-color: var(--nav-color);
+}
 
 @media (max-width: 1024px) {
     .schedule {
