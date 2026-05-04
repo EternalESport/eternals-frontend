@@ -68,6 +68,12 @@ const router = createRouter({
       component: () => import('../views/TeamsLigueView.vue')
     },
     { 
+      path: '/regulationscircuit', 
+      name: 'regulationscircuit',
+      meta: { title: 'Eternal - Circuit' },
+      component: () => import('../views/RegulationsCircuitView.vue')
+    },
+    { 
       path: '/teamscircuit', 
       name: 'teamscircuit',
       meta: { title: 'Eternal - Teams' },

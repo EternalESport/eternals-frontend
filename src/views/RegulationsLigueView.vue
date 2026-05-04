@@ -12,7 +12,7 @@ import OurPartners from '../components/OurPartners.vue';
         <OurPartners />
     </div>
     <main>
-        <div class="return">
+        <div class="return" id="table">
             <RouterLink :to="'/ligue'">
                 <button>
                     {{ translations[store.language].regulationsligue.other.return }}
@@ -20,9 +20,8 @@ import OurPartners from '../components/OurPartners.vue';
             </RouterLink>
         </div>
         <div>
-            <h2>{{ translations[store.language].components.blocks.regulationsligue }}</h2>
             <div class="table-of-content">
-                <h2 id="table">{{ translations[store.language].regulationsligue.h2Titles.title12 }}</h2>
+                <h2>{{ translations[store.language].regulationsligue.h2Titles.title12 }}</h2>
                 <a href="#admin">{{ translations[store.language].regulationsligue.h2Titles.title1 }}</a>
                 <a href="#schedule">{{ translations[store.language].regulationsligue.h2Titles.title2 }}</a>
                 <a href="#registration">{{ translations[store.language].regulationsligue.h2Titles.title3 }}</a>

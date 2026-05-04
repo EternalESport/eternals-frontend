@@ -120,7 +120,7 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Organisations Esport",
     },
-    // Regulations Page
+    // Regulations Page - Ligue Section
     regulationsligue: {
       h1Title: "RÈGLEMENT\n LIGUE SUMMONER’S RIFT\n SAISON 2026-Hiver",
       h2Titles: {
@@ -300,8 +300,128 @@ export const translations = {
       },
       other: {
         form: "Formulaire",
-        return: "Retour"
-      }
+        return: "Retour",
+      },
+    },
+    // Regulations Page - Circuit Section
+    regulationscircuit: {
+      h1Title: "RÈGLEMENT \nCIRCUIT ETERNAL E-SPORT \nSAISON 2026",
+      h2Titles: {
+        title1: "1. Équipe administrative",
+        title2: "2. Déroulement du circuit",
+        title3: "3. Horaire",
+        title4: "4. Inscription",
+        title5: "5. Déroulement d’une partie",
+        title6: "6. Remplaçant d’urgence",
+        title7: "7. Déroulement du tournoi",
+        title8: "8. Diffusion en ligne",
+        title9: "9. Pénalités",
+        title12: "Table des matières",
+      },
+      h3Titles: {
+        title1: "2.1. Fonctionnement",
+        title2: "2.2. Après les tournois",
+        title3: "2.3. Compétition valide",
+        title4: "4.1 Éligibilité d’un joueur",
+        title5: "4.2 Éligibilité d’une équipe",
+        title6: "5.1. Avant la partie",
+        title7: "5.2. Pendant la partie",
+        title8: "5.3. Après la partie",
+        title9: "7.1. Ronde suisse",
+        title10: "7.2. Bris d'égalité",
+        title11: "7.3. Top 8 et Top 16",
+        title12: "7.4. Prix aux gagnants et de présence",
+        title13: "8.1. Diffusion interne",
+      },
+      h4Titles: {
+        title1:
+          "2.1.2.1. La valeur du tournoi/lan \n 2.1.2.2. Le classement final du joueur à cet événement",
+        title2:
+          "2.2.1.1. Une preuve de leur participation au tournoi \n 2.2.1.2. Les captures d’écrans de leurs parties gagnées \n 2.2.1.3. Une preuve de leur classement final",
+        title3:
+          "2.3.1.1. 3 Tournois de circuit Eternal esport : 1 pts / victoire x2 pour Top 16 et x3 pour top 8 \n 2.3.1.2. LAN ETS: 0.5 pts / victoire et x2 pour top 8 \n 2.3.1.3. LAN CFPR :  0.5 pts / victoire et x2 pour top 8 \n 2.3.1.4. Parro info :  0.5 pts / victoire et x2 pour top 8 \n 2.3.1.5. Sushi Cup : 0.5 pts / victoire et x2 pour top 8",
+        title4:
+          "3.3.1. Partie 1 :12h\n 3.3.2. Partie 2: 13h\n 3.3.3. Partie 3: 14h\n 3.3.4. Partie 4 : 15h\n 3.3.5. Pause de 30 minutes\n 3.3.6. Partie 5: 16h30\n 3.3.7. Partie 6: 17h30\n 3.3.8. Partie 7: 18h30",
+        title5:
+          "3.4.1. Partie 1 (BO1) : 11h\n 3.4.2. Partie 2 (BO1) : 12h\n 3.4.3. Pause de 30 minutes\n 3.4.4. Partie 3 (BO1) : 13h30\n 3.4.5. Partie 4 (BO1) : 14h30\n 3.4.6. Partie 5 (BO3) : 15h30",
+        title6: "4.2.6.1. Les frais sont de 25$ par équipe.",
+        title7: "5.2.1.1. Lien vers la draft : https://drafter.lol/ ",
+        title8:
+          "5.2.2.1. Seulement les joueurs dans la partie ont le droit d’être dans le Discord au courant de la partie.",
+        title9:
+          "5.2.3.1. L’équipe demandant un forfait devra prendre une capture d’écran avec le Discord, la date et l’heure. ",
+        title10:
+          "5.2.4.1. Les changements de rôle et de voie sont acceptés au courant de la draft. (“Role swap” et “Lane swap”). Les quêtes de rôle (Role Quest) peuvent donc être attribuées une fois le draft terminé.",
+        title11:
+          "5.2.5.1. Exception : Si le jungle n’a pas de “smite” ou un “double smite”, il est possible de refaire la partie en autant que la partie n’est pas dépassée 15 secondes.",
+        title12:
+          "5.2.5.2. La partie doit être refaite si 2 joueurs d’une même équipe ont la même quête de rôle.",
+        title13:
+          "5.2.6.1. Si une équipe atteint le 10 minutes, elle devra soit abandonner la partie ou bien continuer la partie avec un joueur en moins.",
+        title14:
+          "5.3.1.1. Image des drafts de drafter.lol. \n 5.3.1.2. Image des parties jouées sur le client de LoL.",
+        title15: "6.2.1. Ronde suisse : 3 bans\n 6.2.2. Playoff: 5 bans",
+        title16:
+          "Ronde 1 : Toutes les équipes commencent à 0-0. Les matchs sont déterminés aléatoirement.\n Ronde 2 : Les équipes qui ont gagné (1-0) s'affrontent entre elles. Les équipes qui ont perdu (0-1) s'affrontent entre elles.\n Rondes suivantes : On continue ainsi. Une équipe 2-1, joue contre une autre équipe à 2-1.\n Fin: Le nombre de rondes jouées est égale au nombre de rondes nécessaires pour qu’une équipe soit X-0. Plus 1 ronde. Ce qui veut\n dire que: \n 4 équipes : 3 rondes\n 5 à 8 équipes : 4 rondes\n 9 à 16 équipes : 5 rondes\n 17 à 32 équipes : 6 rondes\n 33 à 64 équipes : 7 rondes",
+        title17:
+          "7.4.2.1. 100% des frais d’inscriptions seront remis en prix de présence.",
+        title18:
+          "9.1. Avertissement officiel\n 9.2. Perte de ban\n 9.3. Disqualification du tournoi actuel\n 9.4. Suspension de futurs tournois temporairement\n 9.5. Suspension des événements de Eternal temporairement\n 9.6. Bannissement temporaire de Eternal\n 9.7. Bannissement à vie de Eternal",
+      },
+      h5Titles: {
+        title1:
+          "5.2.5.1.1. Si une partie est refaite, tous les joueurs doivent avoir exactement les mêmes runes et les mêmes “Summoner spell”. ",
+      },
+      texts: {
+        text1:
+          "Tous les règlements ont été établis par l’équipe d’administration de Eternal. En vous inscrivant, vous acceptez que leur application soit sous la responsabilité exclusive des administrateurs et des modérateurs. \n\n L'organisation se réserve également le droit de prendre des décisions concernant les situations non couvertes par les règlements, afin de garantir le maintien de l'esprit sportif et l'équité de la compétition.",
+        text2:
+          "2.1.1. Les joueurs inscrits accumulent des points tout au long de l’année en participant à divers événements de League of Legends. \n\n 2.1.2. Chaque partie remporté lors des compétitions valides rapporte des points selon:",
+        text3:
+          "2.2.1. Les joueurs sont responsables de posté dans le serveur discord approprié:",
+        text4:
+          "2.3.1. Voici les compétitions valides pour la saison 2026 ainsi que leur pondération ",
+        text5:
+          "3.1. Début des inscriptions : 4 Mai 2026\n\n 3.2. Fin des inscriptions : 8 Juin 2026\n\n 3.3. Simple round robin (7 parties): 13 Juin 2026",
+        text6: "3.4. Tournoi: 14 Juin 2026",
+        text7:
+          "4.1.1. Le joueur doit avoir un âge minimum de 13 ans.\n\n 4.1.2. Le joueur doit avoir un compte Riot sur le serveur NA.\n\n 4.1.3. Le joueur doit être sur le serveur approprié pour la ligue.\n\n 4.1.4. Le joueur doit déclarer tous les autres comptes auxquels il a joué des parties durant la dernière année.Le joueur doit être présent l’entièreté du tournoi.",
+        text8:
+          "4.2.1. Chaque équipe doit avoir un responsable/capitaine\n\n 4.2.2. Chaque équipe devra compter 5 joueurs.\n\n 4.2.3. Un joueur ne peut faire partie de deux équipes différentes.\n\n 4.2.4. Tout changement de roster peut être fait en parlant au plus tard 48 heures avant le début du tournoi.\n\n 4.2.5. Les administrateurs se réservent le droit d’accepter ou de refuser une équipe, même si les critères d’admission ci-dessus sont respectés.\n\n 4.2.6. Les frais d’inscription pour le tournoi doivent être acquittés au moment de l’inscription.",
+        text9:
+          "5.1.1. Le choix du côté se fera par pile ou face par les capitaines ou les responsables d’équipe.",
+        text10: "5.2.1. Les drafts se feront sur la plateforme Fearless Draft.",
+        text11:
+          "5.2.2. Tous les joueurs doivent se retrouver sur le Discord durant les parties du tournoi. Les entraîneurs peuvent s’y joindre seulement pendant les drafts.",
+        text12:
+          "5.2.3. Tout retard de 10 minutes occasionnera une partie perdue.",
+        text13:
+          "5.2.4. Les joueurs ne sont pas obligés de se placer en ordre de LCS (Top / Jungle / Mid / ADC / Support) avant la draft. ",
+        text14:
+          "5.2.5. Si un joueur ne prend pas les bonnes runes ou les bons “Summoner’s spell”, l’équipe n’a pas le droit de refaire la partie.",
+        text15:
+          "5.2.6. Si une équipe a besoin de prendre une pause pour cause majeure (bris d’équipement, problème de santé, déconnexion, etc), chaque équipe a le droit à 10 minutes de pause par partie.",
+        text16:
+          "5.3.1. À la fin de la partie, l’équipe gagnante doit mettre les informations ci-dessous dans le canal approprié : ",
+        text17:
+          "6.1. Chaque demande de E-Sub doit être vérifiée et approuvée par l’équipe d’administration avant que le joueur puisse jouer.\n\n 6.2. Lorsque l’équipe utilise un E-Sub, l’équipe perd les premiers bans de la draft.",
+        text18:
+          "7.1.1. La première journée du tournoi se déroule en rondes suisses:",
+        text19:
+          "7.1.2. Le score final de la ronde swiss décide la position dans le bracket stage de la journée 2.  ",
+        text20:
+          "7.2.1. Pointage\n\n 7.2.2. Pourcentage de win des adversaires\n\n 7.2.3. Nombre de victoire contre des équipes avec un score plus haut ou égale",
+        text21:
+          "7.3.1. Si 8 équipes participent, les 4 meilleures équipes de la ronde suisse iront au bracket des gagnants, tandis que les 4 autres équipes iront en bracket des perdants. \n\n 7.3.2. Le choix du côté sera déterminé par l’équipe ayant un meilleur classement durant la ronde suisse. \n\n 7.3.3. Le tournoi se fera en termes de BO1 sauf pour la finale qui sera un BO3. \n\n 7.3.4. Le modèle des séries éliminatoires sera adapté aux nombre de participants et sera dévoilé lors de la fermeture des inscriptions.",
+        text22:
+          "7.4.1. Aucun prix monétaire ne sera remis aux gagnants, le but principal étant d'accumuler des points de circuit. \n\n 7.4.2. Des prix de participation et de présence seront remis à différents moments lors du tournoi.",
+        text23:
+          "8.1.1. Vous devez utiliser le système de draft de la ligue par défaut.\n\n 8.1.2. Vous devez inviter et attendre l’équipe de diffusion pour chacune de vos parties.\n\n 8.1.3. Vous devez ajouter le production Twitch dans votre liste d'amis sur League of Legends.",
+        text24:
+          "Voici la liste des pénalités possible si un joueur/équipe ne respecte pas les règlements du tournoi : ",
+        text25:
+          "Une pénalité donnée à un joueur peut aller en appel. Un comité d'administrateurs sera alors formé pour se pencher sur la situation. La décision du comité sera alors finale.",
+      },
     },
     schedule: {
       week: "Semaine",
@@ -447,8 +567,7 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Esport Organizations",
     },
-    //Regulations Page
-    // Regulations Page
+    // Regulations Page - Ligue Section
     regulationsligue: {
       h1Title: "RULES\n SUMMONER’S RIFT LEAGUE\n 2026-Winter SEASON",
       h2Titles: {
@@ -624,8 +743,127 @@ export const translations = {
       },
       other: {
         form: "Form",
-        return: "Return"
-      }
+        return: "Return",
+      },
+    },
+    // Regulations Page - Circuit Section
+    regulationscircuit: {
+      h1Title: "RULES \nETERNAL E-SPORT CIRCUIT \nSEASON 2026",
+      h2Titles: {
+        title1: "1. Administrative team",
+        title2: "2. Circuit format",
+        title3: "3. Schedule",
+        title4: "4. Registration",
+        title5: "5. Match procedure",
+        title6: "6. Emergency substitute",
+        title7: "7. Tournament format",
+        title8: "8. Online broadcast",
+        title9: "9. Penalties",
+        title12: "Table of contents",
+      },
+      h3Titles: {
+        title1: "2.1. System",
+        title2: "2.2. After tournaments",
+        title3: "2.3. Valid competition",
+        title4: "4.1 Player eligibility",
+        title5: "4.2 Team eligibility",
+        title6: "5.1. Before the match",
+        title7: "5.2. During the match",
+        title8: "5.3. After the match",
+        title9: "7.1. Swiss rounds",
+        title10: "7.2. Tiebreakers",
+        title11: "7.3. Top 8 and Top 16",
+        title12: "7.4. Winner and participation prizes",
+        title13: "8.1. Internal broadcast",
+      },
+      h4Titles: {
+        title1:
+          "2.1.2.1. The value of the tournament/LAN \n 2.1.2.2. The player’s final ranking at the event",
+        title2:
+          "2.2.1.1. Proof of their participation in the tournament \n 2.2.1.2. Screenshots of their winning matches \n 2.2.1.3. Proof of their final ranking",
+        title3:
+          "2.3.1.1. 3 Eternal esport circuit tournaments: 1 pt / win x2 for Top 16 and x3 for Top 8 \n 2.3.1.2. LAN ETS: 0.5 pts / win and x2 for Top 8 \n 2.3.1.3. LAN CFPR: 0.5 pts / win and x2 for Top 8 \n 2.3.1.4. Parro info: 0.5 pts / win and x2 for Top 8 \n 2.3.1.5. Sushi Cup: 0.5 pts / win and x2 for Top 8",
+        title4:
+          "3.3.1. Match 1: 12:00\n 3.3.2. Match 2: 13:00\n 3.3.3. Match 3: 14:00\n 3.3.4. Match 4: 15:00\n 3.3.5. 30-minute break\n 3.3.6. Match 5: 16:30\n 3.3.7. Match 6: 17:30\n 3.3.8. Match 7: 18:30",
+        title5:
+          "3.4.1. Match 1 (BO1): 11:00\n 3.4.2. Match 2 (BO1): 12:00\n 3.4.3. 30-minute break\n 3.4.4. Match 3 (BO1): 13:30\n 3.4.5. Match 4 (BO1): 14:30\n 3.4.6. Match 5 (BO3): 15:30",
+        title6: "4.2.6.1. Fees are $25 per team.",
+        title7: "5.2.1.1. Draft link: https://drafter.lol/ ",
+        title8:
+          "5.2.2.1. Only players in the match are allowed in Discord during the game.",
+        title9:
+          "5.2.3.1. The team requesting a forfeit must take a screenshot including Discord, date, and time.",
+        title10:
+          "5.2.4.1. Role and lane changes are allowed during the draft (“Role swap” and “Lane swap”). Role Quests can therefore be assigned once the draft is completed.",
+        title11:
+          "5.2.5.1. Exception: If the jungler does not have “smite” or there is a “double smite”, the game may be remade as long as it has not exceeded 15 seconds.",
+        title12:
+          "5.2.5.2. The game must be remade if 2 players on the same team have the same role quest.",
+        title13:
+          "5.2.6.1. If a team reaches the 10-minute mark, they must either surrender or continue playing with one less player.",
+        title14:
+          "5.3.1.1. Image of drafts from drafter.lol \n 5.3.1.2. Image of played matches from the LoL client.",
+        title15: "6.2.1. Swiss rounds: 3 bans\n 6.2.2. Playoffs: 5 bans",
+        title16:
+          "Round 1: All teams start at 0-0. Matches are determined randomly.\n Round 2: Teams that won (1-0) face each other. Teams that lost (0-1) face each other.\n Following rounds: Continue in this manner. A team at 2-1 plays another team at 2-1.\n End: The number of rounds played equals the number of rounds needed for one team to be X-0, plus 1 round. This means:\n 4 teams: 3 rounds\n 5 to 8 teams: 4 rounds\n 9 to 16 teams: 5 rounds\n 17 to 32 teams: 6 rounds\n 33 to 64 teams: 7 rounds",
+        title17:
+          "7.4.2.1. 100% of registration fees will be redistributed as participation prizes.",
+        title18:
+          "9.1. Official warning\n 9.2. Ban loss\n 9.3. Disqualification from the current tournament\n 9.4. Temporary suspension from future tournaments\n 9.5. Temporary suspension from Eternal events\n 9.6. Temporary ban from Eternal\n 9.7. Lifetime ban from Eternal",
+      },
+      h5Titles: {
+        title1:
+          "5.2.5.1.1. If a game is remade, all players must have exactly the same runes and the same “Summoner spells”. ",
+      },
+      texts: {
+        text1:
+          "All rules have been established by the Eternal administration team. By registering, you agree that their enforcement is under the exclusive responsibility of administrators and moderators. \n\n The organization also reserves the right to make decisions regarding situations not covered by the rules in order to ensure fair play and competitive integrity.",
+        text2:
+          "2.1.1. Registered players accumulate points throughout the year by participating in various League of Legends events. \n\n 2.1.2. Each win in valid competitions grants points according to:",
+        text3:
+          "2.2.1. Players are responsible for posting in the appropriate Discord server:",
+        text4:
+          "2.3.1. Here are the valid competitions for the 2026 season and their weighting ",
+        text5:
+          "3.1. Registration opens: May 4, 2026\n\n 3.2. Registration closes: June 8, 2026\n\n 3.3. Single round robin (7 matches): June 13, 2026",
+        text6: "3.4. Tournament: June 14, 2026",
+        text7:
+          "4.1.1. Players must be at least 13 years old.\n\n 4.1.2. Players must have a Riot account on the NA server.\n\n 4.1.3. Players must be on the appropriate server for the league.\n\n 4.1.4. Players must declare all other accounts they have played on during the past year. Players must be present for the entire tournament.",
+        text8:
+          "4.2.1. Each team must have a captain/manager\n\n 4.2.2. Each team must have 5 players.\n\n 4.2.3. A player cannot be part of two different teams.\n\n 4.2.4. Any roster change must be made no later than 48 hours before the start of the tournament.\n\n 4.2.5. Administrators reserve the right to accept or refuse a team, even if the above criteria are met.\n\n 4.2.6. Tournament registration fees must be paid at the time of registration.",
+        text9:
+          "5.1.1. Side selection will be determined by a coin flip between team captains or managers.",
+        text10: "5.2.1. Drafts will take place on the Fearless Draft platform.",
+        text11:
+          "5.2.2. All players must be in Discord during tournament matches. Coaches may join only during drafts.",
+        text12: "5.2.3. Any delay of 10 minutes will result in a lost match.",
+        text13:
+          "5.2.4. Players are not required to line up in LCS order (Top / Jungle / Mid / ADC / Support) before the draft.",
+        text14:
+          "5.2.5. If a player does not take the correct runes or “Summoner’s spells”, the team is not allowed to remake the game.",
+        text15:
+          "5.2.6. If a team needs to pause due to a major issue (equipment failure, health issue, disconnection, etc.), each team is allowed a 10-minute pause per match.",
+        text16:
+          "5.3.1. At the end of the match, the winning team must submit the following information in the appropriate channel:",
+        text17:
+          "6.1. Each E-Sub request must be verified and approved by the administration team before the player can play.\n\n 6.2. When using an E-Sub, the team loses the first draft bans.",
+        text18:
+          "7.1.1. The first day of the tournament is played in Swiss rounds:",
+        text19:
+          "7.1.2. The final Swiss round score determines seeding in the Day 2 bracket stage.",
+        text20:
+          "7.2.1. Points\n\n 7.2.2. Opponents’ win percentage\n\n 7.2.3. Number of wins against teams with an equal or higher score",
+        text21:
+          "7.3.1. If 8 teams participate, the top 4 teams from Swiss advance to the winners bracket, while the remaining 4 teams go to the losers bracket. \n\n 7.3.2. Side selection is determined by the team with the better Swiss ranking. \n\n 7.3.3. The tournament is played in BO1 format except for the final, which is BO3. \n\n 7.3.4. The playoff format will be adapted based on the number of participants and will be revealed at the close of registration.",
+        text22:
+          "7.4.1. No monetary prizes will be awarded to winners, as the primary goal is to accumulate circuit points. \n\n 7.4.2. Participation and attendance prizes will be awarded at different times during the tournament.",
+        text23:
+          "8.1.1. You must use the league’s default draft system.\n\n 8.1.2. You must invite and wait for the broadcast team for each match.\n\n 8.1.3. You must add the production Twitch account to your League of Legends friends list.",
+        text24:
+          "Here is the list of possible penalties if a player/team does not follow tournament rules:",
+        text25:
+          "A penalty given to a player may be appealed. A committee of administrators will then be formed to review the situation. The committee’s decision will be final.",
+      },
     },
     schedule: {
       week: "Week",
