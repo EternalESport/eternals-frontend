@@ -121,7 +121,7 @@ export const translations = {
       orgs: "Organisations Esport",
     },
     // Regulations Page
-    regulations: {
+    regulationsligue: {
       h1Title: "RÈGLEMENT\n LIGUE SUMMONER’S RIFT\n SAISON 2026-Hiver",
       h2Titles: {
         title1: "1. Équipe administrative",
@@ -299,7 +299,8 @@ export const translations = {
           "\nUne pénalité donnée à un joueur peut aller en appel. Un comité d'administrateurs sera alors formé pour se pencher sur la situation. La décision du comité sera alors finale.",
       },
       other: {
-        form: "Formulaire"
+        form: "Formulaire",
+        return: "Retour"
       }
     },
     schedule: {
@@ -448,7 +449,7 @@ export const translations = {
     },
     //Regulations Page
     // Regulations Page
-    regulations: {
+    regulationsligue: {
       h1Title: "RULES\n SUMMONER’S RIFT LEAGUE\n 2026-Winter SEASON",
       h2Titles: {
         title1: "1. Administrative Team",
@@ -622,7 +623,8 @@ export const translations = {
           "\nA penalty given to a player may be appealed. A committee of administrators will then be formed to review the situation. The committee’s decision will be final.",
       },
       other: {
-        form: "Form"
+        form: "Form",
+        return: "Return"
       }
     },
     schedule: {

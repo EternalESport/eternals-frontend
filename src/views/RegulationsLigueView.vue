@@ -12,152 +12,159 @@ import OurPartners from '../components/OurPartners.vue';
         <OurPartners />
     </div>
     <main>
+        <div class="return">
+            <RouterLink :to="'/ligue'">
+                <button>
+                    {{ translations[store.language].regulationsligue.other.return }}
+                </button>
+            </RouterLink>
+        </div>
         <div>
-            <h2>{{ translations[store.language].components.blocks.regulations }}</h2>
+            <h2>{{ translations[store.language].components.blocks.regulationsligue }}</h2>
             <div class="table-of-content">
-                <h2  id="table">{{ translations[store.language].regulations.h2Titles.title12 }}</h2>
-                <a href="#admin">{{ translations[store.language].regulations.h2Titles.title1 }}</a>
-                <a href="#schedule">{{ translations[store.language].regulations.h2Titles.title2 }}</a>
-                <a href="#registration">{{ translations[store.language].regulations.h2Titles.title3 }}</a>
-                <a href="#match">{{ translations[store.language].regulations.h2Titles.title4 }}</a>
-                <a href="#substitue">{{ translations[store.language].regulations.h2Titles.title5 }}</a>
-                <a href="#regseason">{{ translations[store.language].regulations.h2Titles.title7 }}</a>
-                <a href="#endseason">{{ translations[store.language].regulations.h2Titles.title8 }}</a>
-                <a href="#broadcast">{{ translations[store.language].regulations.h2Titles.title10 }}</a>
-                <a href="#penalties">{{ translations[store.language].regulations.h2Titles.title11 }}</a>
+                <h2 id="table">{{ translations[store.language].regulationsligue.h2Titles.title12 }}</h2>
+                <a href="#admin">{{ translations[store.language].regulationsligue.h2Titles.title1 }}</a>
+                <a href="#schedule">{{ translations[store.language].regulationsligue.h2Titles.title2 }}</a>
+                <a href="#registration">{{ translations[store.language].regulationsligue.h2Titles.title3 }}</a>
+                <a href="#match">{{ translations[store.language].regulationsligue.h2Titles.title4 }}</a>
+                <a href="#substitue">{{ translations[store.language].regulationsligue.h2Titles.title5 }}</a>
+                <a href="#regseason">{{ translations[store.language].regulationsligue.h2Titles.title7 }}</a>
+                <a href="#endseason">{{ translations[store.language].regulationsligue.h2Titles.title8 }}</a>
+                <a href="#broadcast">{{ translations[store.language].regulationsligue.h2Titles.title10 }}</a>
+                <a href="#penalties">{{ translations[store.language].regulationsligue.h2Titles.title11 }}</a>
             </div>
             <div class="regulations">
-                <h2 id="admin">{{ translations[store.language].regulations.h2Titles.title1 }}</h2>
-                <p class="plain-text">{{ translations[store.language].regulations.texts.text1 }}</p>
+                <h2 id="admin">{{ translations[store.language].regulationsligue.h2Titles.title1 }}</h2>
+                <p class="plain-text">{{ translations[store.language].regulationsligue.texts.text1 }}</p>
 
-                <h2 id="schedule">{{ translations[store.language].regulations.h2Titles.title2 }}</h2>
-                <p>{{ translations[store.language].regulations.texts.text2 }}</p>
+                <h2 id="schedule">{{ translations[store.language].regulationsligue.h2Titles.title2 }}</h2>
+                <p>{{ translations[store.language].regulationsligue.texts.text2 }}</p>
 
-                <h2 id="registration">{{ translations[store.language].regulations.h2Titles.title3 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title1 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text3 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title1 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text3_1 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title2 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text4 }}</p>
+                <h2 id="registration">{{ translations[store.language].regulationsligue.h2Titles.title3 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title1 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text3 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title1 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text3_1 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title2 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text4 }}</p>
                 <a href="https://www.leagueofgraphs.com/fr/" target="_blank">League of graph</a>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title3 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text5 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title2 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text5_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title3 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text5_2 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title4 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title1 }}</h5>
-                <h4>{{ translations[store.language].regulations.h4Titles.title5 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title2 }}</h5>
-                <h4>{{ translations[store.language].regulations.h4Titles.title6 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title3 }}</h5>
-                <h4>{{ translations[store.language].regulations.h4Titles.title7 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text5_3 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title4 }}</h3>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScGvBhvQKA1V45-POGZZZMkGkIOEQ0aAzeUGFyHT-cZAjqwgw/viewform" target="_blank">{{ translations[store.language].regulations.other.form }}</a>
-                <p>{{ translations[store.language].regulations.texts.text6 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title5 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text7 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title8 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title4 }}</h5>
-                <p>{{ translations[store.language].regulations.texts.text7_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title9 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title5 }}</h5>
-                <p>{{ translations[store.language].regulations.texts.text7_2 }}</p>
-                
-                <h2 id="match">{{ translations[store.language].regulations.h2Titles.title4 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title6 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text8 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title10 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text8_1 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title7 }}</h3>
-                <a href="https://www.fearlessdraft.net/" target="_blank">Draft</a>
-                <p>{{ translations[store.language].regulations.texts.text9 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title11 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title12 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_2 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title13 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_3 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title14 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_4 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title15 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_5 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title16 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_6 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title17 }}</h4>
-                <h5>{{ translations[store.language].regulations.h5Titles.title6 }}</h5>
-                <h4>{{ translations[store.language].regulations.h4Titles.title18 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_7 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title19 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text9_8 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title8 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text10 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title20 }}</h4>
-                
-                <h2 id="substitue">{{ translations[store.language].regulations.h2Titles.title5 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title9 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text11 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title21 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text11_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title22 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text11_2 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title23 }}</h4>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title10 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text12 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title24 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text12_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title25 }}</h4>
-                
-                <h2 id="regseason">{{ translations[store.language].regulations.h2Titles.title7 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title14 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text17 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title28 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text17_1 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title15 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text18 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title29 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text18_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title30 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text18_2 }}</p>
-                
-                <h2 id="endseason">{{ translations[store.language].regulations.h2Titles.title8 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title17 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text20 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title32 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text20_1 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title18 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text21 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title33 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text21_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title34 }}</h4>
-                
-                <h2 id="broadcast">{{ translations[store.language].regulations.h2Titles.title10 }}</h2>
-                <h3>{{ translations[store.language].regulations.h3Titles.title21 }}</h3>
-                <p>{{ translations[store.language].regulations.texts.text24 }}</p>
-                
-                <h3>{{ translations[store.language].regulations.h3Titles.title22 }}</h3>
-                <p class="plain-text">{{ translations[store.language].regulations.texts.text25 }}</p>
-                <p>{{ translations[store.language].regulations.texts.text26 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title38 }}</h4>
-                <p>{{ translations[store.language].regulations.texts.text26_1 }}</p>
-                <h4>{{ translations[store.language].regulations.h4Titles.title39 }}</h4>
 
-                <h2 id="penalties">{{ translations[store.language].regulations.h2Titles.title11 }}</h2>
-                <p class="plain-text">{{ translations[store.language].regulations.texts.text27 }}</p>
-                <p>{{ translations[store.language].regulations.texts.text28 }}</p>
-                <p class="plain-text">{{ translations[store.language].regulations.texts.text29 }}</p>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title3 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text5 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title2 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text5_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title3 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text5_2 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title4 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title1 }}</h5>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title5 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title2 }}</h5>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title6 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title3 }}</h5>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title7 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text5_3 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title4 }}</h3>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScGvBhvQKA1V45-POGZZZMkGkIOEQ0aAzeUGFyHT-cZAjqwgw/viewform" target="_blank">{{ translations[store.language].regulationsligue.other.form }}</a>
+                <p>{{ translations[store.language].regulationsligue.texts.text6 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title5 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text7 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title8 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title4 }}</h5>
+                <p>{{ translations[store.language].regulationsligue.texts.text7_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title9 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title5 }}</h5>
+                <p>{{ translations[store.language].regulationsligue.texts.text7_2 }}</p>
+
+                <h2 id="match">{{ translations[store.language].regulationsligue.h2Titles.title4 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title6 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text8 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title10 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text8_1 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title7 }}</h3>
+                <a href="https://www.fearlessdraft.net/" target="_blank">Draft</a>
+                <p>{{ translations[store.language].regulationsligue.texts.text9 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title11 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title12 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_2 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title13 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_3 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title14 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_4 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title15 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_5 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title16 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_6 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title17 }}</h4>
+                <h5>{{ translations[store.language].regulationsligue.h5Titles.title6 }}</h5>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title18 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_7 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title19 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text9_8 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title8 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text10 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title20 }}</h4>
+
+                <h2 id="substitue">{{ translations[store.language].regulationsligue.h2Titles.title5 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title9 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text11 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title21 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text11_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title22 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text11_2 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title23 }}</h4>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title10 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text12 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title24 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text12_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title25 }}</h4>
+
+                <h2 id="regseason">{{ translations[store.language].regulationsligue.h2Titles.title7 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title14 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text17 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title28 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text17_1 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title15 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text18 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title29 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text18_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title30 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text18_2 }}</p>
+
+                <h2 id="endseason">{{ translations[store.language].regulationsligue.h2Titles.title8 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title17 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text20 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title32 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text20_1 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title18 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text21 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title33 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text21_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title34 }}</h4>
+
+                <h2 id="broadcast">{{ translations[store.language].regulationsligue.h2Titles.title10 }}</h2>
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title21 }}</h3>
+                <p>{{ translations[store.language].regulationsligue.texts.text24 }}</p>
+
+                <h3>{{ translations[store.language].regulationsligue.h3Titles.title22 }}</h3>
+                <p class="plain-text">{{ translations[store.language].regulationsligue.texts.text25 }}</p>
+                <p>{{ translations[store.language].regulationsligue.texts.text26 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title38 }}</h4>
+                <p>{{ translations[store.language].regulationsligue.texts.text26_1 }}</p>
+                <h4>{{ translations[store.language].regulationsligue.h4Titles.title39 }}</h4>
+
+                <h2 id="penalties">{{ translations[store.language].regulationsligue.h2Titles.title11 }}</h2>
+                <p class="plain-text">{{ translations[store.language].regulationsligue.texts.text27 }}</p>
+                <p>{{ translations[store.language].regulationsligue.texts.text28 }}</p>
+                <p class="plain-text">{{ translations[store.language].regulationsligue.texts.text29 }}</p>
             </div>
         </div>
         <a href="#table">
@@ -231,6 +238,31 @@ h5 {
 .regulations p {
     margin: 20px 400px;
     text-align: justify;
+}
+
+.return {
+    position: sticky;
+    top: 80px;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+}
+
+.return button {
+    cursor: pointer;
+    color: var(--nav-color);
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 24px;
+    margin-top: 10px;
+    /* Pour ajuster le décalage */
+}
+
+.return button:hover {
+    background-color: var(--nav-color);
+    color: white;
+    border-color: var(--nav-color);
 }
 
 @media (max-width: 1400px) {
