@@ -19,7 +19,7 @@ import { store } from '@/store.js'
     </div>
     <div class="content" style="background-color: #111;">
       <h2>{{ translations[store.language].navigation.home }}</h2>
-      <!-- <BlocksHome /> -->
+      <BlocksHome />
     </div>
     <Youtube/>
   </main>

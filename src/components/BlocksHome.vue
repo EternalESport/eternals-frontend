@@ -8,15 +8,15 @@ import { translations } from '@/i18n/translations'
 <template>
   <div class="blocks-container">
     <!-- Les boutons de la page home vers les autres pages -->
-    <!-- <RouterLink :to="'/ligue'" class="block large">
-      <img src="../assets/btns/Règle.png" />
+    <RouterLink :to="'/ligue'" class="block large">
+      <img src="../assets/btns/BtnHomeLigue.png" />
       <h3 style="font-size: 41px;">LIGUE</h3>
     </RouterLink>
     <RouterLink :to="'/circuit'" class="block large">
-      <img src="../assets/btns/Reglements1.png" />
+      <img src="../assets/btns/BtnHomeCircuit.png" />
       <h3 style="font-size: 41px;">CIRCUIT</h3>
     </RouterLink>
-    <RouterLink :to="'/riftbound'" class="block large">
+    <!-- <RouterLink :to="'/riftbound'" class="block large">
       <img src="../assets/btns/Reglements2.png" />
       <h3 style="font-size: 41px;">RIFTBOUND</h3>
     </RouterLink> -->
@@ -32,9 +32,23 @@ import { translations } from '@/i18n/translations'
   display: none;
 }
 
-.blocks-container {
+/* For when there are 3 buttons (ligue/circuit/riftbound) */
+/* .blocks-container {
   font-family: 'NewOrderBold';
   width: 1300px;
+  margin: auto;
+  text-align: center;
+  height: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 50px;
+  justify-content: center;
+} */
+
+/* For when there are 2 buttons (ligue/circuit) */
+.blocks-container {
+  font-family: 'NewOrderBold';
+  width: 850px;
   margin: auto;
   text-align: center;
   height: 400px;
