@@ -21,17 +21,42 @@ function cleanTitle(title) {
 }
 
 onMounted(async () => {
+  // search? utilise 100 unités de quota au niveau de l'API youtube (donc bust en 100 chargements) 
   // Fetch the uploads playlist ID
-  const channelRes = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${config.youtubeChannelId}&maxResults=6&order=date&type=video&key=${config.youtubeKey}`
-  )
-  const channelData = await channelRes.json()
+  // const channelRes = await fetch(
+  //   `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${config.youtubeChannelId}&maxResults=6&order=date&type=video&key=${config.youtubeKey}`
+  // )
+  // const channelData = await channelRes.json()
 
-  console.log(channelData)
+  // console.log(channelData)
 
-  // Fetch the most recent videos from the uploads
-  if (channelData) {
-    videos.value = channelData.items || []
+  // // Fetch the most recent videos from the uploads
+  // if (channelData) {
+  //   videos.value = channelData.items || []
+  // }
+
+
+
+  // playlistItems? utilise 1 unité de quota au niveau de l'API youtube (donc bust après 10 000 chargements)
+  // Fetch the uploads playlist ID
+  try {
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${config.youtubeUploadsPlaylistId}&maxResults=6&key=${config.youtubeKey}`
+    )
+
+    const data = await res.json()
+
+    console.log(data)
+
+    if (data.error) {
+      console.error(data.error.message)
+      return
+    }
+
+    videos.value = data.items || []
+  }
+  catch (error) {
+    console.error(error)
   }
 })
 </script>
@@ -40,9 +65,17 @@ onMounted(async () => {
   <div class="youtube-videos">
     <h2>{{ translations[store.language].components.youtube.title }}</h2>
     <div class="videos-list">
-      <a v-for="video in videos" :key="video.id.videoId" :href="`https://www.youtube.com/watch?v=${video.id.videoId}`" class="video" target="_blank" rel="noopener">
+
+      <!-- <a v-for="video in videos" :key="video.id.videoId" :href="`https://www.youtube.com/watch?v=${video.id.videoId}`" class="video" target="_blank" rel="noopener">
         <img :src="video.snippet.thumbnails.high.url" :alt="cleanTitle(video.snippet.title)" />
         <div class="title">{{ cleanTitle(video.snippet.title) }}</div>
+      </a> -->
+
+
+      <!-- Devrait utiliser beaucoup moins de "crédits" au niveau de l'API -->
+      <a v-for="video in videos" :key="video.snippet?.resourceId.videoId" :href="`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`" class="video" target="_blank" rel="noopener">
+        <img :src="video.snippet?.thumbnails.high.url" :alt="cleanTitle(video.snippet?.title)" />
+        <div class="title">{{ cleanTitle(video.snippet?.title) }}</div>
       </a>
     </div>
     <div class="yt-link">
