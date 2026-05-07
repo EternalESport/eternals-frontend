@@ -7,7 +7,7 @@ import { translations } from '@/i18n/translations'
 const videos = ref([])
 
 // Helper to clean up HTML entities and URL encoding in titles
-function cleanTitle(title) {
+function cleanTitle(title = '') {
   // Remove URL encoding
   let decoded = decodeURIComponent(title)
   // Replace common HTML entities (including &#39;)
@@ -73,8 +73,8 @@ onMounted(async () => {
 
 
       <!-- Devrait utiliser beaucoup moins de "crédits" au niveau de l'API -->
-      <a v-for="video in videos" :key="video.snippet?.resourceId.videoId" :href="`https://www.youtube.com/watch?v=${video.snippet.resourceId.videoId}`" class="video" target="_blank" rel="noopener">
-        <img :src="video.snippet?.thumbnails.high.url" :alt="cleanTitle(video.snippet?.title)" />
+      <a v-for="video in videos" :key="video.snippet?.resourceId?.videoId" :href="`https://www.youtube.com/watch?v=${video.snippet?.resourceId?.videoId}`" class="video" target="_blank" rel="noopener">
+        <img :src="video.snippet?.thumbnails?.high?.url" :alt="cleanTitle(video.snippet?.title)" />
         <div class="title">{{ cleanTitle(video.snippet?.title) }}</div>
       </a>
     </div>
