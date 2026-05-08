@@ -72,7 +72,7 @@ onMounted(async () => {
       </a> -->
 
 
-      <!-- Devrait utiliser beaucoup moins de "crédits" au niveau de l'API -->
+      <!-- Utilise beaucoup moins de "crédits" au niveau de l'API -->
       <a v-for="video in videos" :key="video.snippet?.resourceId?.videoId" :href="`https://www.youtube.com/watch?v=${video.snippet?.resourceId?.videoId}`" class="video" target="_blank" rel="noopener">
         <img :src="video.snippet?.thumbnails?.high?.url" :alt="cleanTitle(video.snippet?.title)" />
         <div class="title">{{ cleanTitle(video.snippet?.title) }}</div>
