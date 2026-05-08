@@ -19,7 +19,7 @@ import Dash from './Dash.vue';
           <transition name="logo-dropdown">
             <!-- Empêche les clics dans le menu de le fermer -->
             <div v-show="logoMenuOpen" class="logo-dropdown" @click.stop>
-               <!-- Chaque lien ferme le menu après navigation -->
+              <!-- Chaque lien ferme le menu après navigation -->
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
@@ -37,6 +37,8 @@ import Dash from './Dash.vue';
         </li>
         <li class="socials"><a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a></li>
         <li class="socials"><a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a></li>
+        <li class="socials"><a :href="config.tiktok" target="_blank"><font-awesome-icon :icon="['fab', 'tiktok']" /></a></li>
+        <li class="socials"><a :href="config.instagram" target="_blank"><font-awesome-icon :icon="['fab', 'instagram']" /></a></li>
         <li class="socials"><a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a></li>
         <li class="socials"><a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a></li>
         <li class="socials"><a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']" /></a></li>
@@ -89,6 +91,8 @@ import Dash from './Dash.vue';
           <div class="socials-container">
             <a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a>
             <a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+            <a :href="config.tiktok" target="_blank"><font-awesome-icon :icon="['fab', 'tiktok']" /></a>
+            <a :href="config.instagram" target="_blank"><font-awesome-icon :icon="['fab', 'instagram']" /></a>
             <a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
             <a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a>
             <a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']" /></a>

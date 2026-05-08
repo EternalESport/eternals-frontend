@@ -19,11 +19,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
 import { faChalkboardUser, faUserTie, faBars } from "@fortawesome/free-solid-svg-icons";
-import { faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook, faInstagram,
+faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 
 /* add icons to the library */
-library.add(faChalkboardUser, faUserTie, faBars, faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook)
+library.add(faChalkboardUser, faUserTie, faBars, faXTwitter, faDiscord, faYoutube, faTwitch, faFacebook,faInstagram,
+faTiktok)
 
 // Initialiser la langue avant de créer l'app
 initializeLanguage()
