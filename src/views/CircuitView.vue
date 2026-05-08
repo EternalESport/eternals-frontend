@@ -17,7 +17,7 @@ import BlocksCircuit from '../components/BlocksCircuit.vue';
         <div>
             <p class="titre-page">Circuit Eternal 2026</p>
         </div>
-        <BlocksCircuit></BlocksCircuit>
+        <BlocksCircuit/>
     </main>
     <Youtube/>
 </template>

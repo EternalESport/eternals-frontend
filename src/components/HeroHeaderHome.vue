@@ -6,15 +6,14 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="greetings">
-    <!-- <video
+    <video
       class="bg-video"
-      src="../assets/mylivewallpapers.com-Dark-Star-ChoGath-LOL.mp4"
+      src="../assets/AnimatedBackgroundHomePage.mp4"
       autoplay
       muted
       loop
       playsinline
-    ></video> -->
-    <img class="bg-image" src="../assets/backgroundHomePage.jpg" alt="Background HomePage">
+    ></video>
     <div class="title">
       <Logo />
     </div>
@@ -48,7 +47,7 @@ import { translations } from '@/i18n/translations'
   filter: brightness(0.6);
 }
 
-.bg-image {
+/* .bg-image {
   position: fixed;
   top: 0;
   left: 0;
@@ -57,9 +56,8 @@ import { translations } from '@/i18n/translations'
   object-fit: cover;
   z-index: -1;
   pointer-events: none;
-  /* Optional: add a dark overlay for readability */
   filter: brightness(0.6);
-}
+} */
 
 .title {
   display: block;
@@ -113,7 +111,7 @@ a {
     padding-bottom: 200px;
     background-position-y: -100px;
     background-size: 1500px;
-    background-image: url('./../assets/img/wallpaper.png');
+    background-image: url('./../assets/backgroundHomePage.jpg');
     background-attachment: fixed;
     background-position: top;
   }
