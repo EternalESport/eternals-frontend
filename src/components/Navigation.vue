@@ -1,12 +1,13 @@
 <script setup>
 import config from '@/config.json'
 import { store, setLanguage } from '../store.js'
+import { loginWithDiscord, logoutWithDiscord } from '../login.js'
 import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
 
-
 </script>
+
 
 <template>
   <header>
@@ -58,6 +59,17 @@ import Dash from './Dash.vue';
             <Dash />
           </div>
         </li>
+        <li v-if="!store.user || !store.user.discordAvatarUrl">
+          <button @click="loginWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Connexion' : 'Login' }}</button>
+        </li>
+        <li v-else>
+          <div class="profile-desktop">
+            <RouterLink to="/profil" class="profile-button">
+              <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
+            </RouterLink>
+            <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
+          </div>
+        </li>
         <li class="language-toggle">
           <button @click="setLanguage(store.language === 'fr' ? 'en' : 'fr')" class="lang-btn">
             {{ store.language === 'fr' ? 'EN' : 'FR' }}
@@ -79,6 +91,21 @@ import Dash from './Dash.vue';
               {{ store.language === 'fr' ? 'EN' : 'FR' }}
             </button>
           </li>
+
+          <li v-if="!store.user || !store.user.discordAvatarUrl">
+            <div class="profile-mobile">
+              <button @click="loginWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Connexion' : 'Login' }}</button>
+            </div>
+          </li>
+          <li v-else>
+            <div class="profile-mobile">
+              <RouterLink to="/profil" class="profile-button">
+                <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
+              </RouterLink>
+              <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
+            </div>
+          </li>
+
           <li>
             <RouterLink @click="toggleMobileNav" :to="'/mission'" class="link">{{ translations[store.language].navigation.mission }}</RouterLink>
           </li>
@@ -186,32 +213,66 @@ header {
   padding-left: 40px;
 }
 
+.profile-desktop {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-desktop button {
+  font-size: 10px;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  transition: 0.3s ease all;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.08);
+  border-color: var(--nav-color);
+}
+
+.profile-mobile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 0;
+}
+
+.profile-mobile .profile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-mobile .profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--nav-color);
+}
+
+.profile-mobile .lang-btn {
+  font-size: 14px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 1000px) {
   .branding {
     padding-left: 20px;
   }
-}
-
-.login {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 15px;
-  right: 50px;
-  padding: 8px 15px;
-  border-radius: 25px;
-  font-size: 18px;
-  background-color: rgba(0, 57, 210, 1);
-}
-
-.login svg {
-  margin-left: 10px;
-}
-
-.login:hover {
-  color: black;
-  transition: 0.5s;
-  background-color: white;
 }
 
 .logo-menu {
@@ -464,14 +525,14 @@ nav .dropdown-nav li .language-toggle-mobile .lang-btn:hover {
 }
 
 nav .dropdown-nav .socials-container {
-  position: absolute;
-  top: 280px;
+  /* position: absolute;
+  top: 280px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   /* Add spacing between logos */
   text-align: center;
-  padding: 10px 0;
+  padding: 20px 0;
   gap: 10px;
 }
 

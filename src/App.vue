@@ -5,8 +5,8 @@ import CookieBanner from './components/CookieBanner.vue'
 import config from './config.json'
 import axios from 'axios'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import { store } from './store.js'
-import { computed } from 'vue'
+import { store, initializeLanguage, refreshAuth } from './store.js'
+import { computed, onMounted } from 'vue'
 
 //import standingsacad from '../src/data/standingsacad.json'
 //import standingschampions from '../src/data/standingschampions.json'
@@ -15,12 +15,19 @@ import { computed } from 'vue'
 
 const route = useRoute() //Pour pouvoir vérifier la route actuelle
 
+// Pour garder aller rechercher le user discord lors d'un refresh de page
+onMounted(async () => {
+  initializeLanguage()
+  await refreshAuth()
+})
+
 //Pour le changement de couleur entre les sections du site
 const navColor = computed(() => {
   if (route.path === '/' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
   return 'var(--main-color)'
 })
+
 
 // export default {
 //   name: 'App',
@@ -95,7 +102,8 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </script>
 
 <template>
-  <div :style="{ '--nav-color': navColor }"> //Pour avoir accès à cette variable au travers tout le site
+  <!-- Pour avoir accès à cette variable au travers tout le site -->
+  <div :style="{ '--nav-color': navColor }">
     <CookieBanner />
     <Navigation />
     <RouterView />

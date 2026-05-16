@@ -120,6 +120,11 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Organisations Esport",
     },
+    // Profil
+    profile: {
+      notLoggedIn: "Vous n'êtes pas connecté.",
+      returnHome: "Retourner à l'accueil."
+    },
     // Regulations Page - Ligue Section
     regulationsligue: {
       h1Title: "RÈGLEMENT\n LIGUE SUMMONER’S RIFT\n SAISON 2026-Hiver",
@@ -566,6 +571,11 @@ export const translations = {
       },
       heroHeader: "Eternal E-Sport",
       orgs: "Esport Organizations",
+    },
+    // Profil
+    profile: {
+      notLoggedIn: "You are not logged in..",
+      returnHome: "Return to Homepage."
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
