@@ -64,7 +64,7 @@ import Dash from './Dash.vue';
         </li>
         <li v-else>
           <div class="profile-desktop">
-            <RouterLink to="/profil" class="profile-button">
+            <RouterLink to="/profile" class="profile-button">
               <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
             </RouterLink>
             <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
@@ -99,7 +99,7 @@ import Dash from './Dash.vue';
           </li>
           <li v-else>
             <div class="profile-mobile">
-              <RouterLink to="/profil" class="profile-button">
+              <RouterLink to="/profile" class="profile-button">
                 <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
               </RouterLink>
               <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
@@ -215,17 +215,17 @@ header {
 
 .profile-desktop {
   display: flex;
-  gap: 10px;
-}
-
-.profile-desktop button {
-  font-size: 10px;
+  align-items: center;
+  gap: 12px;
 }
 
 .profile-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
 }
 
 .profile-avatar {
@@ -244,7 +244,9 @@ header {
 
 .profile-mobile {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   padding-left: 0;
 }
@@ -260,7 +262,7 @@ header {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--nav-color);
+  border: 2px solid white;
 }
 
 .profile-mobile .lang-btn {
@@ -268,6 +270,7 @@ header {
   padding: 6px 10px;
   white-space: nowrap;
 }
+
 
 @media screen and (max-width: 1000px) {
   .branding {
@@ -442,6 +445,56 @@ nav .lang-btn:hover {
   border-color: var(--nav-color);
 }
 
+@media screen and (max-width: 1720px) {
+
+  nav {
+    font-size: 16px;
+  }
+
+  nav li {
+    padding-left: 1.8rem;
+  }
+
+  nav .categories a {
+    font-size: 1.45em;
+  }
+
+  nav .socials {
+    padding-left: 1.2rem;
+  }
+
+  nav .socials a {
+    font-size: 24px;
+  }
+
+  .branding {
+    padding-left: 20px;
+  }
+
+  .logo-button :deep(svg),
+  .logo-button :deep(img) {
+    width: 100px;
+  }
+
+  .profile-desktop {
+    gap: 8px;
+  }
+
+  .profile-avatar {
+    width: 38px;
+    height: 38px;
+  }
+
+  nav .lang-btn {
+    font-size: 13px;
+    padding: 4px 9px;
+  }
+
+  .dash {
+    width: 30px;
+  }
+}
+
 @media (min-width: 1400px) {
   nav {
     width: 100%;
@@ -485,7 +538,8 @@ nav .dropdown-nav {
 nav .dropdown-nav li {
   margin-left: 0;
   padding-top: 40px;
-  text-align: left;
+  text-align: center;
+  padding-right: 3rem;
 }
 
 nav .dropdown-nav li .link {

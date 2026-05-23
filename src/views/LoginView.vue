@@ -11,8 +11,6 @@ console.log(fragment);
 if (accessToken) {
   store.accessToken = accessToken;
 
-  //Send to backend and auth there
-  //https://discord.com/developers/docs/topics/oauth2
   const { data } = await axios.post('https://discord.com/api/v10/oauth2/token', {
     'grant_type': 'authorization_code',
     'code': accessToken,

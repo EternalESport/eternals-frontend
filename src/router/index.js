@@ -97,9 +97,9 @@ const router = createRouter({
       component: () => import("../views/NotFoundView.vue"),
     },
     {
-      path: "/profil",
-      name: "Profil",
-      component: () => import("@/views/Profil.vue"),
+      path: "/profile",
+      name: "Profile",
+      component: () => import("@/views/Profile.vue"),
     },
     {
       path: "/auth/callback",

@@ -43,7 +43,7 @@ onMounted(async () => {
 
         window.history.replaceState(null, '', '/auth/callback')
 
-        router.push('/profil')
+        router.push('/profile')
     }
     catch (err) {
         console.error('Auth callback error:', err)
