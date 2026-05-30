@@ -5,8 +5,8 @@ import CookieBanner from './components/CookieBanner.vue'
 import config from './config.json'
 import axios from 'axios'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-import { store } from './store.js'
-import { computed } from 'vue'
+import { store, initializeLanguage, refreshAuth } from './store.js'
+import { computed, onMounted } from 'vue'
 
 //import standingsacad from '../src/data/standingsacad.json'
 //import standingschampions from '../src/data/standingschampions.json'
@@ -15,12 +15,19 @@ import { computed } from 'vue'
 
 const route = useRoute() //Pour pouvoir vérifier la route actuelle
 
+// Pour garder aller rechercher le user discord lors d'un refresh de page
+onMounted(async () => {
+  initializeLanguage()
+  await refreshAuth()
+})
+
 //Pour le changement de couleur entre les sections du site
 const navColor = computed(() => {
   if (route.path === '/' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
   return 'var(--main-color)'
 })
+
 
 // export default {
 //   name: 'App',
@@ -95,7 +102,14 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </script>
 
 <template>
-  <div :style="{ '--nav-color': navColor }"> //Pour avoir accès à cette variable au travers tout le site
+  <div v-if="store.isRedirecting" class="redirect-overlay">
+    <div class="redirect-box">
+      <div class="spinner"></div>
+      <p>{{ store.redirectMessage }}</p>
+    </div>
+  </div>
+  <!-- Pour avoir accès à cette variable au travers tout le site -->
+  <div :style="{ '--nav-color': navColor }">
     <CookieBanner />
     <Navigation />
     <RouterView />
@@ -107,5 +121,37 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 body {
   margin: 0;
   overflow-x: hidden;
+}
+
+.redirect-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.redirect-box {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.spinner {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 20px;
+  border: 5px solid rgba(255, 255, 255, 0.25);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
