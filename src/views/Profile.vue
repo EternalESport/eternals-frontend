@@ -7,6 +7,8 @@ import { updateUserProfile, getRiotAccounts, loginWithRiot } from '../login.js'
 const isSaving = ref(false)
 const successMessage = ref('')
 const errorMessage = ref('')
+const isRedirectingToRiot = ref(false)
+const redirectMessage = ref('')
 
 const form = reactive({
   firstName: store.user?.firstName || '',
@@ -128,6 +130,33 @@ watch(
         <p v-if="store.user.email">{{ translations[store.language].profile.emailAl }} {{ store.user.email }}</p>
       </div>
 
+      <div class="update-infos">
+        <h2>{{ translations[store.language].profile.updateInfos }}</h2>
+        <form class="profile-form" @submit.prevent="saveProfile">
+          <div class="form-group">
+            <label>{{ translations[store.language].profile.firstName }}</label>
+            <input v-model="form.firstName" type="text" maxlength="120" :placeholder="translations[store.language].profile.firstName">
+          </div>
+          <div class="form-group">
+            <label>{{ translations[store.language].profile.lastName }}</label>
+            <input v-model="form.lastName" type="text" maxlength="120" :placeholder="translations[store.language].profile.lastName">
+          </div>
+          <div class="form-group">
+            <label>{{ translations[store.language].profile.email }}</label>
+            <input v-model="form.email" type="email" :placeholder="translations[store.language].profile.email">
+          </div>
+          <p v-if="successMessage" class="success-message">
+            {{ successMessage }}
+          </p>
+          <p v-if="errorMessage" class="error-message">
+            {{ errorMessage }}
+          </p>
+          <button class="save-button" type="submit" :disabled="isSaving">
+            {{ isSaving ? translations[store.language].profile.saving : translations[store.language].profile.save }}
+          </button>
+        </form>
+      </div>
+
       <div class="riot-section">
         <h2>{{ translations[store.language].profile.riotAccounts }}</h2>
 
@@ -158,32 +187,6 @@ watch(
         </div>
       </div>
 
-      <div class="update-infos">
-        <h2>{{ translations[store.language].profile.updateInfos }}</h2>
-        <form class="profile-form" @submit.prevent="saveProfile">
-          <div class="form-group">
-            <label>{{ translations[store.language].profile.firstName }}</label>
-            <input v-model="form.firstName" type="text" maxlength="120" :placeholder="translations[store.language].profile.firstName">
-          </div>
-          <div class="form-group">
-            <label>{{ translations[store.language].profile.lastName }}</label>
-            <input v-model="form.lastName" type="text" maxlength="120" :placeholder="translations[store.language].profile.lastName">
-          </div>
-          <div class="form-group">
-            <label>{{ translations[store.language].profile.email }}</label>
-            <input v-model="form.email" type="email" :placeholder="translations[store.language].profile.email">
-          </div>
-          <p v-if="successMessage" class="success-message">
-            {{ successMessage }}
-          </p>
-          <p v-if="errorMessage" class="error-message">
-            {{ errorMessage }}
-          </p>
-          <button class="save-button" type="submit" :disabled="isSaving">
-            {{ isSaving ? translations[store.language].profile.saving : translations[store.language].profile.save }}
-          </button>
-        </form>
-      </div>
     </div>
 
     <div class="head-profile" v-else>

@@ -1,36 +1,48 @@
 <script setup>
-
+import { onMounted } from 'vue'
 import { store } from '../store.js'
-import axios from 'axios'
 import router from '../router/index.js'
 
-const fragment = new URL(location.href).searchParams.get('code');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-console.log(fragment);
+onMounted(async () => {
+  const hashParams = new URLSearchParams(window.location.hash.substring(1))
+  const authCode = hashParams.get('authCode')
 
-if (accessToken) {
-  store.accessToken = accessToken;
-
-  const { data } = await axios.post('https://discord.com/api/v10/oauth2/token', {
-    'grant_type': 'authorization_code',
-    'code': accessToken,
-    'redirect_uri': 'http://localhost:5173'
-  }, {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    auth: {
-      username: '1239760825443684444',
-      password: 'WU-1diTg8So5suucEimDI4vLY7fJX7e5'
-    }
+  if (!authCode) {
+    console.error('Missing authCode')
+    return
   }
-  )
 
-  console.log(res);
-}
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/auth/exchange-code`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        code: authCode,
+      }),
+    })
 
-//router.push({ path: '/'})
+    if (!response.ok) {
+      throw new Error('Failed to exchange auth code')
+    }
 
+    const data = await response.json()
+
+    store.accessToken = data.accessToken
+    store.user = data.user
+
+    window.history.replaceState({}, '', window.location.pathname)
+
+    router.push('/profile')
+  }
+  catch (error) {
+    console.error('Discord callback error:', error)
+  }
+})
 </script>
 
 <template>
