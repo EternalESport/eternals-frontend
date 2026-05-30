@@ -10,6 +10,7 @@ const errorMessage = ref('')
 const isRedirectingToRiot = ref(false)
 const redirectMessage = ref('')
 
+
 const form = reactive({
   firstName: store.user?.firstName || '',
   lastName: store.user?.lastName || '',
@@ -49,11 +50,22 @@ const riotAccounts = ref([])
 const isLoadingRiotAccounts = ref(false)
 const riotLoadError = ref('')
 
-const loadRiotAccounts = async () => {
+const showRiotError = (message) => {
+  riotLoadError.value = message
+
+  setTimeout(() => {
+    riotLoadError.value = ''
+  }, 10000)
+}
+
+const loadRiotAccounts = async (clearError = true) => {
   if (!store.accessToken) return
 
   isLoadingRiotAccounts.value = true
-  riotLoadError.value = ''
+
+  if (clearError) {
+    riotLoadError.value = ''
+  }
 
   try {
     riotAccounts.value = await getRiotAccounts(store.accessToken)
@@ -77,9 +89,16 @@ const handleRiotCallbackResult = async () => {
   }
 
   if (riotLink === 'error') {
-    riotLoadError.value = reason
-      ? `${translations[store.language].profile.riotDidntLink} : ${reason}`
-      : translations[store.language].profile.riotDidntLink
+    if (reason === 'provider_failed') {
+      showRiotError(translations[store.language].profile.riotMissingGameNameTag)
+    }
+    else if (reason === 'already_linked') {
+      showRiotError(translations[store.language].profile.riotAlreadyLinked)
+    }
+    else {
+      showRiotError(reason ? `${translations[store.language].profile.riotDidntLink} : ${reason}` : translations[store.language].profile.riotDidntLink)
+    }
+    console.log('Riot link error reason:', reason)
   }
 
   if (riotLink) {
@@ -112,7 +131,7 @@ watch(
   async (accessToken) => {
     if (!accessToken) return
 
-    await loadRiotAccounts()
+    await loadRiotAccounts(false)
   },
   { immediate: true }
 )
@@ -121,6 +140,9 @@ watch(
 <template>
   <div class="content">
     <div class="head-profile" v-if="store.user">
+      <p v-if="riotLoadError" class="error-message">
+        {{ riotLoadError }}
+      </p>
       <h1>{{ translations[store.language].profile.myProfile }}</h1>
       <img class="img-profile" v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername">
       <h2 class="username">{{ store.user.discordUsername || 'Utilisateur Discord' }}</h2>
@@ -135,15 +157,15 @@ watch(
         <form class="profile-form" @submit.prevent="saveProfile">
           <div class="form-group">
             <label>{{ translations[store.language].profile.firstName }}</label>
-            <input v-model="form.firstName" type="text" maxlength="120" :placeholder="translations[store.language].profile.firstName">
+            <input name="firstName" v-model="form.firstName" type="text" maxlength="120" :placeholder="translations[store.language].profile.firstName">
           </div>
           <div class="form-group">
             <label>{{ translations[store.language].profile.lastName }}</label>
-            <input v-model="form.lastName" type="text" maxlength="120" :placeholder="translations[store.language].profile.lastName">
+            <input name="lastName" v-model="form.lastName" type="text" maxlength="120" :placeholder="translations[store.language].profile.lastName">
           </div>
           <div class="form-group">
             <label>{{ translations[store.language].profile.email }}</label>
-            <input v-model="form.email" type="email" :placeholder="translations[store.language].profile.email">
+            <input name="email" v-model="form.email" type="email" :placeholder="translations[store.language].profile.email">
           </div>
           <p v-if="successMessage" class="success-message">
             {{ successMessage }}
@@ -164,11 +186,7 @@ watch(
           {{ translations[store.language].profile.riotAccountsLoading }}
         </p>
 
-        <p v-else-if="riotLoadError" class="error-message">
-          {{ riotLoadError }}
-        </p>
-
-        <div v-else-if="riotAccounts.length" class="riot-list">
+        <div v-if="riotAccounts.length" class="riot-list">
           <div v-for="account in riotAccounts" :key="account.id || account.riotPuuid" class="riot-card" :class="{ 'main-account': account.isMain, 'smurf-account': !account.isMain }">
             <p>{{ account.gameName }}#{{ account.tagLine }}</p>
             <span v-if="account.isMain">{{ translations[store.language].profile.riotAccountMain }}</span>
@@ -176,7 +194,7 @@ watch(
           </div>
         </div>
 
-        <p v-else class="empty-riot">
+        <p v-if="!riotAccounts.length && !isLoadingRiotAccounts" class="empty-riot">
           {{ translations[store.language].profile.riotNone }}
         </p>
 
@@ -406,5 +424,15 @@ h1 {
 
 .riot-card.smurf-account span {
   color: #b8b8b8;
+}
+
+.error-message {
+  color: #ff7b7b;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 </style>

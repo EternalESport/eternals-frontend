@@ -45,6 +45,7 @@ export const refreshAuth = async () => {
 export const store = reactive({
   videos: [],
   language: "fr",
+  isRedirecting: false,
 
   //Auth Discord
   accessToken: null,

@@ -102,6 +102,12 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 </script>
 
 <template>
+  <div v-if="store.isRedirecting" class="redirect-overlay">
+    <div class="redirect-box">
+      <div class="spinner"></div>
+      <p>{{ store.redirectMessage }}</p>
+    </div>
+  </div>
   <!-- Pour avoir accès à cette variable au travers tout le site -->
   <div :style="{ '--nav-color': navColor }">
     <CookieBanner />
@@ -115,5 +121,37 @@ axios.get('https://qclservices.azurewebsites.net/tournament/get/7205060').then(r
 body {
   margin: 0;
   overflow-x: hidden;
+}
+
+.redirect-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.redirect-box {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.spinner {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 20px;
+  border: 5px solid rgba(255, 255, 255, 0.25);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
