@@ -23,7 +23,7 @@ onMounted(async () => {
 
 //Pour le changement de couleur entre les sections du site
 const navColor = computed(() => {
-  if (route.path === '/' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
+  if (route.path === '/' || '/profile' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
   return 'var(--main-color)'
 })
