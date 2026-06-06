@@ -100,7 +100,6 @@ export const translations = {
     // 404 Page
     notFoundPage: {
       code: "404",
-      notfound: "Oops! Cette page est introuvable!",
     },
     // Components
     components: {
@@ -579,7 +578,6 @@ export const translations = {
     // 404 Page
     notFoundPage: {
       code: "404",
-      notfound: "Oops! This page can't be found!",
     },
     // Components
     components: {

@@ -103,8 +103,9 @@ const router = createRouter({
       component: () => import("@/views/AuthCallback.vue"),
     },
     {
-      meta: { title: "Eternal - 404" },
       path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      meta: { title: "Eternal - 404" },
       component: () => import("../views/NotFoundView.vue"),
     },
   ],

@@ -6,7 +6,7 @@
   <div class="content">
     <div class="text">
       <h1>404</h1>
-      <h2>{{ translations[store.language].notFoundPage.notfound }}</h2>
+      <h2>Oops! Cette page est introuvable</h2>
       <img src="../assets/crew/canard.gif" alt="404 image">
     </div>
   </div>
