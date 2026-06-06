@@ -7,34 +7,48 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
+
+    <!-- Règlements -->
     <RouterLink :to="'/regulationsligue'" class="block large">
       <img src="../assets/btns/Règle.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
-    </RouterLink><!-- Large box -->
+    </RouterLink>
+
+    <!-- Inscription -->
     <a class="block small" :href="config.links.register" target="_blank">
       <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
-    </a> <!-- Small box -->
+    </a>
+
+    <!-- Équipes (mobile) -->
     <RouterLink :to="'/teamsligue'" class="block large mobile">
       <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </RouterLink> <!-- Large box -->
-    <RouterLink :to="'/scheduleligue'" class="block small">
-      <img src="../assets/btns/Horairerectangle.png" />
-      <h3>{{ translations[store.language].components.blocks.schedule }}</h3>
-    </RouterLink> <!-- Small box -->
+    </RouterLink>
+
+    <!-- Équipes (desktop) -->
     <RouterLink :to="'/teamsligue'" class="block large desktop">
       <img src="../assets/btns/Listedeséquipes.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </RouterLink> <!-- Large box -->
+    </RouterLink>
+
+    <!-- Horaire -->
+    <RouterLink :to="'/scheduleligue'" class="block small">
+      <img src="../assets/btns/Horairerectangle.png" />
+      <h3>{{ translations[store.language].components.blocks.schedule }}</h3>
+    </RouterLink>
+
+    <!-- Classement -->
     <a class="block large" :href="config.links.ranking" target="_blank">
       <img src="../assets/btns/Classement.png" />
       <h3>{{ translations[store.language].components.blocks.standings }}</h3>
-    </a> <!-- Large box -->
+    </a>
+
+    <!-- Playoffs -->
     <a class="block small" :href="config.links.playoffs" target="_blank">
       <img src="../assets/btns/Playoffsrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.playoffs }}</h3>
-    </a> <!-- Small box -->
+    </a>
   </div>
 </template>
 
@@ -77,7 +91,7 @@ import { translations } from '@/i18n/translations'
 .block:hover img {
   transition: 0.5s;
   filter: brightness(0.5);
-  /* Darken the image on hover */
+  /* Darkens the image on hover */
 }
 
 .block h3 {

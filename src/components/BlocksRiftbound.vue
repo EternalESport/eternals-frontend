@@ -7,26 +7,36 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
+
+    <!-- Règlements -->
     <a :to="'/regulations'" class="block large" :href="config.links.rulesriftbound" target="_blank">
       <img src="../assets/btns/Reglements2.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
-    </a><!-- Large box -->
+    </a>
+
+    <!-- Inscription -->
     <a class="block small" :href="config.links.registerriftbound" target="_blank">
       <img src="../assets/btns/Inscription2.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
-    </a> <!-- Small box -->
+    </a>
+
+    <!-- Équipes (mobile) -->
     <a class="block small mobile" :href="config.links.teamsriftbound" target="_blank">
       <img src="../assets/btns/ListeDesEquipes2.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
+    </a>
+
+    <!-- Équipes (desktop) -->
     <a class="block small desktop" :href="config.links.teamsriftbound" target="_blank">
       <img src="../assets/btns/ListeDesEquipes2.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </a> <!-- Large box -->
+    </a>
+
+    <!-- Classement -->
     <a class="block large" :href="config.links.rankingriftbound" target="_blank">
       <img src="../assets/btns/Classement2.png" />
       <h3>{{ translations[store.language].components.blocks.standings }}</h3>
-    </a> <!-- Large box -->
+    </a>
   </div>
 </template>
 

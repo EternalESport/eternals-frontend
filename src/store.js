@@ -14,7 +14,7 @@ import { reactive } from "vue";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-// Pour garder aller rechercher le user discord lors d'un refresh de page
+// Pour garder/aller rechercher le user discord lors d'un refresh de page
 export const refreshAuth = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/auth/refresh`, {
@@ -22,11 +22,13 @@ export const refreshAuth = async () => {
       credentials: "include",
     });
 
+    //S'il y a une erreur en allant chercher l'auth on vide le cache du code de l'auth
     if (!response.ok) {
       clearAuth();
       return false;
     }
 
+    //Récupère les données au format json
     const data = await response.json();
 
     setAuth({
@@ -36,12 +38,14 @@ export const refreshAuth = async () => {
 
     return true;
   } catch (error) {
+    //S'il y a une erreur on l'affiche dans la console et on vide le cache du code de l'auth
     console.error("Refresh auth error:", error);
     clearAuth();
     return false;
   }
 };
 
+//On export le store (données states) pour pouvoir y accéder d'ailleurs
 export const store = reactive({
   videos: [],
   language: "fr",

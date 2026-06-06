@@ -125,11 +125,6 @@ import OurPartners from '../components/OurPartners.vue';
                 <h4>{{ translations[store.language].regulationscircuit.h4Titles.title18 }}</h4>
                 <p>{{ translations[store.language].regulationscircuit.texts.text25 }}</p>
 
-
-                <!-- <h3 id="admin">{{ translations[store.language].regulationscircuit.h3Titles.title1 }}</h3>
-                <h4 id="admin">{{ translations[store.language].regulationscircuit.h4Titles.title1 }}</h4>
-                <h5 id="admin">{{ translations[store.language].regulationscircuit.h5Titles.title1 }}</h5> -->
-
             </div>
         </div>
         <a href="#table">

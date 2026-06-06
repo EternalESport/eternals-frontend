@@ -15,7 +15,7 @@ import { computed, onMounted } from 'vue'
 
 const route = useRoute() //Pour pouvoir vérifier la route actuelle
 
-// Pour garder aller rechercher le user discord lors d'un refresh de page
+// Pour garder/aller rechercher le user discord lors d'un refresh de page
 onMounted(async () => {
   initializeLanguage()
   await refreshAuth()
@@ -23,7 +23,7 @@ onMounted(async () => {
 
 //Pour le changement de couleur entre les sections du site
 const navColor = computed(() => {
-  if (route.path === '/' || '/profile' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
+  if (route.path === '/' || route.path === '/profile' || route.path === '/mission' || route.path === '/equipe' || route.path === '/halloffame') return '#faa200'
   if (route.path === '/riftbound') return '#3f66db'
   return 'var(--main-color)'
 })

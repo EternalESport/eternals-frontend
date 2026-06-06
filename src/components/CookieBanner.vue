@@ -46,10 +46,14 @@ const rejectCookies = () => {
 <template>
   <div v-if="showBanner" class="cookie-banner">
     <div class="cookie-content">
+
+      <!-- Texte -->
       <div class="cookie-text">
         <h3>{{ translations[store.language].cookies.title }}</h3>
         <p>{{ translations[store.language].cookies.message }}</p>
       </div>
+
+      <!-- Boutons -->
       <div class="cookie-buttons">
         <button class="cookie-btn accept" @click="acceptCookies">
           {{ translations[store.language].cookies.accept }}

@@ -100,6 +100,7 @@ export const translations = {
     // 404 Page
     notFoundPage: {
       code: "404",
+      notfound: "Oops! Cette page est introuvable!",
     },
     // Components
     components: {
@@ -120,7 +121,7 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Organisations Esport",
     },
-    // Profil
+    // Profil et connexion discord/riot
     profile: {
       myProfile: "Mon Profil",
       firstName: "Prénom",
@@ -578,6 +579,7 @@ export const translations = {
     // 404 Page
     notFoundPage: {
       code: "404",
+      notfound: "Oops! This page can't be found!",
     },
     // Components
     components: {
@@ -598,7 +600,7 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Esport Organizations",
     },
-    // Profil
+    // Profil et connexion discord/riot
     profile: {
       myProfile: "My Profile",
       firstName: "First Name",

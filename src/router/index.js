@@ -92,19 +92,20 @@ const router = createRouter({
       component: () => import("../views/RiftboundView.vue"),
     },
     {
-      meta: { title: "Eternal - 404" },
-      path: "/:pathMatch(.*)*",
-      component: () => import("../views/NotFoundView.vue"),
-    },
-    {
       path: "/profile",
       name: "Profile",
+      meta: { title: "Eternal - Profile" },
       component: () => import("@/views/Profile.vue"),
     },
     {
       path: "/auth/callback",
       name: "AuthCallback",
       component: () => import("@/views/AuthCallback.vue"),
+    },
+    {
+      meta: { title: "Eternal - 404" },
+      path: "/:pathMatch(.*)*",
+      component: () => import("../views/NotFoundView.vue"),
     },
   ],
 });

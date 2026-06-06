@@ -4,19 +4,20 @@ import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
 import { updateUserProfile, getRiotAccounts, loginWithRiot } from '../login.js'
 
-const isSaving = ref(false)
-const successMessage = ref('')
-const errorMessage = ref('')
-const isRedirectingToRiot = ref(false)
-const redirectMessage = ref('')
+const isSaving = ref(false) //Pour savoir si une sauvegarde est en cours
+const successMessage = ref('') //Pour stocker le message de succès
+const errorMessage = ref('') //Pour stocker le message d'erreur s'il y en a une
+const isRedirectingToRiot = ref(false) //Pour savoir si on redirige vers riot
+const redirectMessage = ref('') //Pour stocker le message de redirection
 
-
+//Met à jour automatiquement les infos du form en fonction de ce qui est écrit dans les input du form
 const form = reactive({
   firstName: store.user?.firstName || '',
   lastName: store.user?.lastName || '',
   email: store.user?.email || '',
 })
 
+//Pour mettre à jour les infos du user en fonction des infos écrites dans le form + on montre un message de succès/erreur
 const saveProfile = async () => {
   successMessage.value = ''
   errorMessage.value = ''
@@ -24,6 +25,7 @@ const saveProfile = async () => {
   try {
     isSaving.value = true
 
+    //Appel l'update des infos du user dans la database (les infos peuvent être null)
     const updatedUser = await updateUserProfile(
       store.accessToken,
       {
@@ -32,12 +34,15 @@ const saveProfile = async () => {
         email: form.email || null,
       }
     )
-
+    
+    //Update le state du user
     store.user = updatedUser
-
+    
+    //On affiche le message d'update réussi
     successMessage.value = translations[store.language].profile.saved
   }
   catch (error) {
+    //S'il y a une erreur on affiche le message d'erreur
     errorMessage.value = error.message
   }
   finally {
@@ -46,10 +51,11 @@ const saveProfile = async () => {
 
 }
 
-const riotAccounts = ref([])
-const isLoadingRiotAccounts = ref(false)
-const riotLoadError = ref('')
+const riotAccounts = ref([]) //Tableau des comptes riots liés au user
+const isLoadingRiotAccounts = ref(false) //État du loading des comptes riot
+const riotLoadError = ref('') //Pour stocker le message d'erreur
 
+//Pour montrer l'erreur pendant un certain temps avant qu'elle disparaisse
 const showRiotError = (message) => {
   riotLoadError.value = message
 
@@ -58,6 +64,7 @@ const showRiotError = (message) => {
   }, 10000)
 }
 
+//Load les comptes riot liés au user et affiche une erreur si ça ne fonctionne pas
 const loadRiotAccounts = async (clearError = true) => {
   if (!store.accessToken) return
 
@@ -78,16 +85,17 @@ const loadRiotAccounts = async (clearError = true) => {
   }
 }
 
+//S'occupe de rediriger après une tentative de liaison d'un compte riot + affiche un message de succès/erreur
 const handleRiotCallbackResult = async () => {
   const params = new URLSearchParams(window.location.search)
   const riotLink = params.get('riotLink')
   const reason = params.get('reason')
 
+  //Vérifie le message retourné par riot lors de la tentative de connexion
   if (riotLink === 'success') {
     riotLoadError.value = ''
     await loadRiotAccounts()
   }
-
   if (riotLink === 'error') {
     if (reason === 'provider_failed') {
       showRiotError(translations[store.language].profile.riotMissingGameNameTag)
@@ -98,6 +106,7 @@ const handleRiotCallbackResult = async () => {
     else {
       showRiotError(reason ? `${translations[store.language].profile.riotDidntLink} : ${reason}` : translations[store.language].profile.riotDidntLink)
     }
+    //Pour afficher les erreurs au cas où il y en aurait qui ne sont pas prise en comptes (au quel cas on pourrait les rajouter dans les else avec la raison de l'erreur)
     console.log('Riot link error reason:', reason)
   }
 
@@ -140,9 +149,13 @@ watch(
 <template>
   <div class="content">
     <div class="head-profile" v-if="store.user">
+
+      <!-- Pour montrer les messages d'erreur liés à riot lorsqu'on lie un compte ou qu'on tente de récupérer les comptes liés -->
       <p v-if="riotLoadError" class="error-message">
         {{ riotLoadError }}
       </p>
+
+      <!-- Section du haut (profil Discord + infos user) -->
       <h1>{{ translations[store.language].profile.myProfile }}</h1>
       <img class="img-profile" v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername">
       <h2 class="username">{{ store.user.discordUsername || 'Utilisateur Discord' }}</h2>
@@ -154,6 +167,8 @@ watch(
 
       <div class="update-infos">
         <h2>{{ translations[store.language].profile.updateInfos }}</h2>
+
+        <!-- Le form pour mettre à jour les infos du user -->
         <form class="profile-form" @submit.prevent="saveProfile">
           <div class="form-group">
             <label>{{ translations[store.language].profile.firstName }}</label>
@@ -167,18 +182,24 @@ watch(
             <label>{{ translations[store.language].profile.email }}</label>
             <input name="email" v-model="form.email" type="email" :placeholder="translations[store.language].profile.email">
           </div>
+
+          <!-- Pour afficher les messages de succès/erreurs -->
           <p v-if="successMessage" class="success-message">
             {{ successMessage }}
           </p>
           <p v-if="errorMessage" class="error-message">
             {{ errorMessage }}
           </p>
+
+          <!-- Bouton save du form -->
           <button class="save-button" type="submit" :disabled="isSaving">
             {{ isSaving ? translations[store.language].profile.saving : translations[store.language].profile.save }}
           </button>
         </form>
       </div>
 
+
+      <!-- Section riot -->
       <div class="riot-section">
         <h2>{{ translations[store.language].profile.riotAccounts }}</h2>
 
@@ -186,6 +207,7 @@ watch(
           {{ translations[store.language].profile.riotAccountsLoading }}
         </p>
 
+        <!-- Affichage des comptes riot liés (s'il y en a) avec nom, tagline et type de compte (main, smurf) -->
         <div v-if="riotAccounts.length" class="riot-list">
           <div v-for="account in riotAccounts" :key="account.id || account.riotPuuid" class="riot-card" :class="{ 'main-account': account.isMain, 'smurf-account': !account.isMain }">
             <p>{{ account.gameName }}#{{ account.tagLine }}</p>

@@ -7,26 +7,36 @@ import { translations } from '@/i18n/translations'
 
 <template>
   <div class="blocks-container">
+    
+    <!-- Règlements -->
     <RouterLink :to="'/regulationscircuit'" class="block large">
       <img src="../assets/btns/Reglements1.png" />
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
-    </RouterLink><!-- Large box -->
+    </RouterLink>
+
+    <!-- Inscription -->
     <a class="block small" :href="config.links.registercircuit" target="_blank">
       <img src="../assets/btns/Inscription1.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
-    </a> <!-- Small box -->
+    </a>
+
+    <!-- Équipes (mobile) -->
     <RouterLink :to="'/teamscircuit'" class="block small mobile">
       <img src="../assets/btns/ListeDesEquipes1.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </RouterLink> <!-- Large box -->
+    </RouterLink>
+
+    <!-- Équipes (desktop) -->
     <RouterLink :to="'/teamscircuit'" class="block small desktop">
       <img src="../assets/btns/ListeDesEquipes1.png" />
       <h3 style="font-size: 35px;">{{ translations[store.language].components.blocks.teams }}</h3>
-    </RouterLink> <!-- Large box -->
+    </RouterLink>
+
+    <!-- Classement -->
     <a class="block large" :href="config.links.rankingcircuit" target="_blank">
       <img src="../assets/btns/Classement1.png" />
       <h3>{{ translations[store.language].components.blocks.standings }}</h3>
-    </a> <!-- Large box -->
+    </a>
   </div>
 </template>
 

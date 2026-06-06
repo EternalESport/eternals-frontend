@@ -10,6 +10,8 @@ import { translations } from '@/i18n/translations'
       <div class="row">
         <a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a>
         <a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a>
+        <a :href="config.tiktok" target="_blank"><font-awesome-icon :icon="['fab', 'tiktok']" /></a>
+        <a :href="config.instagram" target="_blank"><font-awesome-icon :icon="['fab', 'instagram']" /></a>
         <a :href="config.youtubeChannel" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" /></a>
         <a :href="config.twitter" target="_blank"><font-awesome-icon :icon="['fab', 'x-twitter']" /></a>
         <a :href="config.facebook" target="_blank"><font-awesome-icon :icon="['fab', 'facebook']" /></a>

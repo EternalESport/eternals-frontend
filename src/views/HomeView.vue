@@ -1,6 +1,4 @@
 <script setup>
-import Blocks from '../components/BlocksLigue.vue';
-import Orgs from '../components/Orgs.vue';
 import Youtube from '../components/Youtube.vue';
 import HeroHeader from '../components/HeroHeaderHome.vue'
 import OurPartners from '../components/OurPartners.vue';

@@ -8,7 +8,6 @@ import Dash from './Dash.vue';
 
 </script>
 
-
 <template>
   <header>
     <nav>
@@ -24,18 +23,21 @@ import Dash from './Dash.vue';
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
-              <!-- Le bouton vers la page Riftbound dans le dropdown du logo -->
+              <!-- Le bouton vers la page Riftbound dans le dropdown du logo (à activer lorsqu'on voudra rendre accessible la page Riftbound) -->
               <!-- <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink> -->
             </div>
           </transition>
         </div>
       </div>
+
+      <!-- Nav desktop -->
       <ul v-show="!mobile" class="navigation-socials">
         <li>
           <div class="dash">
             <Dash />
           </div>
         </li>
+        <!-- Médias sociaux -->
         <li class="socials"><a :href="config.discord" target="_blank"><font-awesome-icon :icon="['fab', 'discord']" /></a></li>
         <li class="socials"><a :href="config.twitch" target="_blank"><font-awesome-icon :icon="['fab', 'twitch']" /></a></li>
         <li class="socials"><a :href="config.tiktok" target="_blank"><font-awesome-icon :icon="['fab', 'tiktok']" /></a></li>
@@ -59,6 +61,7 @@ import Dash from './Dash.vue';
             <Dash />
           </div>
         </li>
+        <!-- Profil -->
         <li v-if="!store.user || !store.user.discordAvatarUrl">
           <button @click="loginWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Connexion' : 'Login' }}</button>
         </li>
@@ -70,20 +73,19 @@ import Dash from './Dash.vue';
             <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
           </div>
         </li>
+        <!-- Langue -->
         <li class="language-toggle">
           <button @click="setLanguage(store.language === 'fr' ? 'en' : 'fr')" class="lang-btn">
             {{ store.language === 'fr' ? 'EN' : 'FR' }}
           </button>
         </li>
       </ul>
-      <!--
-      <a v-if="store.token === ''" class="login" href="https://discord.com/oauth2/authorize?client_id=1239760825443684444&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A5173%2Fauth%2Fdiscord&scope=identify+connections+guilds+email+openid" >Connexion<font-awesome-icon :icon="['fab', 'discord']" /></a>
-      <div v-else></div>
-      -->
       <div class="far fa-bars" :class="{ 'icon-active': mobileNav }"></div>
       <div class="icon">
         <font-awesome-icon @click="toggleMobileNav" v-show="mobile" :icon="['fas', 'bars']" class="far fa-bars" :class="{ 'icon-active': mobileNav }"></font-awesome-icon>
       </div>
+
+      <!-- Nav mobile -->
       <transition name="mobile-nav">
         <ul v-show="mobileNav" class="dropdown-nav">
           <li class="language-toggle-mobile">
@@ -488,10 +490,6 @@ nav .lang-btn:hover {
   nav .lang-btn {
     font-size: 13px;
     padding: 4px 9px;
-  }
-
-  .dash {
-    width: 30px;
   }
 }
 

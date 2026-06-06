@@ -16,6 +16,7 @@ import { translations } from '@/i18n/translations'
       <img src="../assets/btns/BtnHomeCircuit.png" />
       <h3 style="font-size: 41px;">CIRCUIT</h3>
     </RouterLink>
+    <!-- Réactiver le bouton lorsqu'on voudra permettre l'accès à la page Riftbound -->
     <!-- <RouterLink :to="'/riftbound'" class="block large">
       <img src="../assets/btns/Reglements2.png" />
       <h3 style="font-size: 41px;">RIFTBOUND</h3>
@@ -33,6 +34,7 @@ import { translations } from '@/i18n/translations'
 }
 
 /* For when there are 3 buttons (ligue/circuit/riftbound) */
+/* Réactiver lorsqu'on voudra permettre l'accès à la page Riftbound */
 /* .blocks-container {
   font-family: 'NewOrderBold';
   width: 1300px;
@@ -46,6 +48,7 @@ import { translations } from '@/i18n/translations'
 } */
 
 /* For when there are 2 buttons (ligue/circuit) */
+/* Désactiver lorsqu'on voudra permettre l'accès à la page Riftbound */
 .blocks-container {
   font-family: 'NewOrderBold';
   width: 850px;
@@ -76,7 +79,7 @@ import { translations } from '@/i18n/translations'
 .block:hover img {
   transition: 0.5s;
   filter: brightness(0.5);
-  /* Darken the image on hover */
+  /* Darkens the image on hover */
 }
 
 .block h3 {
