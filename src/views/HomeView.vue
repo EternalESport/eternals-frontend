@@ -20,7 +20,7 @@ import { store } from '@/store.js'
       <BlocksHome />
     </div>
     <Youtube/>
-  </main>
+  </main> 
 </template>
 
 <style scoped>
