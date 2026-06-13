@@ -15,10 +15,10 @@ import { translations } from '@/i18n/translations'
     </RouterLink>
 
     <!-- Inscription -->
-    <a class="block small" :href="config.links.register" target="_blank">
+    <RouterLink :to="'/registrationligue'" class="block small">
       <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
-    </a>
+    </RouterLink>
 
     <!-- Équipes (mobile) -->
     <RouterLink :to="'/teamsligue'" class="block large mobile">

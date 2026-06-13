@@ -7,29 +7,29 @@ import KeenSlider from "keen-slider"
 
 const animation = { duration: 100000, easing: (t) => t }
 
-export default {
-  name: "Slider",
-  mounted() {
-    this.slider = new KeenSlider(this.$refs.slider, {
-      loop: true,
-      renderMode: "performance",
-      drag: false,
-      slides: { perView: "auto" },
-      created(s) {
-        s.moveToIdx(5, true, animation)
-      },
-      updated(s) {
-        s.moveToIdx(s.track.details.abs + 5, true, animation)
-      },
-      animationEnded(s) {
-        s.moveToIdx(s.track.details.abs + 5, true, animation)
-      },
-    })
-  },
-  beforeDestroy() {
-    if (this.slider) this.slider.destroy()
-  },
-}
+// export default {
+//   name: "Slider",
+//   mounted() {
+//     this.slider = new KeenSlider(this.$refs.slider, {
+//       loop: true,
+//       renderMode: "performance",
+//       drag: false,
+//       slides: { perView: "auto" },
+//       created(s) {
+//         s.moveToIdx(5, true, animation)
+//       },
+//       updated(s) {
+//         s.moveToIdx(s.track.details.abs + 5, true, animation)
+//       },
+//       animationEnded(s) {
+//         s.moveToIdx(s.track.details.abs + 5, true, animation)
+//       },
+//     })
+//   },
+//   beforeDestroy() {
+//     if (this.slider) this.slider.destroy()
+//   },
+// }
 </script>
 
 <template>

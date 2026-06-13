@@ -28,7 +28,6 @@ const navColor = computed(() => {
   return 'var(--main-color)'
 })
 
-
 // export default {
 //   name: 'App',
 //   components: {

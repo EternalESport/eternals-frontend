@@ -136,7 +136,8 @@ export const translations = {
       saving: "Sauvegarde...",
       saved: "Profil mis à jour",
       riotDidntLink: "Impossible de lier le compte Riot",
-      riotMissingGameNameTag: "Impossible de lier ce compte Riot. Vérifiez que votre compte possède un Game Name et un Tag.",
+      riotMissingGameNameTag:
+        "Impossible de lier ce compte Riot. Vérifiez que votre compte possède un Game Name et un Tag.",
       riotAlreadyLinked: "Ce compte Riot est déjà lié.",
       riotLink: "Lié le compte Riot",
       riotLinking: "Liaison...",
@@ -149,7 +150,41 @@ export const translations = {
       riotAccountMain: "Compte principal",
       riotDefineAccountMain: "Définir comme compte principal",
       notLoggedIn: "Vous n'êtes pas connecté.",
-      returnHome: "Retourner à l'accueil."
+      returnHome: "Retourner à l'accueil.",
+    },
+    //Registration Page - Ligue Section
+    registrationligue: {
+      formtitle: "Inscription Ligue Saison 2026 Hiver - Ligue Eternal E-Sport",
+      discordligue: "Discord de la ligue",
+      teaminfos: "Informations d’équipe",
+      teamname: "Nom d'équipe",
+      desireddivision: "Division souhaitée",
+      choosedivision: "Choisire une Division",
+      captaindiscord: "Discord du Capitaine",
+      captainemail: "Courriel du Capitaine",
+      teamlogo: "Logo d'équipe",
+
+      players: "Joueurs",
+
+      mainaccount: " op.gg — Compte Principal",
+      otheraccount: " op.gg — Autre Compte",
+
+      conditions:
+        "J’accepte les termes et conditions du tournoi, incluant le règlement Discord et le règlement de la ligue.",
+      payment:
+        "J’accepte de verser les frais d’inscription à contact@eternalesport.com en indiquant le nom de mon équipe comme description.",
+
+      choosefile: "Choisir un fichier",
+      nochosenfile: "Aucun fichier choisi",
+      filesizelimit: "Le logo ne doit pas dépasser 100 MB.",
+
+      sendregistration: "Envoyer l'inscription",
+      sendingregistration: "Envoi en cours...",
+      
+      registrationsuccess: "L’inscription a été envoyée avec succès.",
+      registrationerror: "Une erreur est survenue pendant l’envoi.",
+
+      logoRequired: "Veuillez sélectionner un logo d'équipe.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
@@ -614,7 +649,8 @@ export const translations = {
       saving: "Saving...",
       saved: "Profile updated",
       riotDidntLink: "Couldn't link Riot account",
-      riotMissingGameNameTag: "Unable to link this Riot account. Make sure your account has a Game Name and Tag.",
+      riotMissingGameNameTag:
+        "Unable to link this Riot account. Make sure your account has a Game Name and Tag.",
       riotAlreadyLinked: "This Riot account is already linked.",
       riotLink: "Link Riot account",
       riotLinking: "Linking...",
@@ -627,7 +663,43 @@ export const translations = {
       riotAccountMain: "Main account",
       riotDefineAccountMain: "Define as main account",
       notLoggedIn: "You are not logged in..",
-      returnHome: "Return to Homepage."
+      returnHome: "Return to Homepage.",
+    },
+    // Registration Page - League Section
+    registrationligue: {
+      formtitle: "Winter 2026 League Registration - Eternal E-Sport League",
+      discordligue: "League Discord",
+      teaminfos: "Team Information",
+      teamname: "Team Name",
+      desireddivision: "Desired Division",
+      choosedivision: "Choose a Division",
+      captaindiscord: "Captain's Discord",
+      captainemail: "Captain's Email",
+      teamlogo: "Team Logo",
+
+      players: "Players",
+
+      mainaccount: " op.gg — Main Account",
+      otheraccount: " op.gg — Alternate Account",
+
+
+      conditions:
+        "I accept the tournament terms and conditions, including the Discord rules and league regulations.",
+
+      payment:
+        "I agree to pay the registration fee to contact@eternalesport.com and include my team name as the payment description.",
+
+      choosefile: "Choose File",
+      nochosenfile: "No File Chosen",
+      filesizelimit: "Logo's size musn't be over 100 MB.",
+
+      sendregistration: "Submit Registration",
+      sendingregistration: "Submitting...",
+
+      registrationsuccess: "Your registration has been submitted successfully.",
+      registrationerror: "An error occurred while submitting your registration.",
+
+      logoRequired: "Please select a team logo.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
