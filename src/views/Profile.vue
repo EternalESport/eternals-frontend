@@ -39,7 +39,7 @@ const saveProfile = async () => {
     store.user = updatedUser
     
     //On affiche le message d'update réussi
-    successMessage.value = translations[store.language].profile.saved
+    showProfileUpdatedMessage();
   }
   catch (error) {
     //S'il y a une erreur on affiche le message d'erreur
@@ -49,6 +49,15 @@ const saveProfile = async () => {
     isSaving.value = false
   }
 
+}
+
+//Pour montrer l'erreur pendant un certain temps avant qu'elle disparaisse
+const showProfileUpdatedMessage = () => {
+  successMessage.value = translations[store.language].profile.saved
+
+  setTimeout(() => {
+    successMessage.value = ''
+  }, 5000)
 }
 
 const riotAccounts = ref([]) //Tableau des comptes riots liés au user
