@@ -124,8 +124,6 @@ async function uploadTeamLogo(file) {
     return uploadTarget.objectKey;
 }
 
-//************************************************* */
-
 const rosterSearch = reactive({});
 const rosterResults = reactive({});
 const rosterErrors = reactive({});
@@ -261,8 +259,6 @@ function selectCaptainUser(user) {
     captainResults.value = [];
     captainError.value = "";
 }
-
-//************************************************* */
 
 async function submitForm() {
     isSubmitting.value = true;
