@@ -181,12 +181,18 @@ export const translations = {
 
       sendregistration: "Envoyer l'inscription",
       sendingregistration: "Envoi en cours...",
+
+      searching: "Recherche...",      
+      errorwhilesearching: "Une erreur est survenue pendant la recherche.",      
       
       registrationsuccess: "L’inscription a été envoyée avec succès.",
       registrationerror: "Une erreur est survenue pendant l’envoi.",
 
       logoRequired: "Veuillez sélectionner un logo d'équipe.",
+
       noregistrationavailable: "Aucune inscription n'est disponible actuellement.",
+
+      mustchooseeventanddivision: "Vous devez choisir un événement et une division avant de chercher des joueurs.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
@@ -699,11 +705,17 @@ export const translations = {
       sendregistration: "Submit Registration",
       sendingregistration: "Submitting...",
 
+      searching: "Searching...",      
+      errorwhilesearching: "An error occured while searching.",  
+
       registrationsuccess: "Your registration has been submitted successfully.",
       registrationerror: "An error occurred while submitting your registration.",
 
       logoRequired: "Please select a team logo.",
+
       noregistrationavailable: "No registration is currently available.",
+
+      mustchooseeventanddivision: "You have to choose an event and a division before finding players.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {

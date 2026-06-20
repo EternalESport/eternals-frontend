@@ -3,7 +3,7 @@ import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import HeroHeader from '../components/HeroHeader.vue'
 import OurPartners from '../components/OurPartners.vue';
-import { reactive, ref, computed, onMounted } from "vue";
+import { reactive, ref, computed, onMounted, watch } from "vue";
 
 const isSubmitting = ref(false);
 const successMessage = ref("");
@@ -72,7 +72,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const events = ref([]);
 const selectedEvent = ref(null);
-const selectedEventId = ref("");
 
 async function apiFetch(path, init = {}) {
     const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -124,6 +123,146 @@ async function uploadTeamLogo(file) {
 
     return uploadTarget.objectKey;
 }
+
+//************************************************* */
+
+const rosterSearch = reactive({});
+const rosterResults = reactive({});
+const rosterErrors = reactive({});
+const rosterLoading = reactive({});
+
+roles.forEach((role) => {
+    rosterSearch[role.key] = "";
+    rosterResults[role.key] = [];
+    rosterErrors[role.key] = "";
+    rosterLoading[role.key] = false;
+});
+
+const selectedUserIds = computed(() =>
+    Object.values(form.players)
+        .map(player => player.userId)
+        .filter(Boolean)
+);
+
+async function searchRosterUsers(roleKey) {
+    const search = rosterSearch[roleKey].trim();
+
+    rosterErrors[roleKey] = "";
+
+    if (!search) {
+        rosterResults[roleKey] = [];
+        rosterErrors[roleKey] = "";
+        return;
+    }
+
+    if (!form.eventId || !form.divisionId) {
+        rosterResults[roleKey] = [];
+        rosterErrors[roleKey] = translations[store.language].registrationligue.mustchooseeventanddivision;
+        return;
+    }
+
+    try {
+        rosterLoading[roleKey] = true;
+
+        const params = new URLSearchParams({
+            search,
+            eventId: form.eventId,
+            divisionId: form.divisionId
+        });
+
+        selectedUserIds.value.forEach(userId => {
+            params.append("selectedUserIds", userId);
+        });
+
+        const results = await apiFetch(`/api/roster-users/search?${params.toString()}`);
+
+        console.log("Roster results:", results);
+
+        rosterResults[roleKey] = results;
+
+        if (results.length === 0) {
+            rosterErrors[roleKey] = "Aucun joueur trouvé.";
+        }
+    } catch (error) {
+        rosterResults[roleKey] = [];
+        rosterErrors[roleKey] = error.message || translations[store.language].registrationligue.errorwhilesearching;
+    } finally {
+        rosterLoading[roleKey] = false;
+    }
+}
+
+function selectRosterUser(roleKey, user) {
+    const alreadySelectedRole = Object.entries(form.players).find(
+        ([key, player]) => key !== roleKey && player.userId === user.userId
+    );
+
+    if (alreadySelectedRole) {
+        rosterErrors[roleKey] = translations[store.language].registrationligue.duplicateuserinroster
+            || "Ce joueur est déjà sélectionné dans le roster.";
+        return;
+    }
+
+    form.players[roleKey].userId = user.userId;
+
+    rosterSearch[roleKey] = user.mainRiotAccount
+        ? `${user.discordUsername} - ${user.mainRiotAccount.gameName}#${user.mainRiotAccount.tagLine}`
+        : user.discordUsername;
+
+    rosterResults[roleKey] = [];
+    rosterErrors[roleKey] = "";
+}
+
+const captainSearch = ref("");
+const captainResults = ref([]);
+const captainError = ref("");
+const captainLoading = ref(false);
+
+async function searchCaptainUsers() {
+    const search = captainSearch.value.trim();
+
+    captainError.value = "";
+
+    if (!search) {
+        captainResults.value = [];
+        return;
+    }
+
+    try {
+        captainLoading.value = true;
+
+        const params = new URLSearchParams({
+            search,
+            eventId: form.eventId,
+            divisionId: form.divisionId
+        });
+
+        const results = await apiFetch(`/api/roster-users/search?${params.toString()}`);
+
+        captainResults.value = results;
+
+        if (results.length === 0) {
+            captainError.value = "Aucun capitaine trouvé.";
+        }
+    } catch (error) {
+        captainResults.value = [];
+        captainError.value = error.message || translations[store.language].registrationligue.errorwhilesearching;
+    } finally {
+        captainLoading.value = false;
+    }
+}
+
+function selectCaptainUser(user) {
+    form.captainUserId = user.userId;
+
+    captainSearch.value = user.mainRiotAccount
+        ? `${user.discordUsername} - ${user.mainRiotAccount.gameName}#${user.mainRiotAccount.tagLine}`
+        : user.discordUsername;
+
+    captainResults.value = [];
+    captainError.value = "";
+}
+
+//************************************************* */
 
 async function submitForm() {
     isSubmitting.value = true;
@@ -198,6 +337,14 @@ onMounted(async () => {
     }
 });
 
+watch(
+    () => form.eventId,
+    (eventId) => {
+        selectedEvent.value = events.value.find(event => event.id === eventId) ?? null;
+        form.divisionId = selectedEvent.value?.divisions?.[0]?.id ?? "";
+    }
+);
+
 </script>
 
 <template>
@@ -227,7 +374,7 @@ onMounted(async () => {
                 <div class="form-group">
 
                     <label for="event">{{ translations[store.language].registrationligue.desiredevent }} *</label>
-                    <select v-model="form.eventId" required>
+                    <select id="event" v-model="form.eventId" required>
                         <option value="" disabled>{{ translations[store.language].registrationligue.chooseevent }}</option>
 
                         <option v-for="event in events" :key="event.id" :value="event.id">
@@ -251,7 +398,24 @@ onMounted(async () => {
 
                 <div class="form-group">
                     <label for="captainUserId">{{ translations[store.language].registrationligue.captainuserid }} *</label>
-                    <input id="captainUserId" v-model="form.captainUserId" type="text" required placeholder="Captain User ID" />
+                    <input id="captainUserId" v-model="captainSearch" type="text" required placeholder="Search Discord or Riot name" @input="searchCaptainUsers" />
+
+                    <div v-if="captainResults.length" class="search-results">
+                        <button v-for="user in captainResults" :key="user.userId" type="button" class="search-result" @click="selectCaptainUser(user)">
+                            {{ user.discordUsername }}
+                            <span v-if="user.mainRiotAccount">
+                                — {{ user.mainRiotAccount.gameName }}#{{ user.mainRiotAccount.tagLine }}
+                            </span>
+                        </button>
+                    </div>
+
+                    <p v-if="captainLoading" class="file-name">
+                        {{ translations[store.language].registrationligue.searching }}
+                    </p>
+
+                    <p v-if="captainError" class="error-message">
+                        {{ captainError }}
+                    </p>
                 </div>
 
                 <div class="form-group">
@@ -283,7 +447,23 @@ onMounted(async () => {
                 <section v-for="role in roles" :key="role.key" class="player-section">
                     <h3>{{ role.label }}</h3>
 
-                    <input class="role-user-input" v-model="form.players[role.key].userId" type="text" :required="role.required" placeholder="User ID" />
+                    <input class="role-user-input" v-model="rosterSearch[role.key]" type="text" :required="role.required" placeholder="Search Discord or Riot name" @input="searchRosterUsers(role.key)" />
+
+                    <div v-if="rosterResults[role.key]?.length" class="search-results">
+                        <button v-for="user in rosterResults[role.key]" :key="user.userId" type="button" class="search-result" @click="selectRosterUser(role.key, user)">
+                            {{ user.discordUsername }}
+                            <span v-if="user.mainRiotAccount">
+                                — {{ user.mainRiotAccount.gameName }}#{{ user.mainRiotAccount.tagLine }}
+                            </span>
+                        </button>
+                    </div>
+                    <p v-if="rosterLoading[role.key]" class="file-name">
+                        {{ translations[store.language].registrationligue.searching }}
+                    </p>
+
+                    <p v-if="rosterErrors[role.key]" class="error-message">
+                        {{ rosterErrors[role.key] }}
+                    </p>
                 </section>
 
                 <h2>Confirmation</h2>
@@ -536,6 +716,28 @@ button:disabled {
     margin-top: 8px;
     display: flex;
     flex-direction: row;
+}
+
+.search-results {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-result {
+    margin-top: 0;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d2147c47;
+    border-radius: 10px;
+    background: #160812;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
 }
 
 @media (max-width: 700px) {
