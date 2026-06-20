@@ -15,7 +15,7 @@ import { translations } from '@/i18n/translations'
     </RouterLink>
 
     <!-- Inscription -->
-    <RouterLink :to="'/registrationligue'" class="block small">
+    <RouterLink :to="'/registration'" class="block small">
       <img src="../assets/btns/Inscriptionrectangle.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
     </RouterLink>

@@ -159,9 +159,10 @@ export const translations = {
       teaminfos: "Informations d’équipe",
       teamname: "Nom d'équipe",
       desireddivision: "Division souhaitée",
-      choosedivision: "Choisire une Division",
-      captaindiscord: "Discord du Capitaine",
-      captainemail: "Courriel du Capitaine",
+      choosedivision: "Choisir une Division",
+      desiredevent: "Événement souhaité",
+      chooseevent: "Choisir un événement",
+      captainuserid: "Captain's ID Utilisateur",
       teamlogo: "Logo d'équipe",
 
       players: "Joueurs",
@@ -176,7 +177,7 @@ export const translations = {
 
       choosefile: "Choisir un fichier",
       nochosenfile: "Aucun fichier choisi",
-      filesizelimit: "Le logo ne doit pas dépasser 100 MB.",
+      filesizelimit: "Le logo ne doit pas dépasser 2 MB.",
 
       sendregistration: "Envoyer l'inscription",
       sendingregistration: "Envoi en cours...",
@@ -185,6 +186,7 @@ export const translations = {
       registrationerror: "Une erreur est survenue pendant l’envoi.",
 
       logoRequired: "Veuillez sélectionner un logo d'équipe.",
+      noregistrationavailable: "Aucune inscription n'est disponible actuellement.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
@@ -673,8 +675,9 @@ export const translations = {
       teamname: "Team Name",
       desireddivision: "Desired Division",
       choosedivision: "Choose a Division",
-      captaindiscord: "Captain's Discord",
-      captainemail: "Captain's Email",
+      desiredevent: "Desired Event",
+      chooseevent: "Choose an Event",
+      captainuserid: "Captain's User ID",
       teamlogo: "Team Logo",
 
       players: "Players",
@@ -691,7 +694,7 @@ export const translations = {
 
       choosefile: "Choose File",
       nochosenfile: "No File Chosen",
-      filesizelimit: "Logo's size musn't be over 100 MB.",
+      filesizelimit: "Logo's size musn't be over 2 MB.",
 
       sendregistration: "Submit Registration",
       sendingregistration: "Submitting...",
@@ -700,6 +703,7 @@ export const translations = {
       registrationerror: "An error occurred while submitting your registration.",
 
       logoRequired: "Please select a team logo.",
+      noregistrationavailable: "No registration is currently available.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {

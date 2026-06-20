@@ -3,18 +3,17 @@ import { store, setLanguage } from '../store.js'
 import { translations } from '@/i18n/translations'
 import HeroHeader from '../components/HeroHeader.vue'
 import OurPartners from '../components/OurPartners.vue';
-import { reactive, ref } from "vue";
+import { reactive, ref, computed, onMounted } from "vue";
 
 const isSubmitting = ref(false);
 const successMessage = ref("");
 const errorMessage = ref("");
+const logoError = ref("");
+const noEventsError = ref("");
 
-const divisions = [
-    "Division Émergence",
-    "Division Academy",
-    "Division Prestige",
-    "Division Uncapped",
-];
+const divisions = computed(() =>
+    selectedEvent.value?.divisions ?? []
+);
 
 const roles = [
     { key: "top", label: "Top", required: true },
@@ -25,38 +24,42 @@ const roles = [
     { key: "sub1", label: "Sub #1", required: false },
     { key: "sub2", label: "Sub #2", required: false },
     { key: "sub3", label: "Sub #3", required: false },
+    { key: "coach", label: "Coach", required: false },
 ];
 
 const form = reactive({
+    eventId: "",
+    divisionId: "",
     teamName: "",
-    division: "",
-    captainDiscord: "",
-    captainEmail: "",
+    captainUserId: "",
     logo: null,
     players: {
-        top: { discord: "", opggMain: "", opggAlt: "" },
-        jungle: { discord: "", opggMain: "", opggAlt: "" },
-        mid: { discord: "", opggMain: "", opggAlt: "" },
-        adc: { discord: "", opggMain: "", opggAlt: "" },
-        support: { discord: "", opggMain: "", opggAlt: "" },
-        sub1: { discord: "", opggMain: "", opggAlt: "" },
-        sub2: { discord: "", opggMain: "", opggAlt: "" },
-        sub3: { discord: "", opggMain: "", opggAlt: "" },
+        top: { userId: "" },
+        jungle: { userId: "" },
+        mid: { userId: "" },
+        adc: { userId: "" },
+        support: { userId: "" },
+        sub1: { userId: "" },
+        sub2: { userId: "" },
+        sub3: { userId: "" },
+        coach: { userId: "" },
     },
     acceptRules: false,
     acceptPayment: false,
 });
 
 function handleLogoUpload(event) {
-    const file = event.target.files[0];
+    const file = event.target.files?.[0];
+
+    logoError.value = "";
 
     if (!file) {
         form.logo = null;
         return;
     }
 
-    if (file.size > 100 * 1024 * 1024) {
-        errorMessage.value = translations[store.language].registrationligue.filsesizelimit;
+    if (file.size > 2 * 1024 * 1024) {
+        logoError.value = translations[store.language].registrationligue.filesizelimit;
         event.target.value = "";
         form.logo = null;
         return;
@@ -65,49 +68,135 @@ function handleLogoUpload(event) {
     form.logo = file;
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+const events = ref([]);
+const selectedEvent = ref(null);
+const selectedEventId = ref("");
+
+async function apiFetch(path, init = {}) {
+    const response = await fetch(`${API_BASE_URL}${path}`, {
+        ...init,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${store.accessToken}`,
+            ...(init.headers ?? {})
+        }
+    });
+
+    if (!response.ok) {
+        const errorBody = await response.json().catch(() => null);
+        throw new Error(errorBody?.message || `Erreur ${response.status}`);
+    }
+
+    return response.json();
+}
+
+async function uploadTeamLogo(file) {
+    const uploadTarget = await apiFetch("/api/team-logos/uploads", {
+        method: "POST",
+        body: JSON.stringify({
+            contentType: file.type,
+            byteSize: file.size
+        })
+    });
+
+    if (!uploadTarget.allowedContentTypes.includes(file.type)) {
+        throw new Error("Type de fichier non accepté.");
+    }
+
+    if (file.size > uploadTarget.maxByteSize) {
+        throw new Error("Le logo est trop lourd.");
+    }
+
+    const putResponse = await fetch(uploadTarget.uploadUrl, {
+        method: "PUT",
+        headers: {
+            "Content-Type": file.type,
+            "Content-Length": String(file.size)
+        },
+        body: file
+    });
+
+    if (!putResponse.ok) {
+        throw new Error("L’upload du logo a échoué.");
+    }
+
+    return uploadTarget.objectKey;
+}
+
 async function submitForm() {
     isSubmitting.value = true;
     successMessage.value = "";
     errorMessage.value = "";
 
     try {
+        if (!store.accessToken) {
+            throw new Error("Vous devez être connecté avec Discord.");
+        }
+
         if (!form.logo) {
-            errorMessage.value = translations[store.language].registrationligue.logoRequired;
-            isSubmitting.value = false;
-            return;
+            throw new Error(translations[store.language].registrationligue.logoRequired);
         }
 
-        const formData = new FormData();
+        const logoObjectKey = await uploadTeamLogo(form.logo);
 
-        formData.append("teamName", form.teamName);
-        formData.append("division", form.division);
-        formData.append("captainDiscord", form.captainDiscord);
-        formData.append("captainEmail", form.captainEmail);
-        formData.append("acceptRules", form.acceptRules);
-        formData.append("acceptPayment", form.acceptPayment);
-
-
-        if (form.logo) {
-            formData.append("logo", form.logo);
-        }
-
-        formData.append("players", JSON.stringify(form.players));
-
-        // À connecter plus tard au backend
-        // await fetch("https://ton-api.com/league/register", {
-        //   method: "POST",
-        //   body: formData,
-        // });
-
-        console.log("Inscription envoyée :", Object.fromEntries(formData));
+        await apiFetch("/api/team-registrations", {
+            method: "POST",
+            body: JSON.stringify({
+                eventId: form.eventId,
+                divisionId: form.divisionId,
+                teamName: form.teamName,
+                captainUserId: form.captainUserId,
+                logoObjectKey,
+                roster: {
+                    top: form.players.top.userId,
+                    jungle: form.players.jungle.userId,
+                    mid: form.players.mid.userId,
+                    adc: form.players.adc.userId,
+                    support: form.players.support.userId,
+                    sub1: form.players.sub1.userId || null,
+                    sub2: form.players.sub2.userId || null,
+                    sub3: form.players.sub3.userId || null,
+                    coach: form.players.coach.userId || null
+                },
+                acceptRules: form.acceptRules,
+                acceptPaymentResponsibility: form.acceptPayment
+            })
+        });
 
         successMessage.value = translations[store.language].registrationligue.registrationsuccess;
     } catch (error) {
-        errorMessage.value = translations[store.language].registrationligue.registrationerror;
+        errorMessage.value = error.message || translations[store.language].registrationligue.registrationerror;
     } finally {
         isSubmitting.value = false;
     }
+
 }
+
+onMounted(async () => {
+    noEventsError.value = "";
+
+    try {
+        events.value = await fetch(
+            `${API_BASE_URL}/api/events`
+        ).then(r => r.json());
+
+        if (events.value.length > 0) {
+            selectedEvent.value = events.value[0];
+            form.eventId = selectedEvent.value.id;
+
+            if (selectedEvent.value.divisions?.length > 0) {
+                form.divisionId = selectedEvent.value.divisions[0].id;
+            }
+        }
+        else {
+            noEventsError.value = translations[store.language].registrationligue.noregistrationavailable;
+        }
+    } catch (err) {
+        console.error(err);
+    }
+});
 
 </script>
 
@@ -118,49 +207,70 @@ async function submitForm() {
     </div>
     <main class="league-registration-page">
         <section class="form-card">
-            <h1>{{ translations[store.language].registrationligue.formtitle }}</h1>
-            <a class="custom-file-button" href="https://discord.gg/hRSvPaRFDd " target="_blank">{{ translations[store.language].registrationligue.discordligue }}</a>
+            <p v-if="noEventsError" class="error-message">{{ noEventsError }}</p>
+
+            <!-- <h1>{{ translations[store.language].registrationligue.formtitle }}</h1> -->
+            <div class="discord-links">
+                <a class="custom-file-button" href="https://discord.gg/hRSvPaRFDd " target="_blank">{{ translations[store.language].registrationligue.discordligue }}</a>
+
+            </div>
 
             <form @submit.prevent="submitForm">
+
                 <h2 class="first-h2">{{ translations[store.language].registrationligue.teaminfos }}</h2>
+
 
                 <div class="form-group">
                     <label for="teamName">{{ translations[store.language].registrationligue.teamname }} *</label>
                     <input id="teamName" v-model="form.teamName" type="text" required />
                 </div>
-
                 <div class="form-group">
-                    <label for="division">{{ translations[store.language].registrationligue.desireddivision }} *</label>
-                    <select id="division" v-model="form.division" required>
-                        <option value="" disabled>{{ translations[store.language].registrationligue.choosedivision }}</option>
-                        <option v-for="division in divisions" :key="division" :value="division">
-                            {{ division }}
+
+                    <label for="event">{{ translations[store.language].registrationligue.desiredevent }} *</label>
+                    <select v-model="form.eventId" required>
+                        <option value="" disabled>{{ translations[store.language].registrationligue.chooseevent }}</option>
+
+                        <option v-for="event in events" :key="event.id" :value="event.id">
+                            {{ event.name }}
                         </option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="captainDiscord">{{ translations[store.language].registrationligue.captaindiscord }} *</label>
-                    <input id="captainDiscord" v-model="form.captainDiscord" type="text" required />
+                    <label for="division">{{ translations[store.language].registrationligue.desireddivision }} *</label>
+                    <select id="division" v-model="form.divisionId" required>
+                        <option value="" disabled>
+                            {{ translations[store.language].registrationligue.choosedivision }}
+                        </option>
+                        <option v-for="division in divisions" :key="division.id" :value="division.id">
+                            {{ division.name }}
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="captainUserId">{{ translations[store.language].registrationligue.captainuserid }} *</label>
+                    <input id="captainUserId" v-model="form.captainUserId" type="text" required placeholder="Captain User ID" />
                 </div>
 
                 <div class="form-group">
-                    <label for="captainEmail">{{ translations[store.language].registrationligue.captainemail }} *</label>
-                    <input id="captainEmail" v-model="form.captainEmail" type="email" required />
-                </div>
+                    <label>{{ translations[store.language].registrationligue.teamlogo }} *</label>
 
-                <div class="form-group">
-                    <label for="logo">{{ translations[store.language].registrationligue.teamlogo }} *</label>
                     <div class="file-upload">
                         <label for="logo" class="custom-file-button">
                             {{ translations[store.language].registrationligue.choosefile }}
                         </label>
 
-                        <span class="file-name">
+                        <span class="file-name" :class="{ 'file-error': logoError }">
                             {{
-                                form.logo
-                                    ? form.logo.name
-                                    : translations[store.language].registrationligue.nochosenfile
+                                logoError
+                                    ? logoError
+                                    : (
+                                        form.logo
+                                            ? form.logo.name
+                                            : translations[store.language].registrationligue.nochosenfile
+                                    )
                             }}
                         </span>
 
@@ -173,26 +283,7 @@ async function submitForm() {
                 <section v-for="role in roles" :key="role.key" class="player-section">
                     <h3>{{ role.label }}</h3>
 
-                    <div class="form-group">
-                        <label>
-                            {{ role.label }} Discord
-                            <span v-if="role.required">*</span>
-                        </label>
-                        <input v-model="form.players[role.key].discord" type="text" :required="role.required" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>
-                            {{ role.label }} {{ translations[store.language].registrationligue.mainaccount }}
-                            <span v-if="role.required">*</span>
-                        </label>
-                        <input v-model="form.players[role.key].opggMain" type="url" placeholder="https://www.op.gg/..." :required="role.required" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>{{ role.label }} {{ translations[store.language].registrationligue.otheraccount }}</label>
-                        <input v-model="form.players[role.key].opggAlt" type="url" placeholder="https://www.op.gg/..." />
-                    </div>
+                    <input class="role-user-input" v-model="form.players[role.key].userId" type="text" :required="role.required" placeholder="User ID" />
                 </section>
 
                 <h2>Confirmation</h2>
@@ -356,17 +447,17 @@ select:focus {
 }
 
 select {
-  background-color: #160812;
+    background-color: #160812;
 }
 
 select option {
-  background-color: #160812;
-  color: white;
+    background-color: #160812;
+    color: white;
 }
 
 select option:checked {
-  background-color: #d2147c;
-  color: white;
+    background-color: #d2147c;
+    color: white;
 }
 
 button {
@@ -434,6 +525,17 @@ button:disabled {
 .file-name {
     color: #d1d5db;
     font-size: 0.95rem;
+}
+
+.file-error {
+    color: #f87171;
+    font-weight: 700;
+}
+
+.discord-links {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
 }
 
 @media (max-width: 700px) {

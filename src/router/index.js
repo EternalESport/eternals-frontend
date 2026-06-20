@@ -56,10 +56,10 @@ const router = createRouter({
       component: () => import("../views/RegulationsLigueView.vue"),
     },
     {
-      path: "/registrationligue",
-      name: "registrationligue",
+      path: "/registration",
+      name: "registration",
       meta: { title: "Eternal - Registration" },
-      component: () => import("../views/RegistrationLigueView.vue"),
+      component: () => import("../views/RegistrationView.vue"),
     },
     {
       path: "/scheduleligue",
