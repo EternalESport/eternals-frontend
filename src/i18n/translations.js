@@ -120,6 +120,52 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Organisations Esport",
     },
+    //Admin dashboard
+    admin: {
+      adminrights: "Bienvenue, administrateur!",
+
+      adminrightsrequired:
+        "Vous ne disposez pas des privilèges administrateur.",
+
+      pendingregistration: "Inscriptions en attente.",
+      nopendingregistration: "Aucune inscriptions en attente.",
+      reviewpendingregistration:
+        "Passer en revue les inscriptions soumises par les joueurs.",
+
+      approvedregistrations: "Inscriptions approuvées",
+      approvedacceptedteams: "Équipes déjà acceptées.",
+      noapprovedregistrations: "Aucune inscriptions approuvées.",
+
+      buttonapprove: "Accepter",
+      buttonreject: "Rejeter",
+      buttonrefresh: "Actualiser",
+      buttonsetpending: "Remettre en attente",
+      buttondelete: "Supprimer",
+
+      confirmdeleteregistration: "Supprimer définitivement cette inscription ?",
+      registrationdeleted: "Inscription supprimée.",
+
+      registrationapproved: "Inscription approuvée.",
+      registrationrejected: "Inscription rejetée.",
+      rejectionreason: "Motif du rejet",
+
+      submitted: "Soumise le",
+      approved: "Approuvé",
+
+      events: "Événements",
+      eventsmanageadnreview: "Gérez et consultez les événements en cours.",
+      eventstarts: "Début de l'événement",
+      eventregistrationopens: "Ouverture des inscriptions",
+      eventregistrationcloses: "Fermeture des inscriptions",
+      noeventsfound: "Aucun événement trouvé.",
+
+      createdby: "Créé par",
+
+      errorfailedtoloadregistrations: "Erreur de chargement des inscriptions.",
+      errorfailedtoupdateregistration:
+        "Échec lors de la mise à jour de l'inscription.",
+      errorrejectionreasonneeded: "Veuiller indiquer le motif du rejet.",
+    },
     // Profil et connexion discord/riot
     profile: {
       myProfile: "Mon Profil",
@@ -182,17 +228,19 @@ export const translations = {
       sendregistration: "Envoyer l'inscription",
       sendingregistration: "Envoi en cours...",
 
-      searching: "Recherche...",      
-      errorwhilesearching: "Une erreur est survenue pendant la recherche.",      
-      
+      searching: "Recherche...",
+      errorwhilesearching: "Une erreur est survenue pendant la recherche.",
+
       registrationsuccess: "L’inscription a été envoyée avec succès.",
       registrationerror: "Une erreur est survenue pendant l’envoi.",
 
       logoRequired: "Veuillez sélectionner un logo d'équipe.",
 
-      noregistrationavailable: "Aucune inscription n'est disponible actuellement.",
+      noregistrationavailable:
+        "Aucune inscription n'est disponible actuellement.",
 
-      mustchooseeventanddivision: "Vous devez choisir un événement et une division avant de chercher des joueurs.",
+      mustchooseeventanddivision:
+        "Vous devez choisir un événement et une division avant de chercher des joueurs.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {
@@ -641,6 +689,50 @@ export const translations = {
       heroHeader: "Eternal E-Sport",
       orgs: "Esport Organizations",
     },
+    //Admin dashboard
+    admin: {
+      adminrights: "Welcome, administrator!",
+
+      adminrightsrequired: "You don't have admin privileges.",
+
+      pendingregistration: "Pending registrations",
+      nopendingregistration: "No pending registrations.",
+      reviewpendingregistration:
+        "Review team registrations submitted by players.",
+
+      approvedregistrations: "Approved registrations",
+      approvedacceptedteams: "Teams already accepted.",
+      noapprovedregistrations: "No approved registrations.",
+
+      buttonapprove: "Approve",
+      buttonreject: "Reject",
+      buttonrefresh: "Refresh",
+      buttonsetpending: "Put back on pending",
+      buttondelete: "Delete",
+
+      confirmdeleteregistration: "Delete this registration permanently ?",
+      registrationdeleted: "Registration deleted.",
+
+      registrationapproved: "Registration approved.",
+      registrationrejected: "Registration rejected.",
+      rejectionreason: "Rejection reason",
+
+      submitted: "Submitted",
+      approved: "Approved",
+
+      events: "Events",
+      eventsmanageadnreview: "Manage and review current events.",
+      eventstarts: "Event starts",
+      eventregistrationopens: "Registration opens",
+      eventregistrationcloses: "Registration closes",
+      noeventsfound: "No events found.",
+
+      createdby: "Created by",
+
+      errorfailedtoloadregistrations: "Failed to load registrations.",
+      errorfailedtoupdateregistration: "Failed to update registration.",
+      errorrejectionreasonneeded: "Please enter a rejection reason.",
+    },
     // Profil et connexion discord/riot
     profile: {
       myProfile: "My Profile",
@@ -691,7 +783,6 @@ export const translations = {
       mainaccount: " op.gg — Main Account",
       otheraccount: " op.gg — Alternate Account",
 
-
       conditions:
         "I accept the tournament terms and conditions, including the Discord rules and league regulations.",
 
@@ -705,17 +796,19 @@ export const translations = {
       sendregistration: "Submit Registration",
       sendingregistration: "Submitting...",
 
-      searching: "Searching...",      
-      errorwhilesearching: "An error occured while searching.",  
+      searching: "Searching...",
+      errorwhilesearching: "An error occured while searching.",
 
       registrationsuccess: "Your registration has been submitted successfully.",
-      registrationerror: "An error occurred while submitting your registration.",
+      registrationerror:
+        "An error occurred while submitting your registration.",
 
       logoRequired: "Please select a team logo.",
 
       noregistrationavailable: "No registration is currently available.",
 
-      mustchooseeventanddivision: "You have to choose an event and a division before finding players.",
+      mustchooseeventanddivision:
+        "You have to choose an event and a division before finding players.",
     },
     // Regulations Page - Ligue Section
     regulationsligue: {

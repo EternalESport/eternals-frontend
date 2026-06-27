@@ -14,6 +14,12 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: "/admindashboard",
+      name: "admindashboard",
+      meta: { title: "Admin - Dashboard" },
+      component: () => import("../views/AdminDashboard.vue"),
+    },
+    {
       path: "/ligue",
       name: "ligue",
       meta: { title: "Eternal - Ligue" },

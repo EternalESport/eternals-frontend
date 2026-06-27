@@ -168,6 +168,13 @@ watch(
       <h1>{{ translations[store.language].profile.myProfile }}</h1>
       <img class="img-profile" v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername">
       <h2 class="username">{{ store.user.discordUsername || 'Utilisateur Discord' }}</h2>
+
+      <div v-if="store.user?.role === 'ADMIN'">
+        <!-- Gérer l'accès au dashboard admin -->
+         <p class="admin-rights">{{ translations[store.language].admin.adminrights }}</p>
+          <RouterLink to="/admindashboard">Admin Dashboard</RouterLink>
+      </div>
+
       <div class="user-infos">
         <p v-if="store.user.firstName">{{ translations[store.language].profile.firstNameAl }} {{ store.user.firstName }}</p>
         <p v-if="store.user.lastName">{{ translations[store.language].profile.lastNameAl }} {{ store.user.lastName }}</p>
