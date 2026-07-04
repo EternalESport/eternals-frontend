@@ -101,7 +101,7 @@ import Dash from './Dash.vue';
           </li>
           <li v-else>
             <div class="profile-mobile">
-              <RouterLink to="/profile" class="profile-button">
+              <RouterLink @click="toggleMobileNav" to="/profile" class="profile-button">
                 <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
               </RouterLink>
               <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>

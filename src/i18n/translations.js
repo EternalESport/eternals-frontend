@@ -132,18 +132,25 @@ export const translations = {
       reviewpendingregistration:
         "Passer en revue les inscriptions soumises par les joueurs.",
 
-      approvedregistrations: "Inscriptions approuvées",
+      approvedregistrations: "Inscriptions approuvées.",
       approvedacceptedteams: "Équipes déjà acceptées.",
       noapprovedregistrations: "Aucune inscriptions approuvées.",
+      rejectedregistrations: "Inscriptions rejetées.",
+      rejectedteams: "Équipes rejetées par un admin.",
+      norejectedregistrations: "Aucune inscriptions rejetées.",
 
       buttonapprove: "Accepter",
       buttonreject: "Rejeter",
       buttonrefresh: "Actualiser",
       buttonsetpending: "Remettre en attente",
+      buttonedit: "Modifier",
       buttondelete: "Supprimer",
 
       confirmdeleteregistration: "Supprimer définitivement cette inscription ?",
       registrationdeleted: "Inscription supprimée.",
+
+      registrations: "Inscriptions",
+      registrationsmanageandreview: "Gérer et consulter les inscriptions.",
 
       registrationapproved: "Inscription approuvée.",
       registrationrejected: "Inscription rejetée.",
@@ -151,9 +158,20 @@ export const translations = {
 
       submitted: "Soumise le",
       approved: "Approuvé",
+      rejected: "Rejeté",
+
+      reason: "Raison",
 
       events: "Événements",
-      eventsmanageadnreview: "Gérez et consultez les événements en cours.",
+      eventscreateedit: "Créer / Modifier",
+      eventsmanageandreview: "Gérez et consultez les événements.",
+      eventcreate: "Créer un événement",
+      eventedit: "Modifier un événement",
+      eventsetupname: "Nom de l'événement",
+      eventadddivision: "Ajouter une division",
+      eventdivisioncapacity: "Capacité / vide = sans limite",
+      eventremovedivision: "Retirer",
+      eventcanceledit: "Annuler",
       eventstarts: "Début de l'événement",
       eventregistrationopens: "Ouverture des inscriptions",
       eventregistrationcloses: "Fermeture des inscriptions",
@@ -161,9 +179,14 @@ export const translations = {
 
       createdby: "Créé par",
 
+      eventcreatedsuccessfully: "Événement créé avec succès.",
+      eventupdatedsuccessfully: "Événement mis à jour avec succès.",
+      eventdeletedsuccessfully: "Événement supprimer avec succès.",
+
+      errorfailedtodeleteevent: "Erreur lors de la suppression de l'événement.",
+      errorfailedtosaveevent: "Erreur lors de la sauvegarde de l'événement.",
       errorfailedtoloadregistrations: "Erreur de chargement des inscriptions.",
-      errorfailedtoupdateregistration:
-        "Échec lors de la mise à jour de l'inscription.",
+      errorfailedtoupdateregistration: "Échec lors de la mise à jour de l'inscription.",
       errorrejectionreasonneeded: "Veuiller indiquer le motif du rejet.",
     },
     // Profil et connexion discord/riot
@@ -703,15 +726,22 @@ export const translations = {
       approvedregistrations: "Approved registrations",
       approvedacceptedteams: "Teams already accepted.",
       noapprovedregistrations: "No approved registrations.",
+      rejectedregistrations: "Rejected registrations.",
+      rejectedteams: "Teams that were rejected by an admin.",
+      norejectedregistrations: "No rejected registrations.",
 
       buttonapprove: "Approve",
       buttonreject: "Reject",
       buttonrefresh: "Refresh",
       buttonsetpending: "Put back on pending",
+      buttonedit: "Edit",
       buttondelete: "Delete",
 
       confirmdeleteregistration: "Delete this registration permanently ?",
       registrationdeleted: "Registration deleted.",
+
+      registrations: "Registrations",
+      registrationsmanageandreview: "Manage pending, approved, and rejected registrations.",
 
       registrationapproved: "Registration approved.",
       registrationrejected: "Registration rejected.",
@@ -719,9 +749,20 @@ export const translations = {
 
       submitted: "Submitted",
       approved: "Approved",
+      rejected: "Rejected",
+
+      reason: "Reason",
 
       events: "Events",
-      eventsmanageadnreview: "Manage and review current events.",
+      eventscreateedit: "Create / Edit",
+      eventsmanageandreview: "Manage and review events.",
+      eventcreate: "Create event",
+      eventedit: "Edit event",
+      eventsetupname: "Event name",
+      eventadddivision: "Add division",
+      eventdivisioncapacity: "Capacity / empty = unlimited",
+      eventremovedivision: "Remove",
+      eventcanceledit: "Cancel",
       eventstarts: "Event starts",
       eventregistrationopens: "Registration opens",
       eventregistrationcloses: "Registration closes",
@@ -729,6 +770,12 @@ export const translations = {
 
       createdby: "Created by",
 
+      eventcreatedsuccessfully: "Event created successfully.",
+      eventupdatedsuccessfully: "Event updated successfully.",
+      eventdeletedsuccessfully: "Event deleted successfully.",
+
+      errorfailedtodeleteevent: "Failed to delete event.",
+      errorfailedtosaveevent: "Failed to save event.",
       errorfailedtoloadregistrations: "Failed to load registrations.",
       errorfailedtoupdateregistration: "Failed to update registration.",
       errorrejectionreasonneeded: "Please enter a rejection reason.",
