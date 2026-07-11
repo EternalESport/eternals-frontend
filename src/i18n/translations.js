@@ -186,8 +186,13 @@ export const translations = {
       errorfailedtodeleteevent: "Erreur lors de la suppression de l'événement.",
       errorfailedtosaveevent: "Erreur lors de la sauvegarde de l'événement.",
       errorfailedtoloadregistrations: "Erreur de chargement des inscriptions.",
-      errorfailedtoupdateregistration: "Échec lors de la mise à jour de l'inscription.",
+      errorfailedtoupdateregistration:
+        "Échec lors de la mise à jour de l'inscription.",
       errorrejectionreasonneeded: "Veuiller indiquer le motif du rejet.",
+
+      circuitEvents: "Circuits",
+      leagueEvents: "Ligues",
+      otherEvents: "Autres événements",
     },
     // Profil et connexion discord/riot
     profile: {
@@ -220,6 +225,53 @@ export const translations = {
       riotDefineAccountMain: "Définir comme compte principal",
       notLoggedIn: "Vous n'êtes pas connecté.",
       returnHome: "Retourner à l'accueil.",
+
+      myTeams: "Mes équipes",
+      teamsLoading: "Chargement de vos équipes...",
+      teamsNone: "Vous n’avez créé ou dirigé aucune équipe.",
+      teamRole: "Rôle",
+      teamRoleCreator: "Créateur de l’inscription",
+      teamRoleCaptain: "Capitaine",
+      teamRoleCreatorCaptain: "Créateur et capitaine",
+      memberTeams: "Équipes dont je suis membre",
+      memberTeamsNone: "Vous ne faites partie d’aucune équipe approuvée.",
+      teamRoleSubstitute: "Remplaçant",
+      teamRoleCoach: "Coach",
+
+      teamStatuses: {
+        pending: "En attente",
+        approved: "Approuvée",
+        rejected: "Rejetée",
+        withdrawn: "Retirée",
+      },
+    },
+    //Events Page
+    events: {
+      title: "Événements",
+      loginRequiredTitle: "Connexion requise",
+      loginRequired: "Vous devez être connecté pour voir les événements.",
+      returnHome: "Retour à l’accueil",
+      loading: "Chargement des événements...",
+      none: "Aucun événement n’est disponible pour le moment.",
+      retry: "Réessayer",
+      eventStart: "Début de l’événement",
+      registrationOpening: "Ouverture des inscriptions",
+      registrationClosing: "Fermeture des inscriptions",
+      divisions: "Divisions",
+      noDivisions: "Aucune division n’est configurée pour cet événement.",
+      unlimitedCapacity: "Nombre d’équipes illimité",
+      capacity: "{approved} équipe(s) approuvée(s) sur {capacity}",
+      full: "Complet",
+      registration: "Inscription",
+      notSpecified: "Non précisé",
+      circuitEvents: "Circuits",
+      leagueEvents: "Ligues",
+      otherEvents: "Autres événements",
+
+      statuses: {
+        open: "Ouvert",
+        closed: "Fermé",
+      },
     },
     //Registration Page - Ligue Section
     registrationligue: {
@@ -741,7 +793,8 @@ export const translations = {
       registrationdeleted: "Registration deleted.",
 
       registrations: "Registrations",
-      registrationsmanageandreview: "Manage pending, approved, and rejected registrations.",
+      registrationsmanageandreview:
+        "Manage pending, approved, and rejected registrations.",
 
       registrationapproved: "Registration approved.",
       registrationrejected: "Registration rejected.",
@@ -779,6 +832,10 @@ export const translations = {
       errorfailedtoloadregistrations: "Failed to load registrations.",
       errorfailedtoupdateregistration: "Failed to update registration.",
       errorrejectionreasonneeded: "Please enter a rejection reason.",
+
+      circuitEvents: "Circuits",
+      leagueEvents: "Leagues",
+      otherEvents: "Other events",
     },
     // Profil et connexion discord/riot
     profile: {
@@ -811,6 +868,53 @@ export const translations = {
       riotDefineAccountMain: "Define as main account",
       notLoggedIn: "You are not logged in..",
       returnHome: "Return to Homepage.",
+
+      myTeams: "My Teams",
+      teamsLoading: "Loading your teams...",
+      teamsNone: "You have not created or captained any team.",
+      teamRole: "Role",
+      teamRoleCreator: "Registration creator",
+      teamRoleCaptain: "Captain",
+      teamRoleCreatorCaptain: "Creator and captain",
+      memberTeams: "Teams I belong to",
+      memberTeamsNone: "You are not part of any approved team.",
+      teamRoleSubstitute: "Substitute",
+      teamRoleCoach: "Coach",
+
+      teamStatuses: {
+        pending: "Pending",
+        approved: "Approved",
+        rejected: "Rejected",
+        withdrawn: "Withdrawn",
+      },
+    },
+    //Events Page
+    events: {
+      title: "Events",
+      loginRequiredTitle: "Login required",
+      loginRequired: "You must be logged in to view events.",
+      returnHome: "Return home",
+      loading: "Loading events...",
+      none: "No events are currently available.",
+      retry: "Try again",
+      eventStart: "Event start",
+      registrationOpening: "Registration opens",
+      registrationClosing: "Registration closes",
+      divisions: "Divisions",
+      noDivisions: "No divisions are configured for this event.",
+      unlimitedCapacity: "Unlimited team capacity",
+      capacity: "{approved} approved team(s) out of {capacity}",
+      full: "Full",
+      registration: "Registration",
+      notSpecified: "Not specified",
+      circuitEvents: "Circuits",
+      leagueEvents: "Leagues",
+      otherEvents: "Other events",
+
+      statuses: {
+        open: "Open",
+        closed: "Closed",
+      },
     },
     // Registration Page - League Section
     registrationligue: {

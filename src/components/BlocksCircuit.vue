@@ -14,11 +14,17 @@ import { translations } from '@/i18n/translations'
       <h3 style="font-size: 41px;">{{ translations[store.language].components.blocks.regulations }}</h3>
     </RouterLink>
 
-    <!-- Inscription -->
-    <a class="block small" :href="config.links.registercircuit" target="_blank">
+    <!-- Inscription AVANT PAGE CUSTOM -->
+    <!-- <a class="block small" :href="config.links.registercircuit" target="_blank">
       <img src="../assets/btns/Inscription1.png" />
       <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
-    </a>
+    </a> -->
+    
+    <!-- Inscription -->
+    <RouterLink to="/registration" class="block small">
+      <img src="../assets/btns/Inscription1.png" />
+      <h3>{{ translations[store.language].components.blocks.registrations }}</h3>
+    </RouterLink>
 
     <!-- Équipes (mobile) -->
     <RouterLink :to="'/teamscircuit'" class="block small mobile">

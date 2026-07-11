@@ -121,3 +121,44 @@ export const loginWithRiot = async (accessToken) => {
     store.redirectMessage = '';
   }
 }
+
+export const getMyTeamRegistrations = async (accessToken) => {
+  const response = await fetch(
+    `${API_BASE_URL}/api/team-registrations/me`,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    }
+  )
+
+  const data = await response.json().catch(() => null)
+
+  if (!response.ok) {
+    throw new Error(
+      Array.isArray(data?.message)
+        ? data.message.join(', ')
+        : data?.message || 'Unable to load team registrations.'
+    )
+  }
+
+  return data
+}
+
+export const getApprovedEventTeams = async (eventSlug) => {
+  const response = await fetch(
+    `${API_BASE_URL}/api/events/${encodeURIComponent(eventSlug)}/teams`
+  )
+
+  const data = await response.json().catch(() => null)
+
+  if (!response.ok) {
+    throw new Error(
+      Array.isArray(data?.message)
+        ? data.message.join(', ')
+        : data?.message || 'Unable to load event teams.'
+    )
+  }
+
+  return Array.isArray(data) ? data : []
+}

@@ -2,13 +2,22 @@
 import { reactive, ref, onMounted, watch } from 'vue'
 import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
-import { updateUserProfile, getRiotAccounts, loginWithRiot } from '../login.js'
+import { updateUserProfile, getRiotAccounts, loginWithRiot, getMyTeamRegistrations, getApprovedEventTeams } from '../login.js'
+import { getEvents } from '../events.js'
 
 const isSaving = ref(false) //Pour savoir si une sauvegarde est en cours
 const successMessage = ref('') //Pour stocker le message de succès
 const errorMessage = ref('') //Pour stocker le message d'erreur s'il y en a une
 const isRedirectingToRiot = ref(false) //Pour savoir si on redirige vers riot
 const redirectMessage = ref('') //Pour stocker le message de redirection
+
+const teamRegistrations = ref([])
+const isLoadingTeamRegistrations = ref(false)
+const teamRegistrationsError = ref('')
+
+const memberTeams = ref([])
+const isLoadingMemberTeams = ref(false)
+const memberTeamsError = ref('')
 
 //Met à jour automatiquement les infos du form en fonction de ce qui est écrit dans les input du form
 const form = reactive({
@@ -34,10 +43,10 @@ const saveProfile = async () => {
         email: form.email || null,
       }
     )
-    
+
     //Update le state du user
     store.user = updatedUser
-    
+
     //On affiche le message d'update réussi
     showProfileUpdatedMessage();
   }
@@ -124,6 +133,117 @@ const handleRiotCallbackResult = async () => {
   }
 }
 
+const loadTeamRegistrations = async () => {
+  if (!store.accessToken) return
+
+  isLoadingTeamRegistrations.value = true
+  teamRegistrationsError.value = ''
+
+  try {
+    teamRegistrations.value = await getMyTeamRegistrations(
+      store.accessToken
+    )
+  }
+  catch (error) {
+    teamRegistrationsError.value = error.message
+  }
+  finally {
+    isLoadingTeamRegistrations.value = false
+  }
+}
+
+const getUserTeamRole = (registration) => {
+  const userId = store.user?.id
+
+  if (!userId) return ''
+
+  const isCaptain = registration.captain?.id === userId
+  const isCreator = registration.createdBy?.id === userId
+
+  if (isCaptain && isCreator) {
+    return translations[store.language].profile.teamRoleCreatorCaptain
+  }
+
+  if (isCaptain) {
+    return translations[store.language].profile.teamRoleCaptain
+  }
+
+  if (isCreator) {
+    return translations[store.language].profile.teamRoleCreator
+  }
+
+  return ''
+}
+
+const loadMemberTeams = async () => {
+  if (!store.user?.id || !store.accessToken) return
+
+  isLoadingMemberTeams.value = true
+  memberTeamsError.value = ''
+
+  try {
+    const allEvents = await getEvents()
+
+    const eventTeamResults = await Promise.all(
+      allEvents.map(async event => {
+        const teams = await getApprovedEventTeams(event.slug)
+
+        return teams.map(team => ({
+          ...team,
+          eventId: event.id,
+          eventName: event.name,
+          eventSlug: event.slug
+        }))
+      })
+    )
+
+    const allApprovedTeams = eventTeamResults.flat()
+
+    const existingRegistrationIds = new Set(
+      teamRegistrations.value.map(registration => registration.id)
+    )
+
+    memberTeams.value = allApprovedTeams.filter(team => {
+      const isMember = team.members?.some(
+        member => member.user?.id === store.user.id
+      )
+
+      return (
+        isMember &&
+        !existingRegistrationIds.has(team.id)
+      )
+    })
+  }
+  catch (error) {
+    memberTeamsError.value = error.message
+  }
+  finally {
+    isLoadingMemberTeams.value = false
+  }
+}
+
+const getMemberRole = (team) => {
+  const member = team.members?.find(
+    member => member.user?.id === store.user?.id
+  )
+
+  if (!member) return ''
+
+  const roleLabels = {
+    top: 'Top',
+    jungle: 'Jungle',
+    mid: 'Mid',
+    adc: 'ADC',
+    support: 'Support',
+    sub1: translations[store.language].profile.teamRoleSubstitute,
+    sub2: translations[store.language].profile.teamRoleSubstitute,
+    sub3: translations[store.language].profile.teamRoleSubstitute,
+    coach: translations[store.language].profile.teamRoleCoach
+  }
+
+  return roleLabels[member.slot] || member.slot
+}
+
 onMounted(async () => {
   await handleRiotCallbackResult()
 })
@@ -146,10 +266,19 @@ watch(
 // sinon les comptes liés n'apparaissent pas toujours lors du chargement de la page
 watch(
   () => store.accessToken,
-  async (accessToken) => {
-    if (!accessToken) return
+  async accessToken => {
+    if (!accessToken) {
+      teamRegistrations.value = []
+      memberTeams.value = []
+      return
+    }
 
-    await loadRiotAccounts(false)
+    await Promise.all([
+      loadRiotAccounts(false),
+      loadTeamRegistrations()
+    ])
+
+    await loadMemberTeams()
   },
   { immediate: true }
 )
@@ -171,8 +300,8 @@ watch(
 
       <div v-if="store.user?.role === 'ADMIN'">
         <!-- Gérer l'accès au dashboard admin -->
-         <p class="admin-rights">{{ translations[store.language].admin.adminrights }}</p>
-          <RouterLink to="/admindashboard">Admin Dashboard</RouterLink>
+        <p class="admin-rights">{{ translations[store.language].admin.adminrights }}</p>
+        <RouterLink to="/admindashboard">Admin Dashboard</RouterLink>
       </div>
 
       <div class="user-infos">
@@ -241,6 +370,102 @@ watch(
             {{ translations[store.language].profile.riotLink }}
           </button>
         </div>
+      </div>
+
+      <!-- Section des équipes créées ou dirigées par le user -->
+      <div class="teams-section">
+        <h2>{{ translations[store.language].profile.myTeams }}</h2>
+
+        <p v-if="isLoadingTeamRegistrations" class="empty-teams">
+          {{ translations[store.language].profile.teamsLoading }}
+        </p>
+
+        <p v-else-if="teamRegistrationsError" class="error-message">
+          {{ teamRegistrationsError }}
+        </p>
+
+        <div v-else-if="teamRegistrations.length" class="teams-list">
+          <article v-for="registration in teamRegistrations" :key="registration.id" class="team-card">
+            <img v-if="registration.logoUrl" :src="registration.logoUrl" :alt="registration.teamName" class="team-logo">
+
+            <div class="team-card-content">
+              <h3>{{ registration.teamName }}</h3>
+
+              <p>{{ registration.divisionName }}</p>
+
+              <p>
+                <strong>
+                  {{ translations[store.language].profile.teamRole }}:
+                </strong>
+
+                {{ getUserTeamRole(registration) }}
+              </p>
+
+              <span class="team-status" :class="`status-${registration.status}`">
+                {{
+                  translations[store.language].profile.teamStatuses[
+                  registration.status
+                  ] || registration.status
+                }}
+              </span>
+
+              <p v-if="registration.statusReason" class="team-status-reason">
+                {{ registration.statusReason }}
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <p v-else class="empty-teams">
+          {{ translations[store.language].profile.teamsNone }}
+        </p>
+      </div>
+
+      <div class="teams-section">
+        <h2>
+          {{ translations[store.language].profile.memberTeams }}
+        </h2>
+
+        <p v-if="isLoadingMemberTeams" class="empty-teams">
+          {{ translations[store.language].profile.teamsLoading }}
+        </p>
+
+        <p v-else-if="memberTeamsError" class="error-message">
+          {{ memberTeamsError }}
+        </p>
+
+        <div v-else-if="memberTeams.length" class="teams-list">
+          <article v-for="team in memberTeams" :key="team.id" class="team-card">
+            <img v-if="team.logoUrl" :src="team.logoUrl" :alt="team.teamName" class="team-logo">
+
+            <div class="team-card-content">
+              <h3>{{ team.teamName }}</h3>
+
+              <p>{{ team.eventName }}</p>
+
+              <p>{{ team.divisionName }}</p>
+
+              <p>
+                <strong>
+                  {{ translations[store.language].profile.teamRole }}:
+                </strong>
+
+                {{ getMemberRole(team) }}
+              </p>
+
+              <span class="team-status status-approved">
+                {{
+                  translations[store.language]
+                    .profile.teamStatuses.approved
+                }}
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <p v-else class="empty-teams">
+          {{ translations[store.language].profile.memberTeamsNone }}
+        </p>
       </div>
 
     </div>
@@ -472,5 +697,118 @@ h1 {
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.teams-section {
+  margin-top: 40px;
+  padding: 35px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.teams-section h2 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.team-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.team-logo {
+  width: 85px;
+  height: 85px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.team-card-content {
+  flex: 1;
+}
+
+.team-card-content h3 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.team-card-content p {
+  margin: 5px 0;
+  color: #d6d6d6;
+}
+
+.team-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  color: #ffd978;
+  background: rgba(255, 217, 120, 0.1);
+  border: 1px solid rgba(255, 217, 120, 0.3);
+}
+
+.status-approved {
+  color: #78ff9c;
+  background: rgba(120, 255, 156, 0.1);
+  border: 1px solid rgba(120, 255, 156, 0.3);
+}
+
+.status-rejected {
+  color: #ff7b7b;
+  background: rgba(255, 123, 123, 0.1);
+  border: 1px solid rgba(255, 123, 123, 0.3);
+}
+
+.status-withdrawn {
+  color: #b8b8b8;
+  background: rgba(184, 184, 184, 0.08);
+  border: 1px solid rgba(184, 184, 184, 0.2);
+}
+
+.team-status-reason {
+  margin-top: 10px !important;
+  color: #ff9d9d !important;
+  font-size: 0.9rem;
+}
+
+.empty-teams {
+  color: #d6d6d6;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .team-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .team-logo {
+    width: 100px;
+    height: 100px;
+  }
 }
 </style>

@@ -17,7 +17,7 @@ const router = createRouter({
       path: "/admindashboard",
       name: "admindashboard",
       meta: { title: "Admin - Dashboard" },
-      component: () => import("../views/AdminDashboard.vue"),
+      component: () => import("../views/AdminDashboardView.vue"),
     },
     {
       path: "/ligue",
@@ -54,6 +54,12 @@ const router = createRouter({
       name: "stats",
       meta: { title: "Eternal - Stats" },
       component: () => import("../views/StatsView.vue"),
+    },
+    {
+      path: "/events",
+      name: "events",
+      meta: { title: "Eternal - Events" },
+      component: () => import("../views/EventsView.vue"),
     },
     {
       path: "/regulationsligue",
@@ -107,7 +113,7 @@ const router = createRouter({
       path: "/profile",
       name: "Profile",
       meta: { title: "Eternal - Profile" },
-      component: () => import("@/views/Profile.vue"),
+      component: () => import("@/views/ProfileView.vue"),
     },
     {
       path: "/auth/callback",

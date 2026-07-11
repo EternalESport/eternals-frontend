@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
 
@@ -31,6 +31,8 @@ const isAdmin = computed(() => store.user?.role === 'ADMIN')
 
 const editingEventId = ref(null)
 const savingEvent = ref(false)
+
+const eventFormSection = ref(null)
 
 const eventForm = ref({
     name: '',
@@ -78,7 +80,7 @@ function resetEventForm() {
     }
 }
 
-function editEvent(event) {
+async function editEvent(event) {
     editingEventId.value = event.id
 
     eventForm.value = {
@@ -91,6 +93,13 @@ function editEvent(event) {
         registrationClosesAt: event.registrationClosesAt?.slice(0, 16) ?? '',
         divisions: []
     }
+
+    await nextTick()
+
+    eventFormSection.value?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    })
 }
 
 function addDivision() {
@@ -250,6 +259,50 @@ function getEventName(eventId) {
     return events.value.find(event => event.id === eventId)?.name || '—'
 }
 
+const groupedEvents = computed(() => {
+    const groups = {
+        circuit: [],
+        league: [],
+        other: []
+    }
+
+    for (const event of events.value) {
+        const normalizedName = event.name
+            ?.trim()
+            .toLocaleLowerCase()
+
+        if (normalizedName?.startsWith('circuit')) {
+            groups.circuit.push(event)
+        }
+        else if (
+            normalizedName?.startsWith('ligue') ||
+            normalizedName?.startsWith('league')
+        ) {
+            groups.league.push(event)
+        }
+        else {
+            groups.other.push(event)
+        }
+    }
+
+    const sortByName = (firstEvent, secondEvent) => {
+        return (firstEvent.name || '').localeCompare(
+            secondEvent.name || '',
+            store.language === 'fr' ? 'fr' : 'en',
+            {
+                sensitivity: 'base',
+                numeric: true
+            }
+        )
+    }
+
+    groups.circuit.sort(sortByName)
+    groups.league.sort(sortByName)
+    groups.other.sort(sortByName)
+
+    return groups
+})
+
 async function loadApprovedRegistrations() {
     if (!isAdmin.value) return
 
@@ -408,19 +461,19 @@ watch(isAdmin, (newValue) => {
                         <h2>{{ translations[store.language].admin.events }}</h2>
                         <p>{{ translations[store.language].admin.eventsmanageandreview }}</p>
                     </div>
-                    
+
                     <button class="refresh-button" @click="loadEvents" :disabled="loadingEvents">
                         {{ loadingEvents ? 'Loading...' : translations[store.language].admin.buttonrefresh }}
                     </button>
                 </div>
                 <section class="dashboard-card approved-section">
-                    
-                    
+
+
                     <p v-if="!loadingEvents && events.length === 0" class="empty-message">
                         {{ translations[store.language].admin.noeventsfound }}
                     </p>
-                    
-                    <h3>{{ translations[store.language].admin.events }}</h3>
+
+                    <!-- <h3>{{ translations[store.language].admin.events }}</h3>
                     <div class="events-grid">
                         <div v-for="event in events" :key="event.id" class="event-card">
                             <div class="event-top">
@@ -471,6 +524,241 @@ watch(isAdmin, (newValue) => {
                                 </button>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="admin-event-groups">
+                        <!-- Circuits -->
+                        <section v-if="groupedEvents.circuit.length" class="admin-event-group">
+                            <h3 class="event-group-title">
+                                {{ translations[store.language].admin.circuitEvents }}
+                            </h3>
+
+                            <div class="events-grid">
+                                <div v-for="event in groupedEvents.circuit" :key="event.id" class="event-card">
+                                    <div class="event-top">
+                                        <h3>{{ event.name }}</h3>
+
+                                        <span class="status-pill">
+                                            {{ event.status }}
+                                        </span>
+                                    </div>
+
+                                    <div class="info-grid event-info-grid">
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventstarts }}
+                                            </span>
+
+                                            <strong>{{ formatDate(event.startsAt) }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationopens }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationOpensAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationcloses }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationClosesAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Description</span>
+
+                                            <strong>{{ event.description || '—' }}</strong>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="event.divisions?.length" class="divisions-list">
+                                        <h4>Divisions</h4>
+
+                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
+                                            <span>{{ division.name }}</span>
+
+                                            <strong>
+                                                {{ division.approvedTeamCount ?? 0 }} /
+                                                {{ division.teamCapacity ?? '∞' }}
+                                            </strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="actions">
+                                        <button class="pending-button" @click="editEvent(event)">
+                                            {{ translations[store.language].admin.buttonedit }}
+                                        </button>
+
+                                        <button class="delete-button" @click="deleteEvent(event.id)">
+                                            {{ translations[store.language].admin.buttondelete }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Ligues -->
+                        <section v-if="groupedEvents.league.length" class="admin-event-group">
+                            <h3 class="event-group-title">
+                                {{ translations[store.language].admin.leagueEvents }}
+                            </h3>
+
+                            <div class="events-grid">
+                                <div v-for="event in groupedEvents.league" :key="event.id" class="event-card">
+                                    <div class="event-top">
+                                        <h3>{{ event.name }}</h3>
+
+                                        <span class="status-pill">
+                                            {{ event.status }}
+                                        </span>
+                                    </div>
+
+                                    <div class="info-grid event-info-grid">
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventstarts }}
+                                            </span>
+
+                                            <strong>{{ formatDate(event.startsAt) }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationopens }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationOpensAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationcloses }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationClosesAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Description</span>
+
+                                            <strong>{{ event.description || '—' }}</strong>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="event.divisions?.length" class="divisions-list">
+                                        <h4>Divisions</h4>
+
+                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
+                                            <span>{{ division.name }}</span>
+
+                                            <strong>
+                                                {{ division.approvedTeamCount ?? 0 }} /
+                                                {{ division.teamCapacity ?? '∞' }}
+                                            </strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="actions">
+                                        <button class="pending-button" @click="editEvent(event)">
+                                            {{ translations[store.language].admin.buttonedit }}
+                                        </button>
+
+                                        <button class="delete-button" @click="deleteEvent(event.id)">
+                                            {{ translations[store.language].admin.buttondelete }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Autres événements -->
+                        <section v-if="groupedEvents.other.length" class="admin-event-group">
+                            <h3 class="event-group-title">
+                                {{ translations[store.language].admin.otherEvents }}
+                            </h3>
+
+                            <div class="events-grid">
+                                <div v-for="event in groupedEvents.other" :key="event.id" class="event-card">
+                                    <div class="event-top">
+                                        <h3>{{ event.name }}</h3>
+
+                                        <span class="status-pill">
+                                            {{ event.status }}
+                                        </span>
+                                    </div>
+
+                                    <div class="info-grid event-info-grid">
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventstarts }}
+                                            </span>
+
+                                            <strong>{{ formatDate(event.startsAt) }}</strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationopens }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationOpensAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>
+                                                {{ translations[store.language].admin.eventregistrationcloses }}
+                                            </span>
+
+                                            <strong>
+                                                {{ formatDate(event.registrationClosesAt) }}
+                                            </strong>
+                                        </div>
+
+                                        <div>
+                                            <span>Description</span>
+
+                                            <strong>{{ event.description || '—' }}</strong>
+                                        </div>
+                                    </div>
+
+                                    <div v-if="event.divisions?.length" class="divisions-list">
+                                        <h4>Divisions</h4>
+
+                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
+                                            <span>{{ division.name }}</span>
+
+                                            <strong>
+                                                {{ division.approvedTeamCount ?? 0 }} /
+                                                {{ division.teamCapacity ?? '∞' }}
+                                            </strong>
+                                        </div>
+                                    </div>
+
+                                    <div class="actions">
+                                        <button class="pending-button" @click="editEvent(event)">
+                                            {{ translations[store.language].admin.buttonedit }}
+                                        </button>
+
+                                        <button class="delete-button" @click="deleteEvent(event.id)">
+                                            {{ translations[store.language].admin.buttondelete }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </section>
 
@@ -482,7 +770,7 @@ watch(isAdmin, (newValue) => {
                     {{ eventSuccess }}
                 </p>
 
-                <section class="dashboard-card approved-section">
+                <section ref="eventFormSection" class="dashboard-card approved-section event-form-section">
                     <h3>{{ translations[store.language].admin.eventscreateedit }}</h3>
                     <form class="event-form" @submit.prevent="saveEvent">
                         <h3>{{ editingEventId ? translations[store.language].admin.eventedit : translations[store.language].admin.eventcreate }}</h3>
@@ -1051,6 +1339,10 @@ main {
     resize: vertical;
 }
 
+.event-form-section {
+    scroll-margin-top: 100px;
+}
+
 .division-editor {
     margin-top: 18px;
 }
@@ -1074,6 +1366,29 @@ main {
     margin-top: 30px;
     padding-top: 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-event-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-top: 20px;
+}
+
+.admin-event-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-group-title {
+    margin: 0;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(210, 20, 124, 0.5);
 }
 
 @media (max-width: 768px) {
