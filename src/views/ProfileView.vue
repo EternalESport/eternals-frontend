@@ -11,13 +11,13 @@ const errorMessage = ref('') //Pour stocker le message d'erreur s'il y en a une
 const isRedirectingToRiot = ref(false) //Pour savoir si on redirige vers riot
 const redirectMessage = ref('') //Pour stocker le message de redirection
 
-const teamRegistrations = ref([])
-const isLoadingTeamRegistrations = ref(false)
-const teamRegistrationsError = ref('')
+const teamRegistrations = ref([]) //Pour stocker les équipes créé par le user et/ou celles dont il est capitaine
+const isLoadingTeamRegistrations = ref(false) //Pour savoir si on charge les équipes
+const teamRegistrationsError = ref('') //Pour stocker le message d'erreur s'il y en a une
 
-const memberTeams = ref([])
-const isLoadingMemberTeams = ref(false)
-const memberTeamsError = ref('')
+const memberTeams = ref([]) //Pour stocker les équipes dont le user est membre
+const isLoadingMemberTeams = ref(false) //Pour savoir si on charge les équipes dont le user est membre
+const memberTeamsError = ref('') //Pour stocker le message d'erreur s'il y en a une
 
 //Met à jour automatiquement les infos du form en fonction de ce qui est écrit dans les input du form
 const form = reactive({
@@ -133,6 +133,7 @@ const handleRiotCallbackResult = async () => {
   }
 }
 
+//Pour aller chercher les équipes
 const loadTeamRegistrations = async () => {
   if (!store.accessToken) return
 
@@ -152,6 +153,7 @@ const loadTeamRegistrations = async () => {
   }
 }
 
+//Pour vérifier si le user a créé l'équipe ou en est le capitaine
 const getUserTeamRole = (registration) => {
   const userId = store.user?.id
 
@@ -175,6 +177,7 @@ const getUserTeamRole = (registration) => {
   return ''
 }
 
+//Pour vérifier si le user a un rôle dans l'équipe
 const loadMemberTeams = async () => {
   if (!store.user?.id || !store.accessToken) return
 
@@ -222,6 +225,7 @@ const loadMemberTeams = async () => {
   }
 }
 
+//Pour vérifier le rôle du user dans l'équipe
 const getMemberRole = (team) => {
   const member = team.members?.find(
     member => member.user?.id === store.user?.id
@@ -298,8 +302,8 @@ watch(
       <img class="img-profile" v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername">
       <h2 class="username">{{ store.user.discordUsername || 'Utilisateur Discord' }}</h2>
 
+      <!-- Gérer l'accès au dashboard admin et afficher lien vers le dashboard admin si le user a les privilèges admin -->
       <div v-if="store.user?.role === 'ADMIN'">
-        <!-- Gérer l'accès au dashboard admin -->
         <p class="admin-rights">{{ translations[store.language].admin.adminrights }}</p>
         <RouterLink to="/admindashboard">Admin Dashboard</RouterLink>
       </div>
@@ -380,6 +384,7 @@ watch(
           {{ translations[store.language].profile.teamsLoading }}
         </p>
 
+        <!-- Pour afficher les messages de succès/erreurs -->
         <p v-else-if="teamRegistrationsError" class="error-message">
           {{ teamRegistrationsError }}
         </p>
@@ -421,6 +426,7 @@ watch(
         </p>
       </div>
 
+      <!-- Section des équipes dont le user fait partie (où il n'est ni capitaine ni créateur de l'équipe) -->
       <div class="teams-section">
         <h2>
           {{ translations[store.language].profile.memberTeams }}
@@ -430,6 +436,7 @@ watch(
           {{ translations[store.language].profile.teamsLoading }}
         </p>
 
+        <!-- Pour afficher les messages de succès/erreurs -->
         <p v-else-if="memberTeamsError" class="error-message">
           {{ memberTeamsError }}
         </p>

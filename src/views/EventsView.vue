@@ -5,14 +5,16 @@ import { getEvents } from '../events.js'
 import { translations } from '@/i18n/translations'
 import EventCard from '../components/EventCard.vue';
 
-const events = ref([])
-const isLoadingEvents = ref(false)
-const eventsError = ref('')
+const events = ref([]) // Liste des événements récupérés depuis l'API.
+const isLoadingEvents = ref(false) // Indique si les événements sont en cours de chargement.
+const eventsError = ref('') // Message d'erreur lié au chargement des événements.
 
+// Retourne les traductions de la page selon la langue sélectionnée.
 const currentTranslations = computed(() => {
     return translations[store.language].events
 })
 
+// Charge les événements accessibles à l'utilisateur connecté.
 const loadEvents = async () => {
     if (!store.user || !store.accessToken) {
         events.value = []
@@ -33,13 +35,16 @@ const loadEvents = async () => {
     }
 }
 
+// Regroupe les événements par catégorie, puis les trie par nom.
 const groupedEvents = computed(() => {
+    // Catégories utilisées pour l'affichage de la page.
     const groups = {
         circuit: [],
         league: [],
         other: []
     }
 
+    // Classe chaque événement selon le début de son nom.
     for (const event of events.value) {
         const normalizedName = event.name
             ?.trim()
@@ -59,6 +64,7 @@ const groupedEvents = computed(() => {
         }
     }
 
+    // Trie les événements par nom en respectant la langue sélectionnée.
     const sortByName = (firstEvent, secondEvent) => {
         return firstEvent.name.localeCompare(
             secondEvent.name,
@@ -77,6 +83,8 @@ const groupedEvents = computed(() => {
     return groups
 })
 
+// Recharge automatiquement les événements lorsque
+// l'utilisateur se connecte ou que son jeton d'accès change.
 watch(
     [
         () => store.accessToken,
@@ -132,7 +140,9 @@ watch(
                 <p>{{ currentTranslations.none }}</p>
             </div>
 
+            <!-- Liste des événements regroupés par catégorie -->
             <div v-else class="event-groups">
+                <!-- Événements de type Circuit -->
                 <section v-if="groupedEvents.circuit.length" class="event-group">
                     <h2 class="group-title">
                         {{ currentTranslations.circuitEvents }}
@@ -143,6 +153,7 @@ watch(
                     </div>
                 </section>
 
+                <!-- Événements de type Ligue -->
                 <section v-if="groupedEvents.league.length" class="event-group">
                     <h2 class="group-title">
                         {{ currentTranslations.leagueEvents }}
@@ -153,6 +164,7 @@ watch(
                     </div>
                 </section>
 
+                <!-- Autres événements -->
                 <section v-if="groupedEvents.other.length" class="event-group">
                     <h2 class="group-title">
                         {{ currentTranslations.otherEvents }}

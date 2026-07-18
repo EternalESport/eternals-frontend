@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
 
+// Événement à afficher.
 const props = defineProps({
     event: {
         type: Object,
@@ -10,10 +11,13 @@ const props = defineProps({
     }
 })
 
+// Retourne les traductions correspondant à la langue actuellement sélectionnée.
 const currentTranslations = computed(() => {
     return translations[store.language].events
 })
 
+// Formate une date selon la langue de l'utilisateur.
+// Retourne "Non spécifié" si la date est invalide ou absente.
 const formatDate = (dateValue) => {
     if (!dateValue) {
         return currentTranslations.value.notSpecified
@@ -37,10 +41,12 @@ const formatDate = (dateValue) => {
     ).format(date)
 }
 
+// Retourne le libellé traduit correspondant au statut de l'événement.
 const getEventStatusLabel = (status) => {
     return currentTranslations.value.statuses?.[status] || status
 }
 
+// Génère le texte affichant la capacité d'une division.
 const getDivisionCapacityText = (division) => {
     if (
         division.teamCapacity === null ||
@@ -54,6 +60,10 @@ const getDivisionCapacityText = (division) => {
         .replace('{capacity}', division.teamCapacity)
 }
 
+// Détermine si les inscriptions sont actuellement ouvertes.
+// Les inscriptions sont disponibles uniquement si :
+// - l'événement est ouvert;
+// - la date actuelle est comprise entre l'ouverture et la fermeture des inscriptions.
 const isRegistrationOpen = computed(() => {
     if (props.event.status !== 'open') {
         return false
@@ -75,6 +85,9 @@ const isRegistrationOpen = computed(() => {
 <template>
     <article class="event-card">
         <div class="event-header">
+            
+            <!-- Informations générales de l'événement -->
+
             <div>
                 <h2>{{ event.name }}</h2>
 
@@ -84,9 +97,13 @@ const isRegistrationOpen = computed(() => {
             </div>
         </div>
 
+        <!-- Description -->
+
         <p v-if="event.description" class="event-description">
             {{ event.description }}
         </p>
+
+        <!-- Dates importantes -->
 
         <div class="event-dates">
             <div class="event-info">
@@ -114,6 +131,8 @@ const isRegistrationOpen = computed(() => {
             </div>
         </div>
 
+        <!-- Liste des divisions -->
+
         <div v-if="event.divisions?.length" class="divisions-section">
             <h3>{{ currentTranslations.divisions }}</h3>
 
@@ -137,6 +156,8 @@ const isRegistrationOpen = computed(() => {
         <p v-else class="no-divisions">
             {{ currentTranslations.noDivisions }}
         </p>
+
+        <!-- Bouton d'inscription (visible uniquement lorsque les inscriptions sont ouvertes) -->
 
         <RouterLink v-if="isRegistrationOpen" :to="{
             path: '/registration',

@@ -122,6 +122,7 @@ export const loginWithRiot = async (accessToken) => {
   }
 }
 
+//Va chercher les équipes où le use est créateur ou capitaine
 export const getMyTeamRegistrations = async (accessToken) => {
   const response = await fetch(
     `${API_BASE_URL}/api/team-registrations/me`,
@@ -145,6 +146,7 @@ export const getMyTeamRegistrations = async (accessToken) => {
   return data
 }
 
+//Aller chercher les inscriptions d'un événement
 export const getApprovedEventTeams = async (eventSlug) => {
   const response = await fetch(
     `${API_BASE_URL}/api/events/${encodeURIComponent(eventSlug)}/teams`

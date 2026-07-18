@@ -2,31 +2,37 @@
 import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
+import AdminEventGroup from '../components/AdminEventGroup.vue'
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
+// Inscriptions en attente
 const registrations = ref([])
 const loading = ref(false)
 
+// Inscriptions approuvées
 const updatingRegistration = ref(false)
 const approvedRegistrations = ref([])
 const loadingApproved = ref(false)
 
+// Inscriptions refusées
 const rejectedRegistrations = ref([])
 const loadingRejected = ref(false)
 
+// Événements
 const events = ref([])
 const loadingEvents = ref(false)
 
+// Raisons de refus saisies par l'administrateur
 const rejectReasons = ref({})
 
+// Messages d'erreur et de succès
 const eventError = ref('')
 const eventSuccess = ref('')
-
 const registrationError = ref('')
 const registrationSuccess = ref('')
 
-
+// Vérifie si l'utilisateur connecté possède les droits administrateur.
 const isAdmin = computed(() => store.user?.role === 'ADMIN')
 
 const editingEventId = ref(null)
@@ -34,6 +40,7 @@ const savingEvent = ref(false)
 
 const eventFormSection = ref(null)
 
+// Données du formulaire de création/modification d'événement.
 const eventForm = ref({
     name: '',
     slug: '',
@@ -52,6 +59,7 @@ const eventForm = ref({
 
 let messageTimer = null
 
+// Efface automatiquement un message après quelques secondes.
 function clearMessage(messageRef) {
     clearTimeout(messageTimer)
 
@@ -60,6 +68,7 @@ function clearMessage(messageRef) {
     }, 6000)
 }
 
+// Réinitialise complètement le formulaire de création d'événement.
 function resetEventForm() {
     slugSuffix.value = generateRandomNumber()
     editingEventId.value = null
@@ -80,6 +89,7 @@ function resetEventForm() {
     }
 }
 
+// Charge un événement existant dans le formulaire afin de le modifier.
 async function editEvent(event) {
     editingEventId.value = event.id
 
@@ -102,6 +112,7 @@ async function editEvent(event) {
     })
 }
 
+// Ajoute une nouvelle division au formulaire.
 function addDivision() {
     eventForm.value.divisions.push({
         name: '',
@@ -110,10 +121,12 @@ function addDivision() {
     })
 }
 
+// Supprime une division du formulaire.
 function removeDivision(index) {
     eventForm.value.divisions.splice(index, 1)
 }
 
+// Crée un nouvel événement ou met à jour un événement existant.
 async function saveEvent() {
     eventError.value = ''
     eventSuccess.value = ''
@@ -173,6 +186,7 @@ async function saveEvent() {
     }
 }
 
+// Supprime définitivement un événement après confirmation.
 async function deleteEvent(eventId) {
     if (!confirm('Delete this event? This will also delete its divisions and registrations.')) return
 
@@ -195,10 +209,12 @@ async function deleteEvent(eventId) {
 
 const slugSuffix = ref(generateRandomNumber())
 
+//Pour générer un nombre dans le slug
 function generateRandomNumber() {
     return Math.floor(1000 + Math.random() * 9000)
 }
 
+// Génère un nombre aléatoire servant à rendre le slug unique.
 function generateSlug(text) {
     return text
         .toLowerCase()
@@ -209,6 +225,7 @@ function generateSlug(text) {
         .replace(/^-+|-+$/g, '')
 }
 
+// Transforme un texte en slug compatible avec une URL.
 watch(
     () => eventForm.value.name,
     (newName) => {
@@ -218,6 +235,7 @@ watch(
     }
 )
 
+// Effectue une requête authentifiée vers les routes d'administration.
 async function adminFetch(path, options = {}) {
     const response = await fetch(`${apiBaseUrl}${path}`, {
         ...options,
@@ -240,6 +258,7 @@ async function adminFetch(path, options = {}) {
     return response.json()
 }
 
+// Charge tous les événements disponibles.
 async function loadEvents() {
     if (!isAdmin.value) return
 
@@ -259,6 +278,8 @@ function getEventName(eventId) {
     return events.value.find(event => event.id === eventId)?.name || '—'
 }
 
+// Regroupe les événements par catégorie (Circuit, Ligue ou Autres)
+// afin de simplifier leur affichage dans le tableau de bord.
 const groupedEvents = computed(() => {
     const groups = {
         circuit: [],
@@ -303,6 +324,7 @@ const groupedEvents = computed(() => {
     return groups
 })
 
+// Charge les inscriptions approuvées.
 async function loadApprovedRegistrations() {
     if (!isAdmin.value) return
 
@@ -318,6 +340,7 @@ async function loadApprovedRegistrations() {
     }
 }
 
+// Charge les inscriptions en attente.
 async function loadPendingRegistrations() {
     if (!isAdmin.value) return
 
@@ -333,6 +356,7 @@ async function loadPendingRegistrations() {
     }
 }
 
+// Charge les inscriptions refusées.
 async function loadRejectedRegistrations() {
     if (!isAdmin.value) return
 
@@ -348,6 +372,7 @@ async function loadRejectedRegistrations() {
     }
 }
 
+// Modifie le statut d'une inscription (approuvée, refusée ou en attente).
 async function updateRegistrationStatus(registrationId, status) {
     registrationError.value = ''
     registrationSuccess.value = ''
@@ -393,6 +418,7 @@ async function updateRegistrationStatus(registrationId, status) {
     }
 }
 
+// Supprime définitivement une inscription.
 async function deleteRegistration(registrationId) {
     if (!confirm(translations[store.language].admin.confirmdeleteregistration)) return
 
@@ -417,6 +443,7 @@ async function deleteRegistration(registrationId) {
     }
 }
 
+// Formate une date selon la langue actuellement sélectionnée.
 function formatDate(dateValue) {
     if (!dateValue) return '—'
 
@@ -426,10 +453,12 @@ function formatDate(dateValue) {
     })
 }
 
+// Retourne le membre occupant un rôle précis dans une équipe.
 function getMemberBySlot(registration, slot) {
     return registration.members?.find(member => member.slot === slot)?.user
 }
 
+// Recharge l'ensemble des données nécessaires au tableau de bord administrateur.
 async function loadAdminDashboard() {
     if (!isAdmin.value) return
 
@@ -439,10 +468,12 @@ async function loadAdminDashboard() {
     await loadRejectedRegistrations()
 }
 
+// Charge les données au premier affichage de la page.
 onMounted(() => {
     loadAdminDashboard()
 })
 
+// Recharge automatiquement les données lorsqu'un utilisateur obtient les droits administrateur.
 watch(isAdmin, (newValue) => {
     if (newValue) {
         loadAdminDashboard()
@@ -473,295 +504,19 @@ watch(isAdmin, (newValue) => {
                         {{ translations[store.language].admin.noeventsfound }}
                     </p>
 
-                    <!-- <h3>{{ translations[store.language].admin.events }}</h3>
-                    <div class="events-grid">
-                        <div v-for="event in events" :key="event.id" class="event-card">
-                            <div class="event-top">
-                                <h3>{{ event.name }}</h3>
-                                <span class="status-pill">{{ event.status }}</span>
-                            </div>
-
-                            <div class="info-grid event-info-grid">
-                                <div>
-                                    <span>{{ translations[store.language].admin.eventstarts }}</span>
-                                    <strong>{{ formatDate(event.startsAt) }}</strong>
-                                </div>
-
-                                <div>
-                                    <span>{{ translations[store.language].admin.eventregistrationopens }}</span>
-                                    <strong>{{ formatDate(event.registrationOpensAt) }}</strong>
-                                </div>
-
-                                <div>
-                                    <span>{{ translations[store.language].admin.eventregistrationcloses }}</span>
-                                    <strong>{{ formatDate(event.registrationClosesAt) }}</strong>
-                                </div>
-
-                                <div>
-                                    <span>Description</span>
-                                    <strong>{{ event.description }}</strong>
-                                </div>
-                            </div>
-
-                            <div v-if="event.divisions?.length" class="divisions-list">
-                                <h4>Divisions</h4>
-
-                                <div v-for="division in event.divisions" :key="division.id" class="division-row">
-                                    <span>{{ division.name }}</span>
-                                    <strong>
-                                        {{ division.approvedTeamCount ?? 0 }} /
-                                        {{ division.teamCapacity ?? '∞' }}
-                                    </strong>
-                                </div>
-                            </div>
-                            <div class="actions">
-                                <button class="pending-button" @click="editEvent(event)">
-                                    {{ translations[store.language].admin.buttonedit }}
-                                </button>
-
-                                <button class="delete-button" @click="deleteEvent(event.id)">
-                                    {{ translations[store.language].admin.buttondelete }}
-                                </button>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="admin-event-groups">
-                        <!-- Circuits -->
-                        <section v-if="groupedEvents.circuit.length" class="admin-event-group">
-                            <h3 class="event-group-title">
-                                {{ translations[store.language].admin.circuitEvents }}
-                            </h3>
-
-                            <div class="events-grid">
-                                <div v-for="event in groupedEvents.circuit" :key="event.id" class="event-card">
-                                    <div class="event-top">
-                                        <h3>{{ event.name }}</h3>
-
-                                        <span class="status-pill">
-                                            {{ event.status }}
-                                        </span>
-                                    </div>
-
-                                    <div class="info-grid event-info-grid">
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventstarts }}
-                                            </span>
-
-                                            <strong>{{ formatDate(event.startsAt) }}</strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationopens }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationOpensAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationcloses }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationClosesAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>Description</span>
-
-                                            <strong>{{ event.description || '—' }}</strong>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="event.divisions?.length" class="divisions-list">
-                                        <h4>Divisions</h4>
-
-                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
-                                            <span>{{ division.name }}</span>
-
-                                            <strong>
-                                                {{ division.approvedTeamCount ?? 0 }} /
-                                                {{ division.teamCapacity ?? '∞' }}
-                                            </strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="actions">
-                                        <button class="pending-button" @click="editEvent(event)">
-                                            {{ translations[store.language].admin.buttonedit }}
-                                        </button>
-
-                                        <button class="delete-button" @click="deleteEvent(event.id)">
-                                            {{ translations[store.language].admin.buttondelete }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Ligues -->
-                        <section v-if="groupedEvents.league.length" class="admin-event-group">
-                            <h3 class="event-group-title">
-                                {{ translations[store.language].admin.leagueEvents }}
-                            </h3>
-
-                            <div class="events-grid">
-                                <div v-for="event in groupedEvents.league" :key="event.id" class="event-card">
-                                    <div class="event-top">
-                                        <h3>{{ event.name }}</h3>
-
-                                        <span class="status-pill">
-                                            {{ event.status }}
-                                        </span>
-                                    </div>
-
-                                    <div class="info-grid event-info-grid">
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventstarts }}
-                                            </span>
-
-                                            <strong>{{ formatDate(event.startsAt) }}</strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationopens }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationOpensAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationcloses }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationClosesAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>Description</span>
-
-                                            <strong>{{ event.description || '—' }}</strong>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="event.divisions?.length" class="divisions-list">
-                                        <h4>Divisions</h4>
-
-                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
-                                            <span>{{ division.name }}</span>
-
-                                            <strong>
-                                                {{ division.approvedTeamCount ?? 0 }} /
-                                                {{ division.teamCapacity ?? '∞' }}
-                                            </strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="actions">
-                                        <button class="pending-button" @click="editEvent(event)">
-                                            {{ translations[store.language].admin.buttonedit }}
-                                        </button>
-
-                                        <button class="delete-button" @click="deleteEvent(event.id)">
-                                            {{ translations[store.language].admin.buttondelete }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Autres événements -->
-                        <section v-if="groupedEvents.other.length" class="admin-event-group">
-                            <h3 class="event-group-title">
-                                {{ translations[store.language].admin.otherEvents }}
-                            </h3>
-
-                            <div class="events-grid">
-                                <div v-for="event in groupedEvents.other" :key="event.id" class="event-card">
-                                    <div class="event-top">
-                                        <h3>{{ event.name }}</h3>
-
-                                        <span class="status-pill">
-                                            {{ event.status }}
-                                        </span>
-                                    </div>
-
-                                    <div class="info-grid event-info-grid">
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventstarts }}
-                                            </span>
-
-                                            <strong>{{ formatDate(event.startsAt) }}</strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationopens }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationOpensAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>
-                                                {{ translations[store.language].admin.eventregistrationcloses }}
-                                            </span>
-
-                                            <strong>
-                                                {{ formatDate(event.registrationClosesAt) }}
-                                            </strong>
-                                        </div>
-
-                                        <div>
-                                            <span>Description</span>
-
-                                            <strong>{{ event.description || '—' }}</strong>
-                                        </div>
-                                    </div>
-
-                                    <div v-if="event.divisions?.length" class="divisions-list">
-                                        <h4>Divisions</h4>
-
-                                        <div v-for="division in event.divisions" :key="division.id" class="division-row">
-                                            <span>{{ division.name }}</span>
-
-                                            <strong>
-                                                {{ division.approvedTeamCount ?? 0 }} /
-                                                {{ division.teamCapacity ?? '∞' }}
-                                            </strong>
-                                        </div>
-                                    </div>
-
-                                    <div class="actions">
-                                        <button class="pending-button" @click="editEvent(event)">
-                                            {{ translations[store.language].admin.buttonedit }}
-                                        </button>
-
-                                        <button class="delete-button" @click="deleteEvent(event.id)">
-                                            {{ translations[store.language].admin.buttondelete }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                        <!-- Événements du Circuit -->
+                        <AdminEventGroup :title="translations[store.language].admin.circuitEvents" :events="groupedEvents.circuit" @edit="editEvent" @delete="deleteEvent" />
+                        
+                        <!-- Événements de la Ligue -->
+                        <AdminEventGroup :title="translations[store.language].admin.leagueEvents" :events="groupedEvents.league" @edit="editEvent" @delete="deleteEvent" />
+                        
+                        <!-- Autres Événements -->
+                        <AdminEventGroup :title="translations[store.language].admin.otherEvents" :events="groupedEvents.other" @edit="editEvent" @delete="deleteEvent" />
                     </div>
                 </section>
 
+                <!-- Messages d'erreurs/succès -->
                 <p v-if="eventError" class="message error">
                     {{ eventError }}
                 </p>
@@ -770,11 +525,13 @@ watch(isAdmin, (newValue) => {
                     {{ eventSuccess }}
                 </p>
 
+                <!-- Form de Création/Modification d'un événement -->
+
                 <section ref="eventFormSection" class="dashboard-card approved-section event-form-section">
                     <h3>{{ translations[store.language].admin.eventscreateedit }}</h3>
                     <form class="event-form" @submit.prevent="saveEvent">
                         <h3>{{ editingEventId ? translations[store.language].admin.eventedit : translations[store.language].admin.eventcreate }}</h3>
-
+                        <p>{{ translations[store.language].admin.eventnommenclaturenote }}</p>
                         <div class="form-grid">
                             <input v-model="eventForm.name" :placeholder=translations[store.language].admin.eventsetupname required />
                             <input hidden v-model="eventForm.slug" placeholder="event-slug" required />
@@ -830,6 +587,9 @@ watch(isAdmin, (newValue) => {
                     </form>
                 </section>
             </section>
+
+
+
             <section class="dashboard-card registrations-section">
                 <div class="dashboard-header">
                     <div>
@@ -850,16 +610,14 @@ watch(isAdmin, (newValue) => {
                     {{ registrationSuccess }}
                 </p>
 
+                <!-- Inscriptions en attente -->
+
                 <section class="dashboard-card">
                     <div class="dashboard-header">
                         <div>
                             <h2>{{ translations[store.language].admin.pendingregistration }}</h2>
                             <p>{{ translations[store.language].admin.reviewpendingregistration }}</p>
                         </div>
-
-                        <!-- <button class="refresh-button" @click="loadPendingRegistrations" :disabled="loading">
-                            {{ loading ? 'Loading...' : translations[store.language].admin.buttonrefresh }}
-                        </button> -->
                     </div>
 
                     <p v-if="!loading && registrations.length === 0" class="empty-message">
@@ -931,16 +689,15 @@ watch(isAdmin, (newValue) => {
                         </div>
                     </div>
                 </section>
+
+                <!-- Inscriptions approuvées -->
+
                 <section class="dashboard-card approved-section">
                     <div class="dashboard-header">
                         <div>
                             <h2>{{ translations[store.language].admin.approvedregistrations }}</h2>
                             <p>{{ translations[store.language].admin.approvedacceptedteams }}</p>
                         </div>
-
-                        <!-- <button class="refresh-button" @click="loadApprovedRegistrations" :disabled="loadingApproved">
-                            {{ loadingApproved ? 'Loading...' : translations[store.language].admin.buttonrefresh }}
-                        </button> -->
                     </div>
 
                     <p v-if="!loadingApproved && approvedRegistrations.length === 0" class="empty-message">
@@ -1006,16 +763,15 @@ watch(isAdmin, (newValue) => {
                         </div>
                     </div>
                 </section>
+
+                <!-- Inscriptions rejetées -->
+
                 <section class="dashboard-card approved-section">
                     <div class="dashboard-header">
                         <div>
                             <h2>{{ translations[store.language].admin.rejectedregistrations }}</h2>
                             <p>{{ translations[store.language].admin.rejectedteams }}</p>
                         </div>
-
-                        <!-- <button class="refresh-button" @click="loadRejectedRegistrations" :disabled="loadingRejected">
-                            {{ loadingRejected ? 'Loading...' : translations[store.language].admin.buttonrefresh }}
-                        </button> -->
                     </div>
 
                     <p v-if="!loadingRejected && rejectedRegistrations.length === 0" class="empty-message">
@@ -1083,60 +839,6 @@ main {
 
 .events-section {
     margin-bottom: 30px;
-}
-
-.events-grid {
-    display: grid;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.event-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 14px;
-    padding: 18px;
-}
-
-.event-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    align-items: center;
-}
-
-.event-top h3 {
-    margin: 0;
-}
-
-.status-pill {
-    background: rgba(210, 20, 124, 0.22);
-    color: #f9a8d4;
-    border: 1px solid rgba(210, 20, 124, 0.45);
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.event-info-grid {
-    margin-top: 16px;
-}
-
-.divisions-list {
-    margin-top: 18px;
-}
-
-.divisions-list h4 {
-    margin-bottom: 10px;
-}
-
-.division-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .approved-section {
@@ -1373,22 +1075,6 @@ main {
     flex-direction: column;
     gap: 35px;
     margin-top: 20px;
-}
-
-.admin-event-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.event-group-title {
-    margin: 0;
-    padding-bottom: 10px;
-    color: white;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-bottom: 2px solid rgba(210, 20, 124, 0.5);
 }
 
 @media (max-width: 768px) {

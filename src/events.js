@@ -1,5 +1,6 @@
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
 
+// Pour aller chercher les événements
 export const getEvents = async () => {
   const response = await fetch(`${apiBaseUrl}/api/events`)
 

@@ -166,6 +166,7 @@ export const translations = {
       eventscreateedit: "Créer / Modifier",
       eventsmanageandreview: "Gérez et consultez les événements.",
       eventcreate: "Créer un événement",
+      eventnommenclaturenote: "Note : Le nom d'un événement doit commencer par (Ligue - ) ou (Circuit - ) pour être classé dans la bonne catégorie. Sinon, l'événement sera classé dans la catégorie autres événements.",
       eventedit: "Modifier un événement",
       eventsetupname: "Nom de l'événement",
       eventadddivision: "Ajouter une division",
@@ -792,7 +793,7 @@ export const translations = {
       confirmdeleteregistration: "Delete this registration permanently ?",
       registrationdeleted: "Registration deleted.",
 
-      registrations: "Registrations",
+      registrations: "Registrations", 
       registrationsmanageandreview:
         "Manage pending, approved, and rejected registrations.",
 
@@ -810,6 +811,7 @@ export const translations = {
       eventscreateedit: "Create / Edit",
       eventsmanageandreview: "Manage and review events.",
       eventcreate: "Create event",
+      eventnommenclaturenote: "Note: An event name must begin with (Ligue - ) or (Circuit - ) to be placed in the correct category. Otherwise, it will be classified under Other Events.",
       eventedit: "Edit event",
       eventsetupname: "Event name",
       eventadddivision: "Add division",

@@ -23,7 +23,7 @@ import Dash from './Dash.vue';
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
-              <RouterLink @click="closeLogoMenu" to="/events">{{ translations[store.language].admin.events }}</RouterLink>
+              <RouterLink @click="closeLogoMenu" to="/events">{{ translations[store.language].admin.events }}</RouterLink> 
               <!-- Le bouton vers la page Riftbound dans le dropdown du logo (à activer lorsqu'on voudra rendre accessible la page Riftbound) -->
               <!-- <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink> -->
             </div>
