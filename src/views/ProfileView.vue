@@ -4,6 +4,7 @@ import { store } from '../store.js'
 import { translations } from '@/i18n/translations'
 import { updateUserProfile, getRiotAccounts, loginWithRiot, getMyTeamRegistrations, getApprovedEventTeams } from '../login.js'
 import { getEvents } from '../events.js'
+import defaultDiscordAvatar from '@/assets/img/replaceWhenNoDiscordAvatar.png'
 
 const isSaving = ref(false) //Pour savoir si une sauvegarde est en cours
 const successMessage = ref('') //Pour stocker le message de succès
@@ -299,7 +300,7 @@ watch(
 
       <!-- Section du haut (profil Discord + infos user) -->
       <h1>{{ translations[store.language].profile.myProfile }}</h1>
-      <img class="img-profile" v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername">
+      <img class="img-profile" :src="store.user.discordAvatarUrl || defaultDiscordAvatar" :alt="store.user.discordUsername || 'Profil Discord'">
       <h2 class="username">{{ store.user.discordUsername || 'Utilisateur Discord' }}</h2>
 
       <!-- Gérer l'accès au dashboard admin et afficher lien vers le dashboard admin si le user a les privilèges admin -->

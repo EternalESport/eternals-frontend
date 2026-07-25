@@ -5,6 +5,15 @@ import { loginWithDiscord, logoutWithDiscord } from '../login.js'
 import { translations } from '@/i18n/translations'
 import Logo from './Logo.vue';
 import Dash from './Dash.vue';
+import defaultDiscordAvatar from '@/assets/img/replaceWhenNoDiscordAvatar.png'
+
+function getDiscordAvatar(user) {
+  if (user?.discordAvatarUrl) {
+    return user.discordAvatarUrl
+  }
+
+  return defaultDiscordAvatar
+}
 
 </script>
 
@@ -23,7 +32,7 @@ import Dash from './Dash.vue';
               <RouterLink @click="closeLogoMenu" to="/">{{ translations[store.language].navigation.home }}</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/ligue">Ligue</RouterLink>
               <RouterLink @click="closeLogoMenu" to="/circuit">Circuit</RouterLink>
-              <RouterLink @click="closeLogoMenu" to="/events">{{ translations[store.language].admin.events }}</RouterLink> 
+              <RouterLink @click="closeLogoMenu" to="/events">{{ translations[store.language].admin.events }}</RouterLink>
               <!-- Le bouton vers la page Riftbound dans le dropdown du logo (à activer lorsqu'on voudra rendre accessible la page Riftbound) -->
               <!-- <RouterLink @click="closeLogoMenu" to="/riftbound">Riftbound</RouterLink> -->
             </div>
@@ -63,15 +72,23 @@ import Dash from './Dash.vue';
           </div>
         </li>
         <!-- Profil -->
-        <li v-if="!store.user || !store.user.discordAvatarUrl">
+        <li v-if="!store.user">
           <button @click="loginWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Connexion' : 'Login' }}</button>
         </li>
         <li v-else>
           <div class="profile-desktop">
             <RouterLink to="/profile" class="profile-button">
-              <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
+              <img v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername || 'Profil Discord'" class="profile-avatar">
+
+              <span v-else class="profile-avatar default-profile-avatar" :style="{
+                maskImage: `url(${defaultDiscordAvatar})`,
+                WebkitMaskImage: `url(${defaultDiscordAvatar})`
+              }" role="img" aria-label="Avatar Discord par défaut"></span>
             </RouterLink>
-            <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
+
+            <button @click="logoutWithDiscord" class="lang-btn">
+              {{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}
+            </button>
           </div>
         </li>
         <!-- Langue -->
@@ -95,7 +112,7 @@ import Dash from './Dash.vue';
             </button>
           </li>
 
-          <li v-if="!store.user || !store.user.discordAvatarUrl">
+          <li v-if="!store.user">
             <div class="profile-mobile">
               <button @click="loginWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Connexion' : 'Login' }}</button>
             </div>
@@ -103,9 +120,17 @@ import Dash from './Dash.vue';
           <li v-else>
             <div class="profile-mobile">
               <RouterLink @click="toggleMobileNav" to="/profile" class="profile-button">
-                <img :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername" class="profile-avatar">
+                <img v-if="store.user.discordAvatarUrl" :src="store.user.discordAvatarUrl" :alt="store.user.discordUsername || 'Profil Discord'" class="profile-avatar">
+
+                <span v-else class="profile-avatar default-profile-avatar" :style="{
+                  maskImage: `url(${defaultDiscordAvatar})`,
+                  WebkitMaskImage: `url(${defaultDiscordAvatar})`
+                }" role="img" aria-label="Avatar Discord par défaut"></span>
               </RouterLink>
-              <button @click="logoutWithDiscord" class="lang-btn">{{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}</button>
+
+              <button @click="logoutWithDiscord" class="lang-btn">
+                {{ store.language === 'fr' ? 'Déconnexion' : 'Logout' }}
+              </button>
             </div>
           </li>
 
@@ -272,6 +297,31 @@ header {
   font-size: 14px;
   padding: 6px 10px;
   white-space: nowrap;
+}
+
+.default-profile-avatar {
+  background-color: var(--nav-color);
+
+  border: none;
+  border-radius: 0;
+  object-fit: initial;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.default-profile-avatar:hover {
+  transform: scale(1.08);
+}
+
+.profile-mobile .default-profile-avatar {
+  border: none;
+  border-radius: 0;
 }
 
 
