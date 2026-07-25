@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as o,a as s,t as _,p as c,e as r}from"./index-cd9b9604.js";const p=e=>(c("data-v-f6915470"),e=e(),r(),e),d={class:"greetings"},l=p(()=>s("div",{class:"fade"},null,-1)),n={__name:"SmallHeroHeader",props:{msg:{type:String,required:!0}},setup(e){return(i,m)=>(t(),o("div",d,[s("h1",null,_(e.msg),1),l]))}},S=a(n,[["__scopeId","data-v-f6915470"]]);export{S};

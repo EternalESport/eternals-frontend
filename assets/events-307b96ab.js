@@ -1,0 +1,1 @@
+const r="https://backend-production-90b0.up.railway.app",a=async()=>{const e=await fetch(`${r}/api/events`),s=await e.json().catch(()=>null);if(!e.ok)throw new Error(Array.isArray(s==null?void 0:s.message)?s.message.join(", "):(s==null?void 0:s.message)||"Unable to load events.");return Array.isArray(s)?s:[]};export{a as g};
