@@ -462,6 +462,7 @@ function getMemberBySlot(registration, slot) {
 async function loadAdminDashboard() {
     if (!isAdmin.value) return
 
+    //Loads pour chacune des sections
     await loadEvents()
     await loadPendingRegistrations()
     await loadApprovedRegistrations()
